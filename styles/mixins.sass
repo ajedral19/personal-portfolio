@@ -1,0 +1,136 @@
+@use 'sass:math'
+@use './variables' as v
+    
+
+// media query for screen sizes
+@mixin screen($device: null, $orientation: null)
+    $width: map-get(v.$viewports, $device)
+    @if $orientation
+        @media screen and ( min-width: $width) and ( orientation: $orientation )
+            @content
+    @else if $device == null and $orientation
+        @media screen and ( orientation: $orientation )
+            @content
+    @else
+        @media screen and ( min-width: $width )
+            @content
+
+
+@mixin flexbox($namespace: null, $columns: null, $gutterWidth: 1, $gutterWidthUnit: em)
+    $classname: row
+    $colClassname: col
+    $cols: 12
+    $padding: math.div($gutterWidth, 2)
+    $unit: $gutterWidthUnit
+    @if $columns != null
+        $cols: $columns
+    @if $namespace
+        $classname: #{$namespace}-row
+        $colClassname: #{$namespace}-col
+    .#{$classname}
+        display: flex
+        flex-flow: row wrap
+        margin: -#{$padding}#{$unit}
+        align-items: center
+        justify-content: flex-start
+
+        &.align-start
+            align-items: flex-start
+
+        &.clear-h
+            margin: -#{$padding}#{$unit} 0
+        &.clear-v
+            margin: 0 -#{$padding}#{$unit}
+        &.clear-both
+            margin: 0
+
+        .#{$colClassname}
+            flex: 1
+            width: 100%
+
+        .self-start
+            align-self: flex-start
+        .self-end
+            align-self: flex-end
+        .self-center
+            align-self: center
+
+        @each $fcKey, $fcVal in v.$flexboxColumns
+            @include screen($fcVal)
+                @for $i from 1 through $cols
+                    $width: math.div($i, $cols) * 100%
+                    .#{$colClassname}-#{$fcKey}-#{$i}
+                        flex: 0 0 #{$width}
+                        width: #{$width}
+                        padding: #{$padding}#{$unit}
+
+@mixin setFontFace($_dir, $font, $type, $weight, $style: null, $display: fallback)
+    $ext: $type
+    @if $style
+        $ext: #{$type}#{$style}
+    @font-face 
+        font-family: $font
+        src: local(#{$font} #{$ext}), local(#{$font}-#{$ext}), url(#{$_dir}#{$font}-#{$ext}.woff2) format('woff2'), url(#{$_dir}#{$font}-#{$ext}.woff) format('woff')
+        @if $style
+            font-style: $style
+        @else
+            font-style: normal
+        font-weight: $weight
+        font-display: $display
+
+@mixin title($namespace: null, $baseSize: 1, $minFontSize: 1, $unit: rem, $limit: 6)
+    $className: t
+    $minSize: $minFontSize
+    @if $minFontSize <= $baseSize
+        $minSize: $baseSize
+    @if $namespace
+        $className: #{$namespace}-t
+    @for $i from 1 through $limit
+        $size: $baseSize * (($limit + 1) - $i)
+        // $size: $baseSize * ($limit - $i)
+        @if $size <= $minSize
+            $size: $minSize
+        .#{$className}-#{$i}
+            font-size: #{$size}#{$unit}
+
+@mixin fontWeight($namespace: null)
+    @each $fwKey, $fwVal in v.$fontWeights
+        $className: $fwKey
+        @if $namespace
+            $className: #{$namespace}-#{$fwKey}
+        .#{$className}
+            font-weight: #{$fwVal}
+
+@mixin whitespace($namespace: null, $gap: 1, $unit: em, $limit: 6)
+    $property: ("p": padding, "m": margin)
+    $aria: ("t": top, "l": left, "b": bottom, "r": right)
+    
+    @each $pKey, $pVal in $property
+        @each $aKey, $aVal in $aria
+            $temp: #{$pKey}#{$aKey}
+            $className: $temp
+            @if $namespace
+                $className: #{$namesspace}-#{$temp}
+
+            @for $i from 0 through $limit
+                .#{$className}-#{$i}
+                    #{$pVal}-#{$aVal}: #{$gap * $i}#{$unit}
+
+@mixin buttonType($namespace: btn, $name, $bg, $color, $duration: .3, $delay: 0, $unit: s, $animation: null,)
+    .#{$namespace}-#{$name}
+        background: $bg
+        border: 1px solid lighten($bg, 10%)
+        color: $color
+        @if $animation
+            animation-name: $animation
+            animation-duration: #{$duration}#{$unit}
+            animation-delay: #{$delay}#{$unit}
+            animation-timing-function: ease
+        @else
+            transition: background #{$duration}#{$unit} ease #{$delay}#{$unit}
+
+        &.hover
+            @if $animation == null
+                transition: background #{$duration / 2}#{$unit} ease #{$delay}#{$unit}
+            background: darken($bg, 20%)
+

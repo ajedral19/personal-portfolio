@@ -1,0 +1,138 @@
+@use './mixins' as mxn
+@use './variables' as v
+
+.profile_card
+    position: relative
+    width: 100%
+    height: 100%
+    cursor: pointer
+
+    .cover_wrap
+        position: relative
+        padding-top: 68%
+
+    .title
+        transition: color .3s ease
+    &:hover
+        .title
+            transition: color .1s ease
+            color: v.$theme
+
+.social_media_links
+    list-style: none
+    display: flex
+    li:not(:last-child)
+        margin-right: .5em
+
+
+.categories
+    list-style: none
+    display: flex
+    gap: 1.5em
+
+    .category
+        text-transform: uppercase
+        font-weight: 500
+        opacity: .5
+        cursor: pointer
+        &.active
+            opacity: 1
+
+.dlcv_button
+    display: block
+    width: 100%
+
+.gallery_widget
+    width: 100%
+    height: 100%
+    position: relative
+    display: grid
+    gap: #{v.$gutter}#{v.$gutterUnit}
+
+    .gallery_item
+        position: relative
+        overflow: hidden
+        width: 100%
+        cursor: pointer
+        // padding-top: 100%
+
+        &.col-span-2
+            grid-column: span 2
+        &.row-span-2
+            grid-row: span 2
+
+        .meta_data
+            position: absolute
+            width: 100%
+            height: 100%
+            z-index: 1
+            top: 0
+            color: v.$bg
+            display: flex
+            flex-flow: column 
+            justify-content: flex-end
+            padding: 1em
+            opacity: 0
+            backdrop-filter: brightness(80%)
+            transition: opacity .3s ease, backdrop-filter .3s ease
+
+            .title
+                margin-bottom: .35em
+            .category
+                font-size: 80%
+
+
+        .item_wrap
+            position: relative
+            display: block
+            height: 100%
+            width: 100%
+            top: 0
+            left: 0
+            transform: scale(1.025, 1.025)
+            transition: transform .3s ease
+
+            .link_more
+                text-align: left
+                position: absolute
+                font-size: 1.5rem
+                font-weight: 700
+                width: 6ch
+                display: block
+                line-height: 1
+                bottom: 0
+                .dot
+                    color: orange
+
+        &:hover, &.active
+            .meta_data
+                opacity: 1
+                transition: opacity .1s ease
+            .item_wrap
+                transform: scale(1, 1)
+
+
+@include mxn.screen(phone, landscape)
+    .gallery_widget
+            // grid-template-areas:"tall square1 wide wide" "tall square2 square3 square4"
+
+@include mxn.screen(ipad)
+    .dlcv_button
+        display: inline-block
+        width: unset
+
+    .about_hero_wrap
+        position: relative
+        bottom: 0
+        display: block
+        width: 100%
+        height: 575px
+        div
+            overflow: unset!important
+        .about_hero
+            transform: translate(-64px, -64px)
+    .intro
+        padding-right: 3em
+
+    .gallery_widget
+        // grid-template-areas:"tall square1 wide wide" "tall square2 square3 square4"

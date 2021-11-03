@@ -1,0 +1,119 @@
+@use '../../styles/mixins' as mxn
+
+@include mxn.title(null, .9 , 1 , rem )
+    
+.banner
+    position: relative
+    overflow: hidden
+    width: 100%
+    max-height: 782px
+    min-height: 500px
+    height: 100vh
+    margin-bottom: 3em
+
+    .content
+        text-align: center
+        position: absolute
+        width: 100%
+        height: 55%
+        top: 0
+        padding-top: 53%
+        z-index: 2
+
+    .absolute_elements
+        width: 100%
+        height: 100%
+
+        .hero
+            position: absolute
+            bottom: 0
+            display: block
+            width: 100%
+            height: 45%
+            z-index: 1
+
+        .strips
+            width: 100%
+            height: 100%
+
+            .strip
+                position: absolute
+                display: block
+                width: 100%
+                height: 7%
+                background-image: url(../../assets/images/banner-strips-bg.jpg)
+                background-size: cover
+                background-repeat: no-repeat
+                background-position: center 70%
+                bottom: 0
+
+                &.strip_1
+                    height: 13%
+                    bottom: 10%
+                    background-position: center 30%
+
+@mixin landscapeLayout()
+    .banner
+        min-height: 300px
+        max-height: 834px
+
+        .content
+            padding-top: unset
+            text-align: left
+            top: unset
+            bottom: 0
+            height: 42%
+            width: 100%
+            display: flex
+            align-items: center
+
+        .absolute_elements
+            position: relative
+            .hero
+                display: block
+                position: absolute
+                height: 78%
+                .wrap
+                    display: block
+                    position: relative
+                    height: 100%
+                    width: 100%
+                    .hero_img
+                        transform: translateX(25%)
+                        // transform: translateX(300px)
+
+            .strips
+                .strip
+                    height: 11%
+                    top: 47%
+                    bottom: 0
+                    background-position: center 60%
+
+                    &.strip_1
+                        height: 21%
+                        top: 21%
+                        background-position: center 43%
+
+
+@include mxn.screen(phone, landscape)
+    @include landscapeLayout()
+
+@include mxn.screen(ipad, portrait)
+    @include landscapeLayout()
+
+@include mxn.screen(ipad, landscape)
+    .banner
+        max-height: 640px
+
+@include mxn.screen(desktop)
+    .banner
+        max-height: 834px
+        .absolute_elements .hero .wrap .hero_img
+            transform: translateX(265px)
+
+    // .banner
+    //     .abssolute_elements
+    //         .hero
+    //             .hero_img
+    //                 height: 90%!important
+    //                 width: 100%!important

@@ -1,0 +1,113 @@
+{
+  "mywork": {
+    "web": [
+      {
+        "id": "w00",
+        "title": "The thickness of the borders",
+        "image": "/assets/images/content/web_(1).jpg",
+        "category": "Front-end"
+      },
+      {
+        "id": "w01",
+        "title": " Its dimensions are the padding-box",
+        "image": "/assets/images/content/web_(2).jpg",
+        "category": "Front-end"
+      },
+      {
+        "id": "w02",
+        "title": "Every box is composed of four parts",
+        "image": "/assets/images/content/web_(3).jpg",
+        "category": "Single Page App"
+      },
+      {
+        "id": "w03",
+        "title": "CSS determines the size",
+        "image": "/assets/images/content/web_(4).jpg",
+        "category": "React"
+      },
+      {
+        "id": "w04",
+        "title": "CSS Key Concepts",
+        "image": "/assets/images/content/web_(5).jpg",
+        "category": "Node.js"
+      },
+      {
+        "id": "w05",
+        "title": "When margin collapsing occurs",
+        "image": "/assets/images/content/web_(6).jpg",
+        "category": "Fullstack"
+      },
+      {
+        "id": "w06",
+        "title": "This default behavior",
+        "image": "/assets/images/content/web_(7).jpg",
+        "category": "Mobile App"
+      }
+    ],
+    "graphic": [
+      {
+        "id": "g00",
+        "title": "The optional options",
+        "category": "flyer",
+        "image": "/assets/images/content/des_(1).jpg",
+        "span": null
+      },
+      {
+        "id": "g01",
+        "title": "The callback is passed",
+        "category": "logo",
+        "image": "/assets/images/content/des_(2).jpg",
+        "span": null
+      },
+      {
+        "id": "g02",
+        "title": "When the path is a directory",
+        "category": "web",
+        "image": "/assets/images/content/des_(3).jpg",
+        "span": null
+      },
+      {
+        "id": "g03",
+        "title": "Aborting an ongoing",
+        "category": "logo",
+        "image": "/assets/images/content/des_(4).jpg",
+        "span": null
+      },
+      {
+        "id": "g04",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(5).jpg",
+        "span": null
+      },
+      {
+        "id": "g05",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(6).jpg",
+        "span": "row"
+      },
+      {
+        "id": "g06",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(7).jpg",
+        "span": "row"
+      },
+      {
+        "id": "g07",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(8).jpg",
+        "span": "col"
+      },
+      {
+        "id": "g08",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(9).jpg",
+        "span": "col"
+      }
+    ]
+  }
+}

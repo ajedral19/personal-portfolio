@@ -1,0 +1,9 @@
+@use '../../styles/mixins' as mxn
+
+$gutter: 1
+$gutterUnit: em
+
+@include mxn.screen(ipad)
+    $gutter: 3
+
+@include mxn.flexbox('flex', 12, $gutter, $gutterUnit )

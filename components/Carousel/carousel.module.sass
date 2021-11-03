@@ -1,0 +1,64 @@
+@use 'sass:math'
+@use '../../styles/variables' as v
+@use '../../styles/mixins' as mxn
+
+.carousel_container
+    position: relative
+    width: 100%
+    height: 100%
+    
+    .carousel_controls
+        position: absolute
+        padding: 1em 0
+        bottom: 100%
+        right: 0
+        .carousel_btn
+            width: 32px
+            height: 32px
+            padding: .7em
+            border-radius: 50%
+            border: 1px solid v.$light
+            background: transparent
+            display: inline
+            &.btn_next
+                margin-left: .5em
+            svg 
+                display: block
+                width: 100%
+                height: 100%
+            
+        
+    .carousel
+        position: relative
+        width: auto
+        height: 100%
+        display: flex
+        flex-flow: row nowrap
+        overflow: hidden
+        margin-left: -#{math.div(v.$gutter, 2)}#{v.$gutterUnit}
+        margin-right: -#{math.div(v.$gutter, 2)}#{v.$gutterUnit}
+        .item
+            position: relative
+            cursor: pointer
+            height: 100%
+            display: block
+            flex: 1 0 calc(100% / 2)
+            width: 100%
+            padding: 0 #{math.div(v.$gutter, 2)}#{v.$gutterUnit}
+            transition: transform .3s cubic-bezier(0.68, 0.16, 0.57, 0.57)
+
+@include mxn.screen(phone, landscape )
+    .carousel_container
+        .carousel
+            .item
+                flex: 1 0 calc(100% / 3)
+                width: calc(100% / 3)
+
+@include mxn.screen(ipad )
+    .carousel_container
+        .carousel
+            .item
+                flex: 1 0 calc(100% / 4)
+                width: calc(100% / 4)
+
+// @include mxn.screen(ipad )
