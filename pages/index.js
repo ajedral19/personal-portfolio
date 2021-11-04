@@ -13,6 +13,7 @@ import Preview from '../components/Preview/preview'
 import { getData } from '../lib/data'
 import { Column, Row } from '../components/FlexBox/flexbox'
 import { facebook, instagram, twitter } from '../utils/icons'
+import Gallery from '../components/Gallery/gallery'
 
 export async function getStaticProps() {
   const portfolio = await getData('json')
@@ -144,7 +145,8 @@ export default function Home({ portfolio, job }) {
           ))}
         </ul>
         {/* tabs */}
-        <div className={cn(stl.gallery_widget)}>
+        <Gallery data={state.designs} />
+        {/* <div className={cn(stl.gallery_widget)}>
           {state.designs.map((item, key) => (
             <div
               key={key}
@@ -175,7 +177,7 @@ export default function Home({ portfolio, job }) {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
         <Link href="/">
           <a className="block medium mt-2">click for more</a>
         </Link>
