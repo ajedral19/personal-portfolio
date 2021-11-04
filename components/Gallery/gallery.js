@@ -7,7 +7,7 @@ export default function Gallery({ data }) {
       {data.map((item, key) => (
         <div key={key}>
           <div className={style.meta_content}>
-            <h5 className={cn('medium t-6')}>{item.title}</h5>
+            <h5 className={cn('medium t-6', style.title)}>{item.title}</h5>
             <span className={cn('uppercase regular')}>{item.category}</span>
           </div>
           <div className={style.background}></div>
