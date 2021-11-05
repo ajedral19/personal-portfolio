@@ -3,7 +3,13 @@ import Image from 'next/image'
 import cn from 'classnames'
 import style from './thumbnail.module.sass'
 
-export default function Thumbnail({ data, className, height, layout }) {
+export default function Thumbnail({
+  data,
+  className,
+  showCategory = false,
+  height,
+  layout,
+}) {
   const customHeight = { paddingTop: `${height}%` }
   return (
     <div className={cn(style.thumbnail, className)}>
@@ -14,11 +20,14 @@ export default function Thumbnail({ data, className, height, layout }) {
               <a className={style.link}></a>
             </Link>
           </div>
-          <h4
-            className={cn(style.title, 't-6', 'mb-1', 'capitalize', 'medium')}
-          >
+          <h4 className={cn(style.title, 't-6', 'capitalize', 'medium')}>
             {data.title}
           </h4>
+          {showCategory && data.category && (
+            <span className={cn('block capitalize', style.category)}>
+              {data.category}
+            </span>
+          )}
         </div>
         <div className={cn(style.background)}>
           <Image

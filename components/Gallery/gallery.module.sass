@@ -1,0 +1,21 @@
+@use 'sass:math'
+@use '../../styles/mixins' as mxn
+@use '../../styles/variables' as v
+
+$gap: #{v.$gutter / 2}#{v.$gutterUnit}
+    
+.gallery
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    margin: 0 -$gap
+
+    .item_container
+        padding: $gap
+
+@include mxn.screen(phone, landscape)
+    .gallery
+        grid-template-columns: repeat(3, 1fr)
+
+@include mxn.screen(ipad)
+    .gallery
+        grid-template-columns: repeat(4, 1fr)

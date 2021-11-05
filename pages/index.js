@@ -146,38 +146,6 @@ export default function Home({ portfolio, job }) {
         </ul>
         {/* tabs */}
         <Gallery data={state.designs} />
-        {/* <div className={cn(stl.gallery_widget)}>
-          {state.designs.map((item, key) => (
-            <div
-              key={key}
-              className={cn(
-                stl.gallery_item,
-                stl[`_${key}`],
-                { [stl['col-span-2']]: item.span == 'col' },
-                { [stl['row-span-2']]: item.span == 'row' },
-              )}
-              // onClick={() => preview(item.id)}
-            >
-              <div className={stl.meta_data}>
-                <h5 className={cn('medium t-6', stl.title)}>{item.title}</h5>
-                <span className={cn('uppercase regular', stl.category)}>
-                  {item.category}
-                </span>
-              </div>
-              <div className={stl.item_wrap}>
-                <Image
-                  priority
-                  src={item.image}
-                  layout="responsive"
-                  objectFit="cover"
-                  width="100"
-                  height="100"
-                  alt={item.title}
-                />
-              </div>
-            </div>
-          ))}
-        </div> */}
         <Link href="/">
           <a className="block medium mt-2">click for more</a>
         </Link>
@@ -198,8 +166,7 @@ export default function Home({ portfolio, job }) {
             </span>
           </Column>
           <Column sm="12" md="8">
-            <h2 className="t-5 uppercase medium mb-1">About me</h2>
-            <Resume profileData={job.data.experience} />
+            <Resume profileData={job.data.experience} title="about me" />
           </Column>
         </Row>
       </section>

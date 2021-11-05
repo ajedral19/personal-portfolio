@@ -3,9 +3,10 @@ import Accordion from '../Accordion/accordion'
 import style from './resume.module.sass'
 import cn from 'classnames'
 
-export default function Resume({ profileData }) {
+export default function Resume({ profileData, title }) {
   return (
     <>
+      {title && <h2 className="t-5 uppercase medium mb-1">{title}</h2>}
       <p>
         I am a self-thought Graphic Designer and Front-end Developer. In 2017 I
         decided to do some coding and set aside designing. Besides, I love
