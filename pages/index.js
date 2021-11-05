@@ -9,12 +9,10 @@ import Carousel from '../components/Carousel/carousel'
 import Footer from '../components/Footer/footer'
 import Resume from '../components/Resume/resume'
 import Modal from '../components/Modal/modal'
-import Preview from '../components/Preview/preview'
 import { getData } from '../lib/data'
 import { Column, Row } from '../components/FlexBox/flexbox'
 import { facebook, instagram, twitter } from '../utils/icons'
 import Gallery from '../components/Gallery/gallery'
-import { DisableScroll } from '../utils/utulity'
 
 export async function getStaticProps() {
   const portfolio = await getData('json')
@@ -26,7 +24,7 @@ export default function Home({ portfolio, job }) {
   const [state, setState] = useState({
     categories: portfolio.design.categories,
     designs: portfolio.design.work,
-    modal: { show: true },
+    modal: { show: true, payload: null },
   })
 
   const switchGalleryContent = (keyword) => {

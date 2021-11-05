@@ -29,7 +29,7 @@ export default function Carousel({ data, className }) {
 
   useEffect(() => {
     setCarousel(document.querySelector(`.${style.carousel}`))
-  }, [])
+  }, [setCarousel])
 
   return (
     <div className={style.carousel_container}>

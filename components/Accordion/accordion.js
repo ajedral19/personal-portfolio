@@ -46,7 +46,7 @@ export default function Accordion({ data }) {
 
   useEffect(() => {
     collapseBar(data)
-  }, [])
+  }, [collapseBar])
 
   return <div className={cn(style.accordion)}>{state.bars || 'loading...'}</div>
 }

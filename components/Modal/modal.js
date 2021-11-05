@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import style from './modal.module.sass'
-import cn from 'classnames'
 import { useEffect } from 'react'
-import { DisableScroll } from '../../utils/utulity'
 
 export default function Modal({ children, onClose = null, type }) {
-  const keyPress = () => {
+  function keyPress() {
     window.addEventListener('keydown', (e) => {
       const key = e.key.toLocaleLowerCase()
       if (key === 'escape') onClose()
@@ -14,13 +12,18 @@ export default function Modal({ children, onClose = null, type }) {
 
   useEffect(() => {
     keyPress()
-  }, [keyPress])
+  }, [])
 
   return (
     <div className={style.modal}>
       {type === 'bot' ? (
         <div className={style.bot_container}>
-          <Image src="/assets/dancing_bot.gif" width="40" height="40" />
+          <Image
+            src="/assets/dancing_bot.gif"
+            width="40"
+            height="40"
+            alt="robot"
+          />
           {children}
         </div>
       ) : (
