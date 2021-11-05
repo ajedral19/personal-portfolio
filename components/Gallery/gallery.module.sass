@@ -2,8 +2,8 @@
 @use '../../styles/mixins' as mxn
 @use '../../styles/variables' as v
 
-$gap: #{v.$gutter / 2}#{v.$gutterUnit}
-    
+$gap: #{math.div(v.$gutter, 2)}#{v.$gutterUnit}
+
 .gallery
     display: grid
     grid-template-columns: repeat(2, 1fr)

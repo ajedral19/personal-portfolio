@@ -13,7 +13,7 @@
 @include mxn.setFontFace("../public/assets/fonts/", Rubik, SemiBold, 600)
 @include mxn.setFontFace("../public/assets/fonts/", Rubik, Medium, 500)
 @include mxn.setFontFace("../public/assets/fonts/", Rubik, Light, 300)
-    
+
 body
     font-family: 'Rubik', "Arial", "Helvetica", sans-serif
     font-weight: normal
@@ -75,6 +75,9 @@ button
 .lowecase
     text-transform: lowercase
 
+.text-center
+    text-align: center
+
 .btn
     font-weight: 400
     text-transform: capitalize
@@ -118,9 +121,6 @@ button
         line-height: 0
         vertical-align: middle
 
-    
-
-
 // title([[namespace]-t]-1-6, base font size, min font size, unit e.g. [em, rem, px], loop limit)
 // min font size can't be lower than base font size
 // @include mxn.title(null, .75, .85, rem) // usage: .[namespace]-t-, default: .t-
@@ -133,7 +133,6 @@ button
 
 // whitespace([namespace], columns, gutter width, unit e.g. [em, rem, px])
 // @include mxn.whitespace(null, 16, px, 8)
-
 
 // screen([key from list])
 @include mxn.title(null, .75, .9)

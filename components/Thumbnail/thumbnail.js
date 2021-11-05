@@ -9,10 +9,11 @@ export default function Thumbnail({
   showCategory = false,
   height,
   layout,
+  onClick = null,
 }) {
   const customHeight = { paddingTop: `${height}%` }
   return (
-    <div className={cn(style.thumbnail, className)}>
+    <div className={cn(style.thumbnail, className)} onClick={onClick}>
       <div className={style.thumbnail_content}>
         <div className={style.meta_content}>
           <div className={style.link_icons}>
@@ -33,8 +34,10 @@ export default function Thumbnail({
           <Image
             priority
             src={data.image}
-            layout="fill"
+            layout="responsive"
             objectFit="cover"
+            width="100"
+            height="100"
             alt={data.title}
           />
         </div>
