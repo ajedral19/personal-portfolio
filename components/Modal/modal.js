@@ -2,7 +2,6 @@ import Image from 'next/image'
 import style from './modal.module.sass'
 import cn from 'classnames'
 import { useEffect } from 'react'
-import Layout from '../Layout/layout'
 import { DisableScroll } from '../../utils/utulity'
 
 export default function Modal({ children, onClose = null, type }) {
