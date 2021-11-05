@@ -105,7 +105,7 @@ export default function Home({ portfolio, job }) {
                     className={cn(stl.profile_cover)}
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="behance"
                   />
                 </div>
                 <h4 className={cn('t-6 bold', stl.title)}>Behance</h4>
@@ -121,7 +121,7 @@ export default function Home({ portfolio, job }) {
                     className={cn(stl.profile_cover)}
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="github"
                   />
                 </div>
                 <h4 className={cn('t-6 bold', stl.title)}>Github</h4>
@@ -177,6 +177,7 @@ export default function Home({ portfolio, job }) {
                   src="/assets/images/about_me_hero.png"
                   layout="fill"
                   objectFit="contain"
+                  alt="about me"
                   // width="100"
                   // height="100"
                 />
