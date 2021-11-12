@@ -13,7 +13,7 @@ import { getData } from '../lib/data'
 import { Column, Row } from '../components/FlexBox/flexbox'
 import { facebook, instagram, twitter } from '../utils/icons'
 import Gallery from '../components/Gallery/gallery'
-import Select from '../components/Select/Select'
+import Select from '../components/Select/select'
 import Preview from '../components/Preview/preview'
 
 export async function getStaticProps() {
