@@ -147,24 +147,7 @@ export default function Home({ portfolio, job }) {
           </p>
           {/* tabs - this needs to be overflow-x scroll */}
           <Select data={state.categories} onClick={switchGalleryContent} />
-          {/* <ul className={cn(stl.categories, 'mt-2 mb-1')}>
-            <li
-              className={cn(stl.category, stl.active, 'uppercase medium')}
-              onClick={() => switchGalleryContent()}
-            >
-              all
-            </li>
-            {state.categories.map((item, key) => (
-              <li
-                key={key}
-                className={cn(stl.category, stl.active, 'uppercase medium')}
-                onClick={() => switchGalleryContent(item)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul> */}
-          {/* tabs */}
+          {/*  */}
           <Gallery data={state.designs} listener={preview} />
           <Link href="/">
             <a className="block medium mt-2">click for more</a>
