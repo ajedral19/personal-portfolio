@@ -13,6 +13,8 @@ import { getData } from '../lib/data'
 import { Column, Row } from '../components/FlexBox/flexbox'
 import { facebook, instagram, twitter } from '../utils/icons'
 import Gallery from '../components/Gallery/gallery'
+import Select from '../components/Select/Select'
+import Preview from '../components/Preview/preview'
 
 export async function getStaticProps() {
   const portfolio = await getData('json')
@@ -49,7 +51,7 @@ export default function Home({ portfolio, job }) {
     <>
       {(state.modal.show && state.modal.payload && (
         <Modal onClose={closeModal}>
-          <h1>Hello from modal!!!</h1>
+          <Preview payload={state.modal.payload} />
         </Modal>
       )) ||
         (state.modal.show && (
@@ -144,7 +146,8 @@ export default function Home({ portfolio, job }) {
             pre-rendering and use client-side JavaScript to populate data.
           </p>
           {/* tabs - this needs to be overflow-x scroll */}
-          <ul className={cn(stl.categories, 'mt-2 mb-1')}>
+          <Select data={state.categories} onClick={switchGalleryContent} />
+          {/* <ul className={cn(stl.categories, 'mt-2 mb-1')}>
             <li
               className={cn(stl.category, stl.active, 'uppercase medium')}
               onClick={() => switchGalleryContent()}
@@ -160,7 +163,7 @@ export default function Home({ portfolio, job }) {
                 {item}
               </li>
             ))}
-          </ul>
+          </ul> */}
           {/* tabs */}
           <Gallery data={state.designs} listener={preview} />
           <Link href="/">
@@ -178,8 +181,6 @@ export default function Home({ portfolio, job }) {
                   layout="fill"
                   objectFit="contain"
                   alt="about me"
-                  // width="100"
-                  // height="100"
                 />
               </span>
             </Column>

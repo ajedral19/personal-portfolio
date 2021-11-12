@@ -20,16 +20,15 @@ export default function Carousel({ data, className }) {
     setState({ ...state, jumpCount: jump })
   }
 
-  const setCarousel = (carousel) => {
-    const cars = Array.from(carousel.children)
-    setState({ ...state, carousel, cars })
-    // const height = cars[0].offsetHeight
-    // carousel.style.height = `${height}px`
-  }
-
   useEffect(() => {
+    function setCarousel(carousel) {
+      const cars = Array.from(carousel.children)
+      setState({ ...state, carousel, cars })
+      // const height = cars[0].offsetHeight
+      // carousel.style.height = `${height}px`
+    }
     setCarousel(document.querySelector(`.${style.carousel}`))
-  }, [setCarousel])
+  }, [])
 
   return (
     <div className={style.carousel_container}>

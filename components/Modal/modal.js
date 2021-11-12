@@ -3,14 +3,13 @@ import style from './modal.module.sass'
 import { useEffect } from 'react'
 
 export default function Modal({ children, onClose = null, type }) {
-  function keyPress() {
-    window.addEventListener('keydown', (e) => {
-      const key = e.key.toLocaleLowerCase()
-      if (key === 'escape') onClose()
-    })
-  }
-
   useEffect(() => {
+    function keyPress() {
+      window.addEventListener('keydown', (e) => {
+        const key = e.key.toLocaleLowerCase()
+        if (key === 'escape') onClose()
+      })
+    }
     keyPress()
   }, [])
 
@@ -29,6 +28,7 @@ export default function Modal({ children, onClose = null, type }) {
       ) : (
         <div className={style.modal_container}>
           <button onClick={onClose}>close</button>
+          {children}
         </div>
       )}
     </div>
