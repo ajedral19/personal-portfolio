@@ -1,6 +1,5 @@
 @use 'sass:math'
 @use './variables' as v
-    
 
 // media query for screen sizes
 @mixin screen($device: null, $orientation: null)
@@ -14,7 +13,6 @@
     @else
         @media screen and ( min-width: $width )
             @content
-
 
 @mixin flexbox($namespace: null, $columns: null, $gutterWidth: 1, $gutterWidthUnit: em)
     $classname: row
@@ -68,15 +66,15 @@
     $ext: $type
     @if $style
         $ext: #{$type}#{$style}
-    @font-face 
+    @font-face
         font-family: $font
         src: local(#{$font} #{$ext}), local(#{$font}-#{$ext}), url(#{$_dir}#{$font}-#{$ext}.woff2) format('woff2'), url(#{$_dir}#{$font}-#{$ext}.woff) format('woff')
         @if $style
             font-style: $style
         @else
             font-style: normal
-        font-weight: $weight
-        font-display: $display
+            font-weight: $weight
+            font-display: $display
 
 @mixin title($namespace: null, $baseSize: 1, $minFontSize: 1, $unit: rem, $limit: 6)
     $className: t
@@ -104,7 +102,7 @@
 @mixin whitespace($namespace: null, $gap: 1, $unit: em, $limit: 6)
     $property: ("p": padding, "m": margin)
     $aria: ("t": top, "l": left, "b": bottom, "r": right)
-    
+
     @each $pKey, $pVal in $property
         @each $aKey, $aVal in $aria
             $temp: #{$pKey}#{$aKey}
@@ -132,5 +130,4 @@
         &.hover
             @if $animation == null
                 transition: background #{$duration / 2}#{$unit} ease #{$delay}#{$unit}
-            background: darken($bg, 20%)
-
+                background: darken($bg, 20%)

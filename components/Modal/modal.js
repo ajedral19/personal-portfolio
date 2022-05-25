@@ -7,7 +7,9 @@ export default function Modal({ children, onClose = null, type }) {
     function keyPress() {
       window.addEventListener('keydown', (e) => {
         const key = e.key.toLocaleLowerCase()
-        if (key === 'escape') onClose()
+        if (key === 'escape') {
+          onClose()
+        }
       })
     }
     keyPress()
@@ -15,22 +17,12 @@ export default function Modal({ children, onClose = null, type }) {
 
   return (
     <div className={style.modal}>
-      {type === 'bot' ? (
-        <div className={style.bot_container}>
-          <Image
-            src="/assets/dancing_bot.gif"
-            width="40"
-            height="40"
-            alt="robot"
-          />
-          {children}
-        </div>
-      ) : (
-        <div className={style.modal_container}>
-          <button onClick={onClose}>close</button>
-          {children}
-        </div>
-      )}
+      <div className={style.modal_container}>
+        <button onClick={onClose} className={style.btn_close}>
+          close
+        </button>
+        {children}
+      </div>
     </div>
   )
 }

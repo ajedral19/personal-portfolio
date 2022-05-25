@@ -1,0 +1,105 @@
+@use '../styles/Variables' as var
+
+// Font sizes
+.title
+    font-size: 1.5rem
+    font-weight: 400
+    &.size-normal
+        font-size: 1rem
+    &.bold
+        font-weight: bold
+    &.black
+        font-weight: 900
+    &.medium
+        font-weight: 500
+    &.semibold
+        font-weight: 600
+    &.light
+        font-weight: 300
+.subject
+    font-size: 1rem
+    font-weight: 400
+    &.bold
+        font-weight: bold
+    &.black
+        font-weight: 900
+    &.medium
+        font-weight: 500
+    &.semibold
+        font-weight: 600
+    &.light
+        font-weight: 300
+
+.bold
+    font-weight: bold
+.black
+    font-weight: 900
+.medium
+    font-weight: 500
+.semibold
+    font-weight: 600
+.light
+    font-weight: 300
+
+// margin and padding clear
+
+// Text Properties
+.t-center
+    text-align: center
+.t-left
+    text-align: left
+.t-right
+    text-align: right
+.t-cap
+    text-transform: capitalize
+.t-lower
+    text-transform: lowercase
+.t-upper
+    text-transform: uppercase
+
+.top-page
+    // background: pink
+    height: 100vh
+    position: relative
+
+.section
+    // background: pink
+    display: block
+    padding: 3.125em 0
+    position: relative
+
+.image-thumbnail
+    position: relative
+    overflow: hidden
+    display: block
+    width: 100%
+    padding-top: 70%
+    background: var.$shadedLow
+    .meta-data
+        position: absolute
+        width: calc(100% - 2em)
+        height: calc(100% - 2em)
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        padding: 1em
+        top: 0
+        left: 0
+    .background
+        position: absolute
+        display: block
+        height: 100%
+        width: 100%
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+    &.square
+        padding-top: 100%
+
+@media screen and (min-device-width: 768px)
+    // Font sizes
+    .title
+        font-size: 2rem
+
+    .section
+        padding: 5.5em 0

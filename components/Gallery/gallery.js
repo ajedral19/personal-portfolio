@@ -12,7 +12,7 @@ export default function Gallery({ data, listener = null }) {
           data={item}
           className={style.item_container}
           showCategory
-          onClick={() => listener(item.id)}
+          onClick={() => listener && listener(item.id)}
         />
       ))}
     </div>

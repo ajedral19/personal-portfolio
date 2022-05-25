@@ -1,0 +1,208 @@
+{
+  "mywork": {
+    "web": [
+      {
+        "id": "w00",
+        "title": "The thickness of the borders",
+        "image": "/assets/images/content/web_(1).jpg",
+        "category": "Front-end"
+      },
+      {
+        "id": "w01",
+        "title": " Its dimensions are the padding-box",
+        "image": "/assets/images/content/web_(2).jpg",
+        "category": "Front-end"
+      },
+      {
+        "id": "w02",
+        "title": "Every box is composed of four parts",
+        "image": "/assets/images/content/web_(3).jpg",
+        "category": "Single Page App"
+      },
+      {
+        "id": "w03",
+        "title": "CSS determines the size",
+        "image": "/assets/images/content/web_(4).jpg",
+        "category": "React"
+      },
+      {
+        "id": "w04",
+        "title": "CSS Key Concepts",
+        "image": "/assets/images/content/web_(5).jpg",
+        "category": "Node.js"
+      },
+      {
+        "id": "w05",
+        "title": "When margin collapsing occurs",
+        "image": "/assets/images/content/web_(6).jpg",
+        "category": "Fullstack"
+      },
+      {
+        "id": "w06",
+        "title": "This default behavior",
+        "image": "/assets/images/content/web_(7).jpg",
+        "category": "Mobile App"
+      }
+    ],
+    "graphic": [
+      {
+        "id": "g00",
+        "title": "The optional options",
+        "category": "flyer",
+        "image": "/assets/images/content/des_(1).jpg",
+        "span": null,
+        "images": ["i01", "i02"]
+      },
+      {
+        "id": "g01",
+        "title": "The callback is passed",
+        "category": "logo",
+        "image": "/assets/images/content/des_(2).jpg",
+        "span": null,
+        "images": ["i04", "i05", "i06"]
+      },
+      {
+        "id": "g02",
+        "title": "When the path is a directory",
+        "category": "web",
+        "image": "/assets/images/content/des_(3).jpg",
+        "span": null,
+        "images": ["i08", "i09"]
+      },
+      {
+        "id": "g03",
+        "title": "Aborting an ongoing",
+        "category": "logo",
+        "image": "/assets/images/content/des_(4).jpg",
+        "span": null,
+        "images": ["i10", "i11", "i12"]
+      },
+      {
+        "id": "g04",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(5).jpg",
+        "span": null,
+        "images": ["i13", "i14", "i15"]
+      },
+      {
+        "id": "g05",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(6).jpg",
+        "span": "row",
+        "images": ["i16", "i17"]
+      },
+      {
+        "id": "g06",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(7).jpg",
+        "span": "row",
+        "images": ["i20", "i21"]
+      },
+      {
+        "id": "g07",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(8).jpg",
+        "span": "col",
+        "images": ["i19", "i08", "i03"]
+      },
+      {
+        "id": "g08",
+        "title": "If no encoding is specified",
+        "category": "logo",
+        "image": "/assets/images/content/des_(9).jpg",
+        "span": "col",
+        "images": ["i18", "i07"]
+      }
+    ],
+    "images": [
+      {
+        "id": "i01",
+        "image": "/assets/images/content/_01.jpg"
+      },
+      {
+        "id": "i02",
+        "image": "/assets/images/content/_02.jpg"
+      },
+      {
+        "id": "i03",
+        "image": "/assets/images/content/_03.jpg"
+      },
+      {
+        "id": "i04",
+        "image": "/assets/images/content/_04.jpg"
+      },
+      {
+        "id": "i05",
+        "image": "/assets/images/content/_05.jpg"
+      },
+      {
+        "id": "i06",
+        "image": "/assets/images/content/_06.jpg"
+      },
+      {
+        "id": "i07",
+        "image": "/assets/images/content/_07.jpg"
+      },
+      {
+        "id": "i08",
+        "image": "/assets/images/content/_08.jpg"
+      },
+      {
+        "id": "i09",
+        "image": "/assets/images/content/_09.jpg"
+      },
+      {
+        "id": "i10",
+        "image": "/assets/images/content/_010.jpg"
+      },
+      {
+        "id": "i11",
+        "image": "/assets/images/content/_11.jpg"
+      },
+      {
+        "id": "i12",
+        "image": "/assets/images/content/_012.jpg"
+      },
+      {
+        "id": "i13",
+        "image": "/assets/images/content/_013.jpg"
+      },
+      {
+        "id": "i14",
+        "image": "/assets/images/content/_014.jpg"
+      },
+      {
+        "id": "i15",
+        "image": "/assets/images/content/_015.jpg"
+      },
+      {
+        "id": "i16",
+        "image": "/assets/images/content/_016.jpg"
+      },
+      {
+        "id": "i17",
+        "image": "/assets/images/content/_017.jpg"
+      },
+      {
+        "id": "i18",
+        "image": "/assets/images/content/_018.jpg"
+      },
+      {
+        "id": "i19",
+        "image": "/assets/images/content/_019.jpg"
+      },
+      {
+        "id": "i20",
+        "image": "/assets/images/content/_020.jpg"
+      },
+      {
+        "id": "i21",
+        "image": "/assets/images/content/_021.jpg"
+      }
+    ]
+  }
+}

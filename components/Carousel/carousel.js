@@ -1,24 +1,24 @@
-import cn from 'classnames'
 import React, { useEffect, useState } from 'react'
-import { _Carousel } from '../../utils/utulity'
+import cn from 'classnames'
+// import { _Carousel } from '../../utils/utulity'
 import Thumbnail from '../Thumbnail/thumbnail'
 import style from './carousel.module.sass'
 
 export default function Carousel({ data, className }) {
   const [state, setState] = useState({ jumpCount: 0 })
 
-  const slide = (prev, next) => {
-    let jump = state.jumpCount
+  // const slidey = (prev = false, next = false) => {
+  //   let jump = state.jumpCount
 
-    if (next)
-      jump = jump >= state.cars.length - 2 ? state.cars.length - 2 : jump + 1
-    if (prev) jump = jump <= 0 ? 0 : jump - 1
+  //   if (next)
+  //     jump = jump >= state.cars.length - 2 ? state.cars.length - 2 : jump + 1
+  //   if (prev) jump = jump <= 0 ? 0 : jump - 1
 
-    state.cars.map((car, i, arr) => {
-      return (car.style.transform = `translateX(-${100 * jump}%)`)
-    })
-    setState({ ...state, jumpCount: jump })
-  }
+  //   state.cars.map((car, i, arr) => {
+  //     return (car.style.transform = `translateX(-${100 * jump}%)`)
+  //   })
+  //   setState({ ...state, jumpCount: jump })
+  // }
 
   useEffect(() => {
     function setCarousel(carousel) {
@@ -33,10 +33,7 @@ export default function Carousel({ data, className }) {
   return (
     <div className={style.carousel_container}>
       <div className={cn(style.carousel_controls)}>
-        <button
-          className={cn(style.carousel_btn, style.btn_prev)}
-          onClick={() => slide(true, false)}
-        >
+        <button className={cn(style.carousel_btn, style.btn_prev)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 9">
             <polyline
               fill="none"
@@ -49,10 +46,7 @@ export default function Carousel({ data, className }) {
             />
           </svg>
         </button>
-        <button
-          className={cn(style.carousel_btn, style.btn_next)}
-          onClick={() => slide(false, true)}
-        >
+        <button className={cn(style.carousel_btn, style.btn_next)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 9">
             <polyline
               fill="none"

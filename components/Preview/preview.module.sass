@@ -1,2 +1,19 @@
 @use '../../styles/variables' as v
 @use '../../styles/mixins' as mxn
+
+.project_preview_container
+    position: relative
+    width: 100%
+    height: 100%
+    display: flex
+    flex-flow: row wrap
+
+    .project_info
+        flex: 1 0 40%
+        order: 2
+        padding: 2em 1.5em
+
+    .display_container
+        position: relative
+        flex: 0 0 60%
+        background: #7e7e7e

@@ -1,0 +1,157 @@
+@use './variables' as v
+@use './mixins' as mxn
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+// setFontFace(fonts-directory/, font-family, font-weight-name, font-weight, font-style, font-display)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, Regular, normal)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, Black, 900)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, Bold, bold)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, SemiBold, 600)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, Medium, 500)
+@include mxn.setFontFace("../public/assets/fonts/", Rubik, Light, 300)
+
+body
+    font-family: 'Rubik', "Arial", "Helvetica", sans-serif
+    font-weight: normal
+    font-variant: no-common-ligatures
+    font-size: 90%
+    background: v.$bg
+    color: v.$default
+
+.container
+    width: 100%
+    max-width: 1024px
+    padding: 0 1.5em
+    margin: auto
+
+p, a, span
+    font-size: .85rem
+    text-decoration: none
+    color: v.$default
+
+p
+    line-height: 24px
+
+a, span
+    font-size: inherit
+    font-weight: inherit
+    color: inherit
+    line-height: inherit
+
+h1, h2, h3, h4, h5, h6
+    font-size: 1rem
+    font-weight: normal
+
+section
+    position: relative
+    width: 100%
+    padding: 2em 0
+
+button
+    border: none
+    outline: none
+    background: none
+    color: inherit
+    font-size: inherit
+    font-weight: inherit
+    display: inline-block
+    cursor: pointer
+
+.block
+    display: block
+    width: fit-content
+
+.relative
+    position: relative
+
+.capitalize
+    text-transform: capitalize
+.uppercase
+    text-transform: uppercase
+.lowecase
+    text-transform: lowercase
+
+.text-center
+    text-align: center
+
+.btn
+    font-weight: 400
+    text-transform: capitalize
+    padding: .75em 1.5em
+    border: 1px solid v.$light
+    cursor: pointer
+    transition: background .3s ease, border .3s ease
+    &:hover
+        transition: background .15s ease, border .15s ease
+        background: v.$lighter
+        border: 1px solid v.$lighter
+
+    &.btn-with-icon
+        display: block
+
+    &.btn-icon
+        display: block
+
+.icn
+    display: block
+    position: relative
+    width: 0
+    height: 0
+    // border: 1px solid v.$light
+    border-radius: .35em
+    cursor: pointer
+
+    $icon_sizes: ('small': 26px, 'medium': 34px, 'large': 42px)
+    @each $key, $val in $icon_sizes
+        &.#{$key}
+            min-width: $val
+            min-height: $val
+            max-width: $val
+            max-height: $val
+            padding: calc( $val / 8 )
+
+    svg
+        display: block
+        width: 100%
+        height: 100%
+        line-height: 0
+        vertical-align: middle
+
+// title([[namespace]-t]-1-6, base font size, min font size, unit e.g. [em, rem, px], loop limit)
+// min font size can't be lower than base font size
+// @include mxn.title(null, .75, .85, rem) // usage: .[namespace]-t-, default: .t-
+
+// flexbox([namespace], columns, gutter width, unit e.g. [em, rem, px])
+@include mxn.flexbox(null, 12, v.$gutter, v.$gutterUnit) // usage: .[namespace]-row // .[namespace]-row .col- // defualt: .row // .row .col-
+
+// flexbox([namespace])
+// @include mxn.fontWeight() // usage: .[namespace]-t-, default: .[key from list]-
+
+// whitespace([namespace], columns, gutter width, unit e.g. [em, rem, px])
+// @include mxn.whitespace(null, 16, px, 8)
+
+// screen([key from list])
+@include mxn.title(null, .75, .9)
+@include mxn.fontWeight()
+@include mxn.whitespace(null, 16, px, 8)
+
+@include mxn.screen(phone, landscape)
+    .container
+        max-width: 640px
+
+@include mxn.screen(ipad)
+    @include mxn.title(null, 1, 1.125)
+    section
+        padding: 3em 0
+
+    .container
+        max-width: 920px
+        padding: 0 2em
+
+@include mxn.screen(desktop)
+    .container
+        max-width: 1024px

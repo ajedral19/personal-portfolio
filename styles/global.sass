@@ -1,157 +1,152 @@
-@use './variables' as v
-@use './mixins' as mxn
+@use "sass:map"
+@use "sass:math"
+@use "./Variables" as var
 
-*
+// @media query screen size
+@mixin setScreen($size)
+    @media screen and (min-width: $size)
+        @content
+
+// Fonts
+@mixin setFontFace($fontName, $directory, $variant, $weight)
+    @font-face
+        font-family: $fontName
+        src: local(#{$fontName} #{$variant}), local(#{$fontName}-#{$variant}), url(#{$directory}#{$fontName}-#{$variant}.woff2) format('woff2'), url(#{$directory}#{$fontName}-#{$variant}.woff) format('woff')
+        font-weight: $weight
+        font-style: normal
+
+// Flex
+@mixin setColumns($name, $columns, $gap: var.$flexboxGutter)
+    $gutter: math.div($gap, 2)
+    @for $i from 1 through $columns
+        $l: #{$gutter * $i}
+        $width: calc(#{math.percentage(math.div($i, $columns))} - #{$gap})
+        .col-#{$name}-#{$i}
+            flex: 0 0 $width
+            width: $width
+            padding: $gutter
+
+// Whitespace
+@mixin setSpaces($baseWidth: 1rem, $proportions: 6)
+    $position: (t: 'top', l: 'left', b: 'bottom', r: 'right')
+    $type: (m: 'margin', p: 'padding')
+    @for $i from 1 through $proportions
+        @each $typeKey, $typeVal in $type
+            $width: $baseWidth * $i
+            .#{$typeKey}-#{$i}
+                #{$typeVal}: $width
+            @each $posKey, $posVal in $position
+                $className: #{$typeKey}#{$posKey}-#{$i}
+                .#{$className}
+                    #{$typeVal}-#{$posVal}: $width
+
+@include setFontFace(Rubik , '../assets/Fonts/' , Regular , normal )
+@include setFontFace(Rubik , '../assets/Fonts/' , Bold , bold )
+@include setFontFace(Rubik , '../assets/Fonts/' , Black , 900 )
+@include setFontFace(Rubik , '../assets/Fonts/' , Light , 300 )
+@include setFontFace(Rubik , '../assets/Fonts/' , Medium , 500 )
+@include setFontFace(Rubik , '../assets/Fonts/' , SemiBold , 600 )
+@include setSpaces
+
+*, ::before, ::after
     margin: 0
     padding: 0
-    box-sizing: border-box
-
-// setFontFace(fonts-directory/, font-family, font-weight-name, font-weight, font-style, font-display)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, Regular, normal)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, Black, 900)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, Bold, bold)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, SemiBold, 600)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, Medium, 500)
-@include mxn.setFontFace("../public/assets/fonts/", Rubik, Light, 300)
 
 body
-    font-family: 'Rubik', "Arial", "Helvetica", sans-serif
-    font-weight: normal
-    font-variant: no-common-ligatures
-    font-size: 90%
-    background: v.$bg
-    color: v.$default
+    background: white
+    text-align: center
+    font-size: 98%
+    color: var.$default
+    font-family: Rubik
 
-.container
-    width: 100%
-    max-width: 1024px
-    padding: 0 1.5em
-    margin: auto
-
-p, a, span
-    font-size: .85rem
-    text-decoration: none
-    color: v.$default
-
-p
-    line-height: 24px
-
-a, span
-    font-size: inherit
-    font-weight: inherit
+a, p, h1, h2, h3, h4, h5, h6, li, input, button
+    font-family: inherit
     color: inherit
-    line-height: inherit
-
-h1, h2, h3, h4, h5, h6
     font-size: 1rem
-    font-weight: normal
+    line-height: normal
+    margin: 0
+    text-align: inherit
 
-section
-    position: relative
-    width: 100%
-    padding: 2em 0
+p, li
+    line-height: 26px
 
-button
-    border: none
-    outline: none
-    background: none
-    color: inherit
-    font-size: inherit
-    font-weight: inherit
-    display: inline-block
-    cursor: pointer
+a
+    text-decoration: none
 
 .block
     display: block
-    width: fit-content
-
-.relative
-    position: relative
-
-.capitalize
-    text-transform: capitalize
-.uppercase
-    text-transform: uppercase
-.lowecase
-    text-transform: lowercase
-
-.text-center
-    text-align: center
 
 .btn
-    font-weight: 400
-    text-transform: capitalize
-    padding: .75em 1.5em
-    border: 1px solid v.$light
-    cursor: pointer
-    transition: background .3s ease, border .3s ease
-    &:hover
-        transition: background .15s ease, border .15s ease
-        background: v.$lighter
-        border: 1px solid v.$lighter
-
-    &.btn-with-icon
-        display: block
-
-    &.btn-icon
-        display: block
-
-.icn
-    display: block
     position: relative
-    width: 0
-    height: 0
-    // border: 1px solid v.$light
-    border-radius: .35em
-    cursor: pointer
+    min-width: 28px
+    min-height: 28px
+    border: 1px solid var.$shadedMid
+    padding: 1em 1.5em
+    background: none
+    font-weight: 500
 
-    $icon_sizes: ('small': 26px, 'medium': 34px, 'large': 42px)
-    @each $key, $val in $icon_sizes
-        &.#{$key}
-            min-width: $val
-            min-height: $val
-            max-width: $val
-            max-height: $val
-            padding: calc( $val / 8 )
+.container
+    margin: auto
+    max-width: 1056px
+    // min-width: 200px
+    padding: 0 1em
 
-    svg
-        display: block
-        width: 100%
-        height: 100%
-        line-height: 0
-        vertical-align: middle
+.row
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: flex-start
+    margin: -#{math.div(var.$flexboxGutter, 2)}
+    &.clear
+        margin: 0
+    &.no-wrap
+        flex-wrap: nowrap
+    // &.last-item-clear-right
+    //     [class*=col-]:last-child
+    //         padding-right: 0
+    //         background: red
+    @include setColumns('sm', 4)
 
-// title([[namespace]-t]-1-6, base font size, min font size, unit e.g. [em, rem, px], loop limit)
-// min font size can't be lower than base font size
-// @include mxn.title(null, .75, .85, rem) // usage: .[namespace]-t-, default: .t-
+.profile
+    position: relative
+    pointer-events: none
+    &.profile-wrap
+        position: relative
+        overflow: hidden
+        margin: auto
+        border-radius: 50%
+        min-width: 200px
+        min-height: 200px
+        max-width: 200px
+        max-height: 200px
+        margin-bottom: 2em
+        img
+            position: absolute
+            width: 100%
+            top: 0
 
-// flexbox([namespace], columns, gutter width, unit e.g. [em, rem, px])
-@include mxn.flexbox(null, 12, v.$gutter, v.$gutterUnit) // usage: .[namespace]-row // .[namespace]-row .col- // defualt: .row // .row .col-
+.accordion
+    .item
+        list-style: none
+        position: relative
+        overflow: hidden
+        .trigger
+            cursor: pointer
+        .content //collapsible container
+            transition-property: padding-top, padding-bottom, height
+            transition-duration: .3s
+            transition-timing-function: ease-in-out
+            // transform-origin: top
+            padding-left: 3.25em
+            &.collapse
+                height: 0
 
-// flexbox([namespace])
-// @include mxn.fontWeight() // usage: .[namespace]-t-, default: .[key from list]-
+// Media queries
+@media screen and (min-device-width: 768px)
+    .row
+        @include setColumns('md', 6)
 
-// whitespace([namespace], columns, gutter width, unit e.g. [em, rem, px])
-// @include mxn.whitespace(null, 16, px, 8)
-
-// screen([key from list])
-@include mxn.title(null, .75, .9)
-@include mxn.fontWeight()
-@include mxn.whitespace(null, 16, px, 8)
-
-@include mxn.screen(phone, landscape)
-    .container
-        max-width: 640px
-
-@include mxn.screen(ipad)
-    @include mxn.title(null, 1, 1.125)
-    section
-        padding: 3em 0
-
-    .container
-        max-width: 920px
-        padding: 0 2em
-
-@include mxn.screen(desktop)
-    .container
-        max-width: 1024px
+@media screen and (min-device-width: 1024px)
+    .row
+        @include setColumns('lg', 12)
+//     @include setRow('lg', 12)
