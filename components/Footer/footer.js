@@ -12,7 +12,7 @@ export default function Footer({ container = false }) {
           <div className={cn('row', 'pt-1', 'pb-1', 'clear')}>
             <div className="col-lg-6 col-md-3 col-sm-2">
               <Link href="/#">
-                <a className="medium">John Doe</a>
+                <a className="medium tiny">GoGoGoPowerAJ</a>
               </Link>
               {/* <a href="/#" className="medium">
               </a> */}
