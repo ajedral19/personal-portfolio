@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/Image'
 import { useState, useEffect, Fragment } from 'react'
-import { collapse } from '../utils/utils'
-import style from '../styles/home.module.sass'
+import { collapse } from '/utils/utils'
+import style from '/styles/home.module.sass'
 import cn from 'classnames'
 
 // images
