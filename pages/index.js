@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useState, useEffect, Fragment } from 'react'
 import { collapse } from '../utils/utils'
-import style from '../styles/home.module.sass'
+import style from '../styles/Home.module.sass'
 import cn from 'classnames'
 
 // images
