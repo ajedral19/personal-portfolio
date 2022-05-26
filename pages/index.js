@@ -66,7 +66,11 @@ export default function Home({ projects, content }) {
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-md-3 col-sm-4">
-              <Description title="This is a title" description={state.desc} />
+              <Description
+                classes={[style.custom_m_r]}
+                title="This is a title"
+                description={state.desc}
+              />
             </div>
             <div className="col-lg-6 col-md-3 col-sm-4">
               <div className="row">
