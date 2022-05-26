@@ -1,7 +1,7 @@
-import Image from 'next/Image'
+import Image from 'next/image'
 import { useState, useEffect, Fragment } from 'react'
 import { collapse } from '../utils/utils'
-import style from '../styles/home.module.sass'
+import style from '/styles/home.module.sass'
 import cn from 'classnames'
 
 // images
@@ -12,7 +12,7 @@ import profileImg from '../assets/images/profile-image.png'
 import Footer from '../components/Footer/footer'
 import Description from '../components/Description'
 import ImageThumbnail from '../components/ImageThumbnail'
-import Carousel from '../components/Carousel/carousel'
+import Carousel from '/components/Carousel/carousel'
 
 // utils
 import { fetch_parsed_data } from '../lib/data'

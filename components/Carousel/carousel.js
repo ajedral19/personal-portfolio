@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import ImageThumbnail from '../ImageThumbnail'
-import style from './Carousel.module.sass'
+import style from './carousel.module.sass'
 import cn from 'classnames'
 import { slide } from '../../utils/utils'
 

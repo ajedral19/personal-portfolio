@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
-import style from './Footer.module.sass'
+import style from './footer.module.sass'
 import cn from 'classnames'
-import Image from 'next/Image'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer({ container = false }) {
   return (
