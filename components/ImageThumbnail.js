@@ -5,6 +5,8 @@ export default function ImageThumbnail({
   color,
   title = 'test title',
   subject = 'just a subject',
+  description = '',
+  category = '',
   image,
   url = '',
   square = false,
