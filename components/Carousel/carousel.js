@@ -1,72 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import ImageThumbnail from '../ImageThumbnail'
+import style from './Carousel.module.sass'
 import cn from 'classnames'
-// import { _Carousel } from '../../utils/utulity'
-import Thumbnail from '../Thumbnail/thumbnail'
-import style from './carousel.module.sass'
+import { slide } from '../../utils/utils'
 
-export default function Carousel({ data, className }) {
-  const [state, setState] = useState({ jumpCount: 0 })
-
-  // const slidey = (prev = false, next = false) => {
-  //   let jump = state.jumpCount
-
-  //   if (next)
-  //     jump = jump >= state.cars.length - 2 ? state.cars.length - 2 : jump + 1
-  //   if (prev) jump = jump <= 0 ? 0 : jump - 1
-
-  //   state.cars.map((car, i, arr) => {
-  //     return (car.style.transform = `translateX(-${100 * jump}%)`)
-  //   })
-  //   setState({ ...state, jumpCount: jump })
-  // }
-
+const Carousel = ({ items = [] }) => {
+  const [carousel, setCarousel] = useState()
   useEffect(() => {
-    function setCarousel(carousel) {
-      const cars = Array.from(carousel.children)
-      setState({ ...state, carousel, cars })
-      // const height = cars[0].offsetHeight
-      // carousel.style.height = `${height}px`
-    }
     setCarousel(document.querySelector(`.${style.carousel}`))
-  }, [])
+  }, [setCarousel])
 
   return (
-    <div className={style.carousel_container}>
-      <div className={cn(style.carousel_controls)}>
-        <button className={cn(style.carousel_btn, style.btn_prev)}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 9">
-            <polyline
-              fill="none"
-              stroke="currentcolor"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={style.arror_head}
-              points="4.5 0.5 0.5 4.5 4.5 8.5"
-            />
-          </svg>
-        </button>
-        <button className={cn(style.carousel_btn, style.btn_next)}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 9">
-            <polyline
-              fill="none"
-              stroke="currentcolor"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={style.arror_head}
-              points="0.5 0.5 4.5 4.5 0.5 8.5"
-            />
-          </svg>
-        </button>
+    <Fragment>
+      <div className={style.carouselContainer}>
+        <div className={style.carouselControl}>
+          <button
+            className={cn('btn', style.btn, style.prev)}
+            // onClick={() => slide(true, false)}
+            onClick={() => slide(true, false, carousel)}
+          ></button>
+          <button
+            className={cn('btn', style.btn, style.next)}
+            // onClick={() => slide(false, true)}
+            onClick={() => slide(false, true, carousel)}
+          ></button>
+        </div>
+        <div className={style.carousel}>
+          <div className="row no-wrap">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className={cn(style.item, 'col-lg-3', 'col-md-2', 'col-sm-2')}
+              >
+                <ImageThumbnail square />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className={cn(style.carousel, className)}>
-        {data.map((item) => {
-          return (
-            <Thumbnail className={cn(style.item)} key={item.id} data={item} />
-          )
-        })}
-      </div>
-    </div>
+    </Fragment>
   )
 }
+
+export default Carousel

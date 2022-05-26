@@ -1,6 +1,6 @@
 @use "sass:map"
 @use "sass:math"
-@use "./Variables" as var
+@use "./variables" as var
 
 // @media query screen size
 @mixin setScreen($size)
@@ -120,7 +120,7 @@ a
         max-width: 200px
         max-height: 200px
         margin-bottom: 2em
-        img
+        span.img //img
             position: absolute
             width: 100%
             top: 0
@@ -142,11 +142,11 @@ a
                 height: 0
 
 // Media queries
-@media screen and (min-device-width: 768px)
+@media screen and (min-width: 768px)
     .row
         @include setColumns('md', 6)
 
-@media screen and (min-device-width: 1024px)
+@media screen and (min-width: 1024px)
     .row
         @include setColumns('lg', 12)
 //     @include setRow('lg', 12)

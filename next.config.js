@@ -1,6 +1,9 @@
 module.exports = {
   reactStrictMode: true,
-  webpack: (config, {buildId, dev, isServer, defaultLoaders, webpack}) => {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     return config
-  }
+  },
+  images: {
+    layoutRaw: true,
+  },
 }

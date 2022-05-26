@@ -1,32 +1,14 @@
-@use '../../styles/variables' as v
-    
-.accordion
-    .child
-        display: block
-        height: 100%
-        .title_bar
-            display: block
-            padding: .35em 0
-            cursor: pointer
-            transition: color .3s ease
-            &:hover
-                transition: color .1s ease
-                color: v.$theme
-            &.end_bar
-                cursor: default
-                color: v.$light
-        .accordion_content
-            position: relative
-            overflow: hidden
+.accordion //collapsible container
+    list-style: none
+    position: relative
+    overflow: hidden
+    .trigger
+        cursor: pointer
+    .content
+        transition-property: padding-top, padding-bottom, height
+        transition-duration: .25s
+        transition-timing-function: ease-in-out
+        transform-origin: top
+        padding-left: 3.25em
+        &.collapse
             height: 0
-            // padding: 1.5em 0 1.5em 2em
-            border-left: 1.5px solid v.$light
-            transition: height .3s ease
-            .title
-                font-size: 1.15rem
-        &.active
-            .title_bar
-                &.end_bar
-                    // visibility: visible
-            .accordion_content
-                height: 100%
