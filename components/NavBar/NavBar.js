@@ -55,7 +55,7 @@ const NavBar = ({ container = false }) => {
                       transform="translate(83.899 -146.637)"
                       fill="none"
                       stroke="#161717"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Line_35"
@@ -64,7 +64,7 @@ const NavBar = ({ container = false }) => {
                       transform="translate(83.899 -154.034) rotate(-90)"
                       fill="none"
                       stroke="#161717"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Line_36"
@@ -73,7 +73,7 @@ const NavBar = ({ container = false }) => {
                       transform="translate(83.899 -162) rotate(-90)"
                       fill="none"
                       stroke="#161717"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                 </svg>
