@@ -18,12 +18,12 @@ import Carousel from '/components/Carousel/carousel'
 import { fetch_parsed_data } from '../lib/data'
 
 export async function getStaticProps() {
-  const projects = await fetch_parsed_data('json')
-  const content = await fetch_parsed_data('markdown')
-  return { props: { projects, content } }
+  const projectsData = await fetch_parsed_data('json')
+  const experiences = await fetch_parsed_data('markdown')
+  return { props: { projects: projectsData.data.projects, experiences } }
 }
 
-export default function Home({ projects, content }) {
+export default function Home({ projects, experiences }) {
   const [state, setState] = useState({ desc: '' })
 
   useEffect(() => {
@@ -88,7 +88,14 @@ export default function Home({ projects, content }) {
         <div className="container">
           <h2 className="t-upper title medium mb-1">web development</h2>
           {/* carousel */}
-          <Carousel items={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} />
+          <Carousel
+            items={
+              projects.rows.length
+                ? projects.rows.filter((item) => item.category === 'dev')
+                : null
+            }
+          />
+          {/* <Carousel items={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} /> */}
           {/* carousel */}
         </div>
       </section>
@@ -100,23 +107,22 @@ export default function Home({ projects, content }) {
             description={state.desc}
             classes={['mb-2']}
           />
-          <div className="row">
-            <div className="col-lg-4 col-md-3 col-sm-2">
-              <ImageThumbnail />
+          {projects.rows.length ? (
+            <div className="row">
+              {projects.rows.map((proj, key) =>
+                proj.category === 'design' ? (
+                  <div key={key} className="col-lg-4 col-md-3 col-sm-2">
+                    <ImageThumbnail />
+                  </div>
+                ) : (
+                  <h1>'no projects yet'</h1>
+                ),
+              )}
             </div>
-            <div className="col-lg-4 col-md-3 col-sm-2">
-              <ImageThumbnail color="orange" />
-            </div>
-            <div className="col-lg-4 col-md-3 col-sm-2">
-              <ImageThumbnail />
-            </div>
-            <div className="col-lg-4 col-md-3 col-sm-2">
-              <ImageThumbnail color="orange" />
-            </div>
-            <div className="col-lg-4 col-md-3 col-sm-2">
-              <ImageThumbnail />
-            </div>
-          </div>
+          ) : (
+            // need a layout for this
+            <h1>'no projects yet'</h1>
+          )}
         </div>
       </section>
       <section className="section">
@@ -141,22 +147,34 @@ export default function Home({ projects, content }) {
                   </h3>
 
                   <ol className="mt-1 accordion">
-                    <li className="mb-1 item">
-                      <span
-                        role="button"
-                        className="trigger t-cap"
-                        onClick={(e) => collapse(e)}
-                      >
-                        2016 - graphic / web designer
-                      </span>
-                      <article className="collapse content">
-                        <h4 className="t-cap title size-normal medium mb-1 pt-1">
-                          binary ideas, st. diego inc.
-                        </h4>
-                        <p className="pb-1">{state.desc}</p>
-                      </article>
-                    </li>
-                    <li className="mb-1 item">
+                    {experiences.length
+                      ? experiences.map((experience, key) => (
+                          <li key={key} className="mb-1 item">
+                            <span
+                              role="button"
+                              className="trigger t-cap"
+                              onClick={(e) => collapse(e)}
+                            >
+                              {' '}
+                              {experience.data.title}
+                            </span>
+                            <article className="collapse content">
+                              <h4 className="block t-cap title size-normal medium pt-1">
+                                {experience.data.company}
+                                binary ideas, st. diego inc.
+                              </h4>
+                              <p className="mb-1 tiny">
+                                {experience.data['year-started'] +
+                                  ' - ' +
+                                  experience.data['year-ended']}
+                              </p>
+                              <p className="pb-1">{experience.content}</p>
+                              <p className="pb-1"></p>
+                            </article>
+                          </li>
+                        ))
+                      : 'sad, no experience yet'}
+                    {/* <li className="mb-1 item">
                       <span
                         role="button"
                         className="trigger t-cap"
@@ -201,7 +219,7 @@ export default function Home({ projects, content }) {
                         </h4>
                         <p className="pb-1">{state.desc}</p>
                       </article>
-                    </li>
+                    </li> */}
                   </ol>
                 </div>
               </Description>

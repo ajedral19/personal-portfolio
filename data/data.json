@@ -1,1 +1,16 @@
-{}
+{
+  "projects": {
+    "rows": [
+      {
+        "id": "p1",
+        "title": "title here",
+        "subject": "subject",
+        "description": "lorem ipsum",
+        "category": "web",
+        "tags": ["tag 1", "tag 2"],
+        "display_image": "url",
+        "images": ["url", "url"]
+      }
+    ]
+  }
+}
