@@ -2,9 +2,11 @@ export const collapse = (e, classes = []) => {
   const elements = [...e.target.parentElement.children]
   const res = elements.find((i) => i.classList.contains('content'))
   if (classes) classes.forEach((c) => res.classList.toggle(c))
+  const collapseIcon = elements[0].children[0]
 
   res.style.height = res.scrollHeight + 'px'
   res.classList.toggle('collapse')
+  collapseIcon.classList.toggle('collapse')
 
   if (!res.classList.contains('collapse')) {
     res.addEventListener('transitionend', () =>
@@ -39,6 +41,8 @@ export const slide = (prev = false, next = false, container = undefined) => {
     if (prev) container.scrollBy(-scrollWidth, 0)
   }
 }
+
+export const toggleMenu = (menu) => {}
 
 export const onLoadEffect = (effect_type, duration, interval) => {}
 

@@ -12,10 +12,11 @@ import profileImg from '../assets/images/profile-image.png'
 import Footer from '../components/Footer/footer'
 import Description from '../components/Description'
 import ImageThumbnail from '../components/ImageThumbnail'
-import Carousel from '/components/Carousel/carousel'
+import Carousel from '../components/Carousel/carousel'
 
 // utils
 import { fetch_parsed_data } from '../lib/data'
+import NavBar from '../components/NavBar/NavBar'
 
 export async function getStaticProps() {
   const projectsData = await fetch_parsed_data('json')
@@ -35,6 +36,7 @@ export default function Home({ projects, experiences }) {
 
   return (
     <Fragment>
+      <NavBar container />
       <header className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
           <div className={style.heading}>
@@ -53,7 +55,12 @@ export default function Home({ projects, experiences }) {
             <div className={cn(style.heroWrapper)}>
               <div className={cn(style.hero, 'container', style.container)}>
                 <span className={cn(style.img, 'block')}>
-                  <Image layout="intrinsic" src={hero} alt="hero image" />
+                  <Image
+                    layout="intrinsic"
+                    objectFit="contain"
+                    src={hero}
+                    alt="hero image"
+                  />
                 </span>
                 {/* <img src="/assets/images/hero.png" alt="hero image" /> */}
               </div>
@@ -61,7 +68,7 @@ export default function Home({ projects, experiences }) {
           </div>
         </div>
       </header>
-      <section className="section">
+      <section className="section" id="about">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-md-3 col-sm-4">
@@ -84,7 +91,7 @@ export default function Home({ projects, experiences }) {
           </div>
         </div>
       </section>
-      <section className="section t-left">
+      <section className="section t-left" id="dev">
         <div className="container">
           <h2 className="t-upper title medium mb-1">web development</h2>
           {/* carousel */}
@@ -100,7 +107,7 @@ export default function Home({ projects, experiences }) {
         </div>
       </section>
 
-      <section className="section t-left">
+      <section className="section t-left" id="design">
         <div className="container">
           <Description
             title="graphic / web design"
@@ -125,7 +132,7 @@ export default function Home({ projects, experiences }) {
           )}
         </div>
       </section>
-      <section className="section">
+      <section className="section" id="resume">
         <div className="container">
           <div className="row t-left">
             <div className="col-lg-4 col-md-6 col-sm-4 pt-5">
@@ -143,21 +150,53 @@ export default function Home({ projects, experiences }) {
               <Description title="hear me" description={state.desc}>
                 <div className="t-left mt-2">
                   <h3 className="title size-normal medium t-cap">
-                    i got some experiences too!
+                    Hey i got some experiences too!
                   </h3>
 
                   <ol className="mt-1 accordion">
                     {experiences.length
                       ? experiences.map((experience, key) => (
                           <li key={key} className="mb-1 item">
-                            <span
+                            <button
                               role="button"
-                              className="trigger t-cap"
+                              className="btn clear full-width trigger t-cap"
                               onClick={(e) => collapse(e)}
                             >
                               {' '}
+                              <span className="collapse-icon mr-1">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="12"
+                                  height="12"
+                                  viewBox="0 0 12 12"
+                                  className="icon"
+                                >
+                                  <g
+                                    id="Group_114"
+                                    data-name="Group 114"
+                                    transform="translate(-799 -3136)"
+                                  >
+                                    <rect
+                                      className="rectA"
+                                      data-name="Rectangle 220"
+                                      width="12"
+                                      height="2"
+                                      transform="translate(799 3141)"
+                                      fill="#eaeaea"
+                                    />
+                                    <rect
+                                      className="rectB"
+                                      data-name="Rectangle 221"
+                                      width="12"
+                                      height="2"
+                                      transform="translate(806 3136) rotate(90)"
+                                      fill="#eaeaea"
+                                    />
+                                  </g>
+                                </svg>
+                              </span>
                               {experience.data.title}
-                            </span>
+                            </button>
                             <article className="collapse content">
                               <h4 className="block t-cap title size-normal medium pt-1">
                                 {experience.data.company}
@@ -169,7 +208,6 @@ export default function Home({ projects, experiences }) {
                                   experience.data['year-ended']}
                               </p>
                               <p className="pb-1">{experience.content}</p>
-                              <p className="pb-1"></p>
                             </article>
                           </li>
                         ))

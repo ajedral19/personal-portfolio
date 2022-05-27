@@ -52,8 +52,12 @@
     margin: 0
     padding: 0
 
+html
+    scroll-behavior: smooth
+    scroll-padding: 80px
+
 body
-    background: white
+    background: var.$background
     text-align: center
     font-size: 98%
     color: var.$default
@@ -84,6 +88,16 @@ a
     padding: 1em 1.5em
     background: none
     font-weight: 500
+    cursor: pointer
+    &.clear
+        padding: unset
+        min-width: unset
+        min-height: unset
+        background: none
+        border: none
+        font-weight: unset
+    &.full-width
+        width: 100%
 
 .container
     margin: auto
@@ -99,8 +113,13 @@ a
     margin: -#{math.div(var.$flexboxGutter, 2)}
     &.clear
         margin: 0
+    &.clear-vertical
+        margin-top: 0
+        margin-bottom: 0
     &.no-wrap
         flex-wrap: nowrap
+    &.center-items
+        align-items: center
     // &.last-item-clear-right
     //     [class*=col-]:last-child
     //         padding-right: 0
@@ -132,12 +151,27 @@ a
         overflow: hidden
         .trigger
             cursor: pointer
+            .collapse-icon
+                pointer-events: none
+                .icon
+                    transform: rotate(0deg)
+                    transition: transform .25s ease-in-out
+                    .rectB, .rectA
+                        fill: var.$default
+                    .rectB
+                        opacity: 1
+                        transition: opacity .3s ease-in-out
+                &.collapse
+                    .icon
+                        transform: rotate(180deg)
+                        .rectB
+                            opacity: 0
         .content //collapsible container
             transition-property: padding-top, padding-bottom, height
             transition-duration: .3s
             transition-timing-function: ease-in-out
             // transform-origin: top
-            padding-left: 2em
+            padding-left: 1.85em
             &.collapse
                 height: 0
 

@@ -1,0 +1,97 @@
+@use '../../styles/variables' as var
+
+.nav
+    width: 100%
+    display: block
+    position: fixed
+    z-index: 99
+    top: 0
+    left: 0
+    padding: 1em 0
+    background: var.$background
+    // background: green
+
+.nav_container
+    // background: pink
+    position: relative
+    // height: 0
+    min-height: 50px
+    // max-height: 80px
+
+    .logo
+        position: relative
+        z-index: 1
+        display: inline-block
+        // background: orange
+        a
+            line-height: 0
+        svg
+            max-height: 45px
+            height: 100%
+            width: auto
+            path
+                fill: var.$default
+
+    .menu_toggler
+        position: absolute
+        z-index: 1
+        top: 50%
+        transform: translateY(-50%)
+        line-height: 0
+        right: 1em
+
+    .nav_menu
+        position: fixed
+        width: 100%
+        left: 0
+        top: 0
+        height: 100vh
+
+        list-style: none
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        justify-content: center
+        // background: blue
+        display: none
+
+        li
+            transition: background .1s ease-in-out
+            .menu_anchor
+                font-size: 1.25rem
+                font-weight: 500
+                display: block
+                width: 100%
+                padding: 1.25em 0
+            &:hover
+                background: var.$shadedLow
+
+@media screen and (min-width: 768px)
+    .nav_container
+        .row
+            justify-content: space-between
+        .menu_toggler
+            display: none
+        .nav_menu
+            position: relative
+            top: unset
+            left_unset
+            height: unset
+            width: unset
+            display: flex
+            flex-direction: row
+            justify-content: flex-end
+            gap: 2em
+
+            li
+                color: var.$muted
+                .menu_anchor
+                    width: unset
+                    font-size: 1rem
+                    font-weight: 500
+                    padding: .5em .25em
+                &:hover
+                    background: unset
+                    color: var.$default
+
+@media screen and (min-width: 1024px)
