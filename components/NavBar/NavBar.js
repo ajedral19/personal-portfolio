@@ -1,10 +1,25 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import cn from 'classnames'
 import style from './NavBar.module.sass'
+import { collapse } from '../../utils/utils'
 
 const NavBar = ({ container = false }) => {
+  const [hidden, setHidden] = useState('logog')
+
+  useEffect(() => {
+    window.addEventListener('resize', resize)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+    }
+  }, [])
+
+  const resize = () => {
+    setHidden(window.innerWidth)
+  }
+
   return (
     <Fragment>
       <nav className={style.nav}>
@@ -34,51 +49,46 @@ const NavBar = ({ container = false }) => {
                 </Link>
               </div>
             </div>
+            <h1>{hidden}</h1>
 
             <div className="col-md-5 col-lg-5">
-              <button className={cn('btn', 'clear', style.menu_toggler)}>
+              <button
+                className={cn('btn', 'clear', style.menu_toggler)}
+                onClick={(e) => collapse(e, style.collapse, false)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20.715"
-                  height="18.363"
-                  viewBox="0 0 20.715 18.363"
+                  width="24"
+                  height="9"
+                  viewBox="0 0 24 9"
                 >
                   <g
-                    id="Group_115"
-                    data-name="Group 115"
-                    transform="translate(-83.899 163.5)"
+                    id="Group_114"
+                    data-name="Group 114"
+                    transform="translate(-245.5 -52.5)"
                   >
                     <line
                       id="Line_34"
                       data-name="Line 34"
-                      x1="12.064"
-                      transform="translate(83.899 -146.637)"
+                      x2="24"
+                      transform="translate(245.5 54.5)"
                       fill="none"
-                      stroke="#161717"
-                      strokeWidth="3"
+                      stroke="#1b1b1b"
+                      strokeWidth="4"
                     />
                     <line
                       id="Line_35"
                       data-name="Line 35"
-                      y1="20.715"
-                      transform="translate(83.899 -154.034) rotate(-90)"
+                      x2="24"
+                      transform="translate(245.5 60.5)"
                       fill="none"
-                      stroke="#161717"
-                      strokeWidth="3"
-                    />
-                    <line
-                      id="Line_36"
-                      data-name="Line 36"
-                      y1="20.715"
-                      transform="translate(83.899 -162) rotate(-90)"
-                      fill="none"
-                      stroke="#161717"
-                      strokeWidth="3"
+                      stroke="#1b1b1b"
+                      strokeWidth="2"
                     />
                   </g>
                 </svg>
               </button>
-              <ul className={style.nav_menu}>
+              <ul className={cn(style.nav_menu, 'content')}>
                 <li>
                   <Link href="/#about">
                     <a className={cn('t-upper', style.menu_anchor)}>about</a>

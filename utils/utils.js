@@ -1,4 +1,4 @@
-export const collapse = (e, classes = []) => {
+export const collapse_ = (e, classes = []) => {
   const elements = [...e.target.parentElement.children]
   const res = elements.find((i) => i.classList.contains('content'))
   if (classes) classes.forEach((c) => res.classList.toggle(c))
@@ -15,6 +15,32 @@ export const collapse = (e, classes = []) => {
   } else window.setTimeout(() => res.style.removeProperty('height'))
 }
 
+// icon must be element 0
+// content element must be grouped in a container with className content
+// collapse style accordion defualt to true
+export const collapse = (e, className = null, accordion = true) => {
+  const el = e.target.ownerDocument.activeElement
+  const collapseIcon = el.children[0] || null
+  const parent = el.parentElement.children
+  const contentElement =
+    [...parent].find((child) => child.classList.contains('content')) || null
+
+  if (contentElement) {
+    if (accordion)
+      contentElement.style.height = contentElement.scrollHeight + 'px'
+    contentElement.classList.toggle(className || 'collapse')
+    collapseIcon && collapseIcon.classList.toggle('collapse')
+
+    if (accordion) {
+      if (!contentElement.classList.contains('collapse'))
+        contentElement.addEventListener('transitionend', () =>
+          contentElement.style.removeProperty('height'),
+        )
+      else
+        window.setTimeout(() => contentElement.style.removeProperty('height'))
+    }
+  }
+}
 // export const collapse = (
 //   accordion = undefined,
 //   classCollapse = '',
@@ -42,7 +68,11 @@ export const slide = (prev = false, next = false, container = undefined) => {
   }
 }
 
-export const toggleMenu = (menu) => {}
+export const toggleElement = (e, el, className) => {
+  const element = document.querySelector('.' + el)
+  element.classList.toggle(className)
+  e.target.classList.toggle(className)
+}
 
 export const onLoadEffect = (effect_type, duration, interval) => {}
 

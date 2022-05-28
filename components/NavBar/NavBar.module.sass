@@ -39,21 +39,26 @@
         transform: translateY(-50%)
         line-height: 0
         right: 1em
+        svg
+            // pointer-events: none
 
     .nav_menu
-        position: fixed
+        position: absolute
         width: 100%
+        padding: 2.5em 0
         left: 0
-        top: 0
-        height: 100vh
+        top: 100%
+        height: auto
 
         list-style: none
-        display: flex
+        display: none
         flex-direction: column
         flex-wrap: nowrap
         justify-content: center
-        // background: blue
-        display: none
+        background: red
+
+        &.collapse
+            display: flex
 
         li
             transition: background .1s ease-in-out
@@ -63,8 +68,6 @@
                 display: block
                 width: 100%
                 padding: 1.25em 0
-            &:hover
-                background: var.$shadedLow
 
 @media screen and (min-width: 768px)
     .nav_container
@@ -75,13 +78,14 @@
         .nav_menu
             position: relative
             top: unset
-            left_unset
+            left: unset
             height: unset
             width: unset
             display: flex
             flex-direction: row
             justify-content: flex-end
             gap: 2em
+            background: none
 
             li
                 color: var.$muted

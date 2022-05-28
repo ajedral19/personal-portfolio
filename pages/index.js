@@ -162,7 +162,6 @@ export default function Home({ projects, experiences }) {
                               className="btn clear full-width trigger t-cap"
                               onClick={(e) => collapse(e)}
                             >
-                              {' '}
                               <span className="collapse-icon mr-1">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
