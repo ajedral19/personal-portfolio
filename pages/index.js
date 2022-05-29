@@ -152,8 +152,7 @@ export default function Home({ projects, experiences }) {
                   <h3 className="title size-normal medium t-cap">
                     Hey i got some experiences too!
                   </h3>
-
-                  <ol className="mt-1 accordion">
+                  <ol className="mt-2 accordion">
                     {experiences.length
                       ? experiences.map((experience, key) => (
                           <li key={key} className="mb-1 item">

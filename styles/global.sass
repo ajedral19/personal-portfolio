@@ -77,6 +77,9 @@ p, li
 a
     text-decoration: none
 
+ul, ol
+    list-style: none
+
 .block
     display: block
 
@@ -89,6 +92,23 @@ a
     background: none
     font-weight: 500
     cursor: pointer
+    &.square
+        padding: unset
+        max-width: 24px
+        border: none
+        .icon-wrap
+            display: block
+            position: relative
+            width: 100%
+            padding-top: 100%
+            .icon
+                position: absolute
+                width: 100%
+                height: auto
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+
     &.clear
         padding: unset
         min-width: unset
@@ -120,6 +140,8 @@ a
         flex-wrap: nowrap
     &.center-items
         align-items: center
+    &.split
+        justify-content: space-between
     // &.last-item-clear-right
     //     [class*=col-]:last-child
     //         padding-right: 0
@@ -179,8 +201,18 @@ a
 @media screen and (min-width: 768px)
     .row
         @include setColumns('md', 6)
+        &.split
+            justify-content: unset
+        &.split-md
+            justify-content: space-between
 
 @media screen and (min-width: 1024px)
     .row
         @include setColumns('lg', 12)
+        &.split
+            justify-content: unset
+        &.split-md
+            justify-content: unset
+        &.split-lg
+            justify-content: space-between
 //     @include setRow('lg', 12)

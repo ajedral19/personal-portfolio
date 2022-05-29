@@ -1,101 +1,98 @@
 @use '../../styles/variables' as var
 
-.nav
-    width: 100%
-    display: block
-    position: fixed
+.nav_bar
+    position: absolute
     z-index: 99
+    min-height: 60px
+    width: 100%
     top: 0
     left: 0
-    padding: 1em 0
-    background: var.$background
-    // background: green
-
-.nav_container
-    // background: pink
-    position: relative
-    // height: 0
-    min-height: 50px
-    // max-height: 80px
-
-    .logo
-        position: relative
-        z-index: 1
-        display: inline-block
-        // background: orange
-        a
-            line-height: 0
-        svg
-            max-height: 45px
-            height: 100%
-            width: auto
-            path
-                fill: var.$default
-
-    .menu_toggler
-        position: absolute
-        z-index: 1
-        top: 50%
-        transform: translateY(-50%)
-        line-height: 0
-        right: 1em
-        svg
-            // pointer-events: none
-
-    .nav_menu
-        position: absolute
-        width: 100%
-        padding: 2.5em 0
-        left: 0
-        top: 100%
-        height: auto
-
-        list-style: none
-        display: none
-        flex-direction: column
-        flex-wrap: nowrap
-        justify-content: center
-        background: red
-
-        &.collapse
-            display: flex
-
-        li
-            transition: background .1s ease-in-out
-            .menu_anchor
-                font-size: 1.25rem
-                font-weight: 500
-                display: block
-                width: 100%
-                padding: 1.25em 0
-
-@media screen and (min-width: 768px)
     .nav_container
-        .row
-            justify-content: space-between
-        .menu_toggler
-            display: none
-        .nav_menu
-            position: relative
-            top: unset
-            left: unset
-            height: unset
-            width: unset
-            display: flex
-            flex-direction: row
-            justify-content: flex-end
-            gap: 2em
-            background: none
+        padding: 2em 0 1em
+        .logo_wrap
+            .logo
+                max-width: 44px
+                .path
+                    fill: var.$default
+        .nav_menu_container
+            .nav_menu
+                position: absolute
+                overflow: hidden
+                background: var.$shadedLow
+                left: 50%
+                transform: translateX(-50%)
+                top: 100%
+                width: 100%
+                display: flex
+                flex-direction: column
+                flex-wrap: nowrap
+                padding: 1em 0
+                transition-property: padding, height
+                transition-duration: .3s
+                transition-timing-function: ease-in-out
+                .menu_item
+                    padding: .75em 0
+                    a
+                        display: block
+                        font-weight: 500
+                        text-transform: uppercase
+                        color: var.$muted
+                        &:hover
+                            color: var.$default
+                &.collapse
+                    height: 0
+                    padding: 0
+    .scroll_to_top
+        position: fixed
+        z-index: 100
+        bottom: 2em
+        // opacity: 0
+        left: 50%
+        background: var.$shadedLow
+        box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%)
+        border-radius: 50%
+        transform: translateX(-50%)
+        transition-property: opacity, bottom
+        transition-duration: .2s
+        transition-timing-function: ease-in-out
+        // &.show
+        //     bottom: 2em
+        //     opacity: 1
 
-            li
-                color: var.$muted
-                .menu_anchor
-                    width: unset
-                    font-size: 1rem
-                    font-weight: 500
-                    padding: .5em .25em
-                &:hover
+@media screen and ( min-width: 768px )
+    .nav_bar
+        position: fixed
+        background: var.$background
+        .nav_container
+            padding: .5em 0
+            text-align: left
+            .logo_wrap
+                .logo
+                    max-width: 54px
+            .nav_menu_container
+                margin: -1em 0
+                .nav_menu
+                    flex-direction: row
+                    position: relative
                     background: unset
-                    color: var.$default
+                    top: unset
+                    left: unset
+                    transform: unset
+                    padding: unset
+                    justify-content: flex-end
+                    justify-content: center
+                    .menu_item
+                        padding: .5em 1.5em 1em
+                    &.collapse
+                        height: unset
+        .scroll_to_top
+            display: none
 
-@media screen and (min-width: 1024px)
+@media screen and ( min-width: 1024px )
+    .nav_bar
+        .nav_container
+            .nav_menu_container
+                .nav_menu
+                    justify-content: flex-end
+                    .menu_item
+                        padding: .5em 1.5em

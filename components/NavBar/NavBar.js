@@ -6,113 +6,102 @@ import style from './NavBar.module.sass'
 import { collapse } from '../../utils/utils'
 
 const NavBar = ({ container = false }) => {
-  const [hidden, setHidden] = useState('logog')
+  const [state, setState] = useState({ returnTop: null, contactDetails: null })
 
   useEffect(() => {
     window.addEventListener('resize', resize)
+    window.addEventListener('load', resize)
 
     return () => {
       window.removeEventListener('resize', resize)
+      window.removeEventListener('load', resize)
     }
   }, [])
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+
   const resize = () => {
-    setHidden(window.innerWidth)
+    if (window.innerWidth <= 768) {
+      setState({
+        returnTop: (
+          <button
+            className={cn('btn', 'square', style.scroll_to_top)}
+            onClick={scrollUp}
+          >
+            ^
+          </button>
+        ),
+      })
+    }
+    // setHidden(window.scrollY)
   }
 
   return (
     <Fragment>
-      <nav className={style.nav}>
-        <div className={cn(style.nav_container, { container })}>
-          <div
-            className={cn('row', 'clear-vertical', 'center-items', style.row)}
-          >
-            <div className={cn('t-left', 'col-sm-1', 'col-md-1', 'col-lg-1')}>
-              <div className={style.logo}>
-                <Link href="/#">
-                  <a className="block">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="60.995"
-                      height="60.995"
-                      viewBox="0 0 60.995 60.995"
-                    >
-                      <path
-                        id="Path_312"
-                        data-name="Path 312"
-                        d="M-3763.932,887.243a3.091,3.091,0,0,1-3.09,3.091,3.091,3.091,0,0,1-3.091-3.091,3.09,3.09,0,0,1,3.091-3.09A3.09,3.09,0,0,1-3763.932,887.243Zm40.365-11.412a30.5,30.5,0,0,1-30.5,30.5,30.5,30.5,0,0,1-30.5-30.5,30.5,30.5,0,0,1,30.5-30.5A30.5,30.5,0,0,1-3723.567,875.831Zm-54.6,10.721,15.193-15.192h3.807v12.178a2.676,2.676,0,0,0,2.671,2.674,2.673,2.673,0,0,0,2.671-2.674V862.215h22.349a26.359,26.359,0,0,0-22.593-12.759,26.374,26.374,0,0,0-26.375,26.375A26.258,26.258,0,0,0-3778.162,886.552Zm50.474-10.721a26.3,26.3,0,0,0-1.769-9.495H-3749.7V869.3h17.169l-4.121,4.122H-3749.7v2.958h10.089l-4.122,4.122h-5.967v3.038a6.8,6.8,0,0,1-6.792,6.8,6.8,6.8,0,0,1-6.791-6.8V877.5l-12.82,12.82a26.347,26.347,0,0,0,22.038,11.888A26.377,26.377,0,0,0-3727.688,875.831Z"
-                        transform="translate(3784.562 -845.334)"
-                        fill="#161717"
-                      />
-                    </svg>
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <h1>{hidden}</h1>
-
-            <div className="col-md-5 col-lg-5">
-              <button
-                className={cn('btn', 'clear', style.menu_toggler)}
-                onClick={(e) => collapse(e, style.collapse, false)}
-              >
+      <nav className={cn(style.nav_bar)}>
+        <div className={cn({ container }, style.nav_container)}>
+          <div className="row center-items split-lg">
+            <div className="col-sm-4 col-md-2 col-lg-2">
+              <div className={style.logo_wrap}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="9"
-                  viewBox="0 0 24 9"
+                  width="74"
+                  height="74"
+                  viewBox="0 0 74 74"
+                  className={style.logo}
                 >
-                  <g
-                    id="Group_114"
-                    data-name="Group 114"
-                    transform="translate(-245.5 -52.5)"
-                  >
-                    <line
-                      id="Line_34"
-                      data-name="Line 34"
-                      x2="24"
-                      transform="translate(245.5 54.5)"
-                      fill="none"
-                      stroke="#1b1b1b"
-                      strokeWidth="4"
-                    />
-                    <line
-                      id="Line_35"
-                      data-name="Line 35"
-                      x2="24"
-                      transform="translate(245.5 60.5)"
-                      fill="none"
-                      stroke="#1b1b1b"
-                      strokeWidth="2"
-                    />
-                  </g>
+                  <path
+                    className={style.path}
+                    data-name="Path 312"
+                    d="M-3759.533,896.179a3.75,3.75,0,0,1-3.749,3.751,3.751,3.751,0,0,1-3.751-3.751,3.749,3.749,0,0,1,3.751-3.749A3.749,3.749,0,0,1-3759.533,896.179Zm48.971-13.845a37,37,0,0,1-37,37,37,37,0,0,1-37-37,37,37,0,0,1,37-37A37,37,0,0,1-3710.562,882.334Zm-66.235,13.007,18.432-18.431h4.619v14.774a3.246,3.246,0,0,0,3.24,3.245,3.244,3.244,0,0,0,3.241-3.245v-25.87h27.113a31.979,31.979,0,0,0-27.41-15.479,32,32,0,0,0-32,32A31.855,31.855,0,0,0-3776.8,895.341Zm61.235-13.007a31.9,31.9,0,0,0-2.146-11.519h-24.558v3.594h20.83l-5,5h-15.83V883h12.24l-5,5h-7.239v3.685a8.252,8.252,0,0,1-8.24,8.244,8.251,8.251,0,0,1-8.239-8.244v-7.326l-15.553,15.553a31.965,31.965,0,0,0,26.736,14.423A32,32,0,0,0-3715.562,882.334Z"
+                    transform="translate(3784.562 -845.334)"
+                    fill="#161717"
+                  />
                 </svg>
-              </button>
-              <ul className={cn(style.nav_menu, 'content')}>
-                <li>
-                  <Link href="/#about">
-                    <a className={cn('t-upper', style.menu_anchor)}>about</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#dev">
-                    <a className={cn('t-upper', style.menu_anchor)}>dev</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#design">
-                    <a className={cn('t-upper', style.menu_anchor)}>design</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#resume">
-                    <a className={cn('t-upper', style.menu_anchor)}>resume</a>
-                  </Link>
-                </li>
-              </ul>
+              </div>
             </div>
+            <div className="col-sm-4 col-md-6 col-lg-6">
+              <div className={style.nav_menu_container}>
+                <ul className={cn(style.nav_menu, style.collapse)}>
+                  <li className={style.menu_item}>
+                    <Link href="/#about">
+                      <a>About</a>
+                    </Link>
+                  </li>
+                  <li className={style.menu_item}>
+                    <Link href="/#dev">
+                      <a>Dev</a>
+                    </Link>
+                  </li>
+                  <li className={style.menu_item}>
+                    <Link href="/#design">
+                      <a>Design</a>
+                    </Link>
+                  </li>
+                  <li className={style.menu_item}>
+                    <Link href="/#resume">
+                      <a>Resume</a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* <div className="col-md-3 col-lg-3">
+              <div className={style.info}>
+                <span className="block tiny medium">09295855661</span>
+                <span className="block tiny medium">ajedral1994@gmail.com</span>
+              </div>
+            </div> */}
           </div>
         </div>
+        {/* <button className={cn('btn', 'square', style.scroll_to_top)}>^</button> */}
+        {state.returnTop}
       </nav>
     </Fragment>
   )

@@ -28,11 +28,12 @@ export const collapse = (e, className = null, accordion = true) => {
   if (contentElement) {
     if (accordion)
       contentElement.style.height = contentElement.scrollHeight + 'px'
+    el.classList.toggle(className || 'collapse')
     contentElement.classList.toggle(className || 'collapse')
-    collapseIcon && collapseIcon.classList.toggle('collapse')
+    collapseIcon && collapseIcon.classList.toggle(className || 'collapse')
 
     if (accordion) {
-      if (!contentElement.classList.contains('collapse'))
+      if (!contentElement.classList.contains(className || 'collapse'))
         contentElement.addEventListener('transitionend', () =>
           contentElement.style.removeProperty('height'),
         )
