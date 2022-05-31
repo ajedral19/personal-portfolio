@@ -108,7 +108,6 @@ ul, ol
                 top: 50%
                 left: 50%
                 transform: translate(-50%, -50%)
-
     &.clear
         padding: unset
         min-width: unset
@@ -147,6 +146,13 @@ ul, ol
     //         padding-right: 0
     //         background: red
     @include setColumns('sm', 4)
+
+.scroll-to-btn
+    position: fixed
+    bottom: 1.5em
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 99
 
 .profile
     position: relative
@@ -215,4 +221,10 @@ ul, ol
             justify-content: unset
         &.split-lg
             justify-content: space-between
+
+    .scroll-to-btn
+        bottom: 4.5em
+        left: unset
+        right: 1.5em
+        transform: unset
 //     @include setRow('lg', 12)

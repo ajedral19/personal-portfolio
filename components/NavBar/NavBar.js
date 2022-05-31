@@ -3,52 +3,82 @@ import Link from 'next/link'
 import Image from 'next/image'
 import cn from 'classnames'
 import style from './NavBar.module.sass'
-import { collapse } from '../../utils/utils'
+
+const defaultState = {
+  scrollUpBtn: null,
+  activeToggler: false,
+  toggle: false,
+  expandContainer: false,
+}
 
 const NavBar = ({ container = false }) => {
-  const [state, setState] = useState({ returnTop: null, contactDetails: null })
+  const [state, setState] = useState(defaultState)
 
   useEffect(() => {
-    window.addEventListener('resize', resize)
-    window.addEventListener('load', resize)
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('load', handleLoad)
 
     return () => {
-      window.removeEventListener('resize', resize)
-      window.removeEventListener('load', resize)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('load', handleLoad)
     }
   }, [])
 
-  const scrollUp = () => {
+  const handleScroll = () => {
+    // scroll_y()
+  }
+  const handleResize = () => {
+    // scroll_y()
+    breakpoint()
+  }
+  const handleLoad = () => {
+    // scroll_y()
+    breakpoint()
+  }
+
+  const breakpoint = () => {
+    if (window.innerWidth < 760) {
+      setState({ ...state, activeToggler: true })
+    } else {
+      setState({ ...defaultState, toggle: true })
+    }
+  }
+
+  const scroll_y = () => {
+    if (window.scrollY > 100) setState({ ...state, expandContainer: true })
+    else setState({ ...state, expandContainer: false })
+  }
+
+  const scrollTo = (id) => {
+    if (typeof id !== 'string') return
+
     window.scrollTo({
-      top: 0,
+      top: document.getElementById(id).offsetTop,
       left: 0,
       behavior: 'smooth',
     })
   }
 
-  const resize = () => {
-    if (window.innerWidth <= 768) {
-      setState({
-        returnTop: (
-          <button
-            className={cn('btn', 'square', style.scroll_to_top)}
-            onClick={scrollUp}
-          >
-            ^
-          </button>
-        ),
-      })
-    }
-    // setHidden(window.scrollY)
+  const toggleMenu = () => {
+    setState({ ...state, toggle: !state.toggle })
   }
 
   return (
     <Fragment>
       <nav className={cn(style.nav_bar)}>
-        <div className={cn({ container }, style.nav_container)}>
-          <div className="row center-items split-lg">
+        <div
+          className={cn({ container: container }, style.nav_container, {
+            [style.expand_container]: state.expandContainer,
+          })}
+        >
+          <div className="row center-items split-md split-lg">
             <div className="col-sm-4 col-md-2 col-lg-2">
-              <div className={style.logo_wrap}>
+              <div
+                className={style.logo_wrap}
+                onClick={() => state.activeToggler && toggleMenu()}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="74"
@@ -66,28 +96,24 @@ const NavBar = ({ container = false }) => {
                 </svg>
               </div>
             </div>
-            <div className="col-sm-4 col-md-6 col-lg-6">
+            <div className="col-sm-4 col-md-4 col-lg-6">
               <div className={style.nav_menu_container}>
-                <ul className={cn(style.nav_menu, style.collapse)}>
+                <ul
+                  className={cn(style.nav_menu, {
+                    [`${style.hide}`]: !state.toggle,
+                  })}
+                >
                   <li className={style.menu_item}>
-                    <Link href="/#about">
-                      <a>About</a>
-                    </Link>
+                    <a onClick={() => scrollTo('about')}>About</a>
                   </li>
                   <li className={style.menu_item}>
-                    <Link href="/#dev">
-                      <a>Dev</a>
-                    </Link>
+                    <a onClick={() => scrollTo('dev')}>Dev</a>
                   </li>
                   <li className={style.menu_item}>
-                    <Link href="/#design">
-                      <a>Design</a>
-                    </Link>
+                    <a onClick={() => scrollTo('design')}>Design</a>
                   </li>
                   <li className={style.menu_item}>
-                    <Link href="/#resume">
-                      <a>Resume</a>
-                    </Link>
+                    <a onClick={() => scrollTo('resume')}>Resume</a>
                   </li>
                 </ul>
               </div>
@@ -101,7 +127,6 @@ const NavBar = ({ container = false }) => {
           </div>
         </div>
         {/* <button className={cn('btn', 'square', style.scroll_to_top)}>^</button> */}
-        {state.returnTop}
       </nav>
     </Fragment>
   )

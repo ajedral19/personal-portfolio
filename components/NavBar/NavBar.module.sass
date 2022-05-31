@@ -1,19 +1,31 @@
 @use '../../styles/variables' as var
 
 .nav_bar
-    position: absolute
+    position: fixed
+    background: var.$background
     z-index: 99
     min-height: 60px
     width: 100%
     top: 0
     left: 0
     .nav_container
-        padding: 2em 0 1em
+        padding-top: 2em
+        padding-bottom: .5em
+        transition: max-width .2s ease-in-out
         .logo_wrap
+            position: relative
+            width: min-content
+            height: fit-content
+            margin: auto
+            line-height: 0
             .logo
                 max-width: 44px
+                height: inherit
                 .path
                     fill: var.$default
+                    // fill: linear-gradient(56deg, rgba(0,255,91,1) 0%, rgba(0,20,255,1) 100%)
+        &.expand_container
+            max-width: 1850px
         .nav_menu_container
             .nav_menu
                 position: absolute
@@ -37,11 +49,15 @@
                         font-weight: 500
                         text-transform: uppercase
                         color: var.$muted
+                        cursor: pointer
                         &:hover
                             color: var.$default
                 &.collapse
                     height: 0
                     padding: 0
+                &.hide
+                    display: none
+
     .scroll_to_top
         position: fixed
         z-index: 100
@@ -61,12 +77,12 @@
 
 @media screen and ( min-width: 768px )
     .nav_bar
-        position: fixed
-        background: var.$background
         .nav_container
-            padding: .5em 0
+            padding-top: 1em
+            padding-bottom: 1em
             text-align: left
             .logo_wrap
+                margin: unset
                 .logo
                     max-width: 54px
             .nav_menu_container
@@ -80,9 +96,10 @@
                     transform: unset
                     padding: unset
                     justify-content: flex-end
-                    justify-content: center
+                    gap: 2.5em
+                    // justify-content: center
                     .menu_item
-                        padding: .5em 1.5em 1em
+                        padding: .5em 0 1em
                     &.collapse
                         height: unset
         .scroll_to_top
@@ -94,5 +111,3 @@
             .nav_menu_container
                 .nav_menu
                     justify-content: flex-end
-                    .menu_item
-                        padding: .5em 1.5em

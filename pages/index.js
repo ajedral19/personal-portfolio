@@ -17,6 +17,7 @@ import Carousel from '../components/Carousel/carousel'
 // utils
 import { fetch_parsed_data } from '../lib/data'
 import NavBar from '../components/NavBar/NavBar'
+import ScrollToTop from '../components/ScrollToTop'
 
 export async function getStaticProps() {
   const projectsData = await fetch_parsed_data('json')
@@ -116,14 +117,13 @@ export default function Home({ projects, experiences }) {
           />
           {projects.rows.length ? (
             <div className="row">
-              {projects.rows.map((proj, key) =>
-                proj.category === 'design' ? (
-                  <div key={key} className="col-lg-4 col-md-3 col-sm-2">
-                    <ImageThumbnail />
-                  </div>
-                ) : (
-                  <h1>'no projects yet'</h1>
-                ),
+              {projects.rows.map(
+                (proj, key) =>
+                  proj.category === 'design' && (
+                    <div key={proj.id} className="col-lg-4 col-md-3 col-sm-2">
+                      <ImageThumbnail />
+                    </div>
+                  ),
               )}
             </div>
           ) : (
@@ -264,6 +264,7 @@ export default function Home({ projects, experiences }) {
           </div>
         </div>
       </section>
+      <ScrollToTop />
       <Footer container />
     </Fragment>
   )

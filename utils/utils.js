@@ -42,6 +42,7 @@ export const collapse = (e, className = null, accordion = true) => {
     }
   }
 }
+
 // export const collapse = (
 //   accordion = undefined,
 //   classCollapse = '',
