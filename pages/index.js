@@ -18,6 +18,7 @@ import Carousel from '../components/Carousel/carousel'
 import { fetch_parsed_data } from '../lib/data'
 import NavBar from '../components/NavBar/NavBar'
 import ScrollToTop from '../components/ScrollToTop'
+import Modal from '../components/Modal/Modal'
 
 export async function getStaticProps() {
   const projectsData = await fetch_parsed_data('json')
@@ -26,10 +27,13 @@ export async function getStaticProps() {
 }
 
 export default function Home({ projects, experiences }) {
-  const [state, setState] = useState({ desc: '' })
+  const [state, setState] = useState({ desc: '', promptModal: true })
+
+  const handleModalOnClick = () => setState({ ...state, promptModal: false })
 
   useEffect(() => {
     setState({
+      ...state,
       desc:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, impedit vel molestias incidunt dolore laboriosam dolores soluta quas fugit harum temporibus ipsa magnam iste. Illo, ducimus temporibus.',
     })
@@ -37,6 +41,7 @@ export default function Home({ projects, experiences }) {
 
   return (
     <Fragment>
+      {state.promptModal && <Modal onClick={handleModalOnClick} />}
       <NavBar container />
       <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>

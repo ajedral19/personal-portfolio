@@ -1,0 +1,42 @@
+@use '../../styles/variables.sass' as var
+
+.modal
+    position: fixed
+    width: 100vw
+    max-width: 1056px
+    left: 50%
+    transform: translateX(-50%)
+    height: 100vh
+    z-index: 999
+    .modal_container
+        position: absolute
+        background: var.$default
+        color: var.$background
+        box-shadow: 0px 6px 16px -12px #1d1d1d
+        width: 85%
+        height: auto
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        border-radius: .5em
+        .modal_content
+            text-align: left
+            padding: 2em
+            .prompt_title
+                font-size: 3.5rem
+            .prompt_msg
+                font-weight: 500
+            .prompt_btn
+                width: 100%
+                display: block
+                text-align: center
+            .modal_row
+                justify-content: space-between
+
+@media screen and ( min-width: 760px )
+    .modal
+        .modal_container
+            .modal_content
+                .prompt_btn
+                    display: unset
+                    width: unset
