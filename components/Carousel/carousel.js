@@ -34,16 +34,16 @@ const Carousel = ({ items = [] }) => {
                   transform="translate(-111.334 -304.38)"
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1"
                 />
                 <g
                   id="Ellipse_17"
                   data-name="Ellipse 17"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="1"
+                  strokeWidth="1"
                 >
                   <circle cx="14" cy="14" r="14" stroke="none" />
                   <circle cx="14" cy="14" r="13.5" fill="none" />
@@ -68,9 +68,9 @@ const Carousel = ({ items = [] }) => {
                     transform="translate(1334.283 931.62)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1"
                   />
                   <g
                     id="Ellipse_17"
@@ -78,7 +78,7 @@ const Carousel = ({ items = [] }) => {
                     transform="translate(1444 1236)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1"
+                    strokeWidth="1"
                   >
                     <circle cx="14" cy="14" r="14" stroke="none" />
                     <circle cx="14" cy="14" r="13.5" fill="none" />
