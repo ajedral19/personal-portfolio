@@ -43,6 +43,20 @@ export const collapse = (e, className = null, accordion = true) => {
   }
 }
 
+export const navigateTo = (target, padding = 40) => {
+  if (typeof target == undefined || !target) return
+  window.scrollTo({
+    top: document.getElementById(target)?.offsetTop - padding,
+    left: 0,
+    behavior: 'smooth',
+  })
+}
+
+export const switchTheme = () => {
+  document.documentElement.classList.toggle('dark-mode')
+  // window.matchMedia('(prefers-color-scheme: dark)')
+}
+
 // export const collapse = (
 //   accordion = undefined,
 //   classCollapse = '',

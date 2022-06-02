@@ -1,14 +1,24 @@
 import { Fragment, useState, useEffect } from 'react'
+import { navigateTo } from '../utils/utils'
 
 export default function ScrollToTop() {
   const [button, setButton] = useState({ append: false, hide: false })
 
   useEffect(() => {
     window.addEventListener('scroll', a)
+    hideBtn()
     return () => {
       window.removeEventListener('scroll', a)
     }
   }, [])
+
+  const hideBtn = () => {
+    const timeoutId = setTimeout(() => {
+      setButton({ ...button, append: false })
+    }, 3000)
+
+    if (!button.append) clearTimeout(timeoutId)
+  }
 
   const a = () => {
     if (window.scrollY > 100) {
@@ -16,13 +26,10 @@ export default function ScrollToTop() {
     } else setButton({ ...button, append: false })
   }
 
-  const handleOnClick = () =>
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-
   return (
     <Fragment>
       {button.append && (
-        <button onClick={handleOnClick} className="scroll-to-btn">
+        <button onClick={() => navigateTo('header')} className="scroll-to-btn">
           back to top
         </button>
       )}

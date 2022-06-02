@@ -38,7 +38,7 @@ export default function Home({ projects, experiences }) {
   return (
     <Fragment>
       <NavBar container />
-      <header className={cn('top-page', style.topPage)}>
+      <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
           <div className={style.heading}>
             <div className={style.strips}>
@@ -50,7 +50,7 @@ export default function Home({ projects, experiences }) {
                 <div className={style.title}>
                   knows how to <span className={style.typing}>code</span>
                 </div>
-                <div className={style.name}>John Doe</div>
+                <div className={style.name}>AJ Power</div>
               </h1>
             </div>
             <div className={cn(style.heroWrapper)}>
@@ -75,7 +75,7 @@ export default function Home({ projects, experiences }) {
             <div className="col-lg-6 col-md-3 col-sm-4">
               <Description
                 classes={[style.custom_m_r]}
-                title="This is a title"
+                title="Hey neighbor"
                 description={state.desc}
               />
             </div>
@@ -94,7 +94,7 @@ export default function Home({ projects, experiences }) {
       </section>
       <section className="section t-left" id="dev">
         <div className="container">
-          <h2 className="t-upper title medium mb-1">web development</h2>
+          <h2 className="t-upper title medium mb-1">Check out my dev stuffs</h2>
           {/* carousel */}
           <Carousel
             items={
@@ -111,7 +111,7 @@ export default function Home({ projects, experiences }) {
       <section className="section t-left" id="design">
         <div className="container">
           <Description
-            title="graphic / web design"
+            title="i can design too"
             description={state.desc}
             classes={['mb-2']}
           />
@@ -147,7 +147,7 @@ export default function Home({ projects, experiences }) {
               </div>
             </div>
             <div className="col-lg-8 col-md-6 col-sm-4">
-              <Description title="hear me" description={state.desc}>
+              <Description title="okay...hear me" description={state.desc}>
                 <div className="t-left mt-2">
                   <h3 className="title size-normal medium t-cap">
                     Hey i got some experiences too!
@@ -264,7 +264,7 @@ export default function Home({ projects, experiences }) {
           </div>
         </div>
       </section>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Footer container />
     </Fragment>
   )

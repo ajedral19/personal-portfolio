@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><defs><style>.a,.b,.d{fill:none;}.a,.b{stroke:#1f1f1f;}.a{stroke-linecap:round;stroke-linejoin:round;}.c{stroke:none;}</style></defs><g transform="translate(-1444 -1236)"><path class="a" d="M122.217,313.88l4.618,4.618-4.618,4.618" transform="translate(1334.283 931.62)"/><g class="b" transform="translate(1444 1236)"><circle class="c" cx="14" cy="14" r="14"/><circle class="d" cx="14" cy="14" r="13.5"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Ellipse_17" data-name="Ellipse 17" fill="none" stroke="currentColor" stroke-width="1">
+    <circle cx="14" cy="14" r="14" stroke="none"/>
+    <circle cx="14" cy="14" r="13.5" fill="none"/>
+  </g>
+</svg>

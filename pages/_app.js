@@ -1,3 +1,4 @@
+import '../styles/root.sass'
 import '../styles/global.sass'
 import '../styles/layout.sass'
 

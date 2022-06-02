@@ -1,132 +1,271 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import cn from 'classnames'
 import style from './NavBar.module.sass'
+import { navigateTo, switchTheme } from '../../utils/utils'
 
 const defaultState = {
-  scrollUpBtn: null,
-  activeToggler: false,
-  toggle: false,
-  expandContainer: false,
+  isOnPhone: false,
+  displayMenu: false,
+  scrolledDown: false,
 }
-
 const NavBar = ({ container = false }) => {
-  const [state, setState] = useState(defaultState)
+  const [state, setState] = useState({ ...defaultState })
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('load', handleOnLoad)
     window.addEventListener('resize', handleResize)
-    window.addEventListener('load', handleLoad)
-
+    // window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('load', handleOnLoad)
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('load', handleLoad)
+      // window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
-  const handleScroll = () => {
-    // scroll_y()
-  }
   const handleResize = () => {
-    // scroll_y()
-    breakpoint()
-  }
-  const handleLoad = () => {
-    // scroll_y()
-    breakpoint()
-  }
-
-  const breakpoint = () => {
-    if (window.innerWidth < 760) {
-      setState({ ...state, activeToggler: true })
-    } else {
-      setState({ ...defaultState, toggle: true })
+    if (window.innerWidth <= 760) {
+      return setState({ ...state, isOnPhone: true, displayMenu: false })
     }
+    return setState({ ...state, isOnPhone: false, displayMenu: true })
   }
 
-  const scroll_y = () => {
-    if (window.scrollY > 100) setState({ ...state, expandContainer: true })
-    else setState({ ...state, expandContainer: false })
+  const handleOnLoad = () => {
+    // handleScroll(140)
+    handleResize()
   }
 
-  const scrollTo = (id) => {
-    if (typeof id !== 'string') return
-
-    window.scrollTo({
-      top: document.getElementById(id).offsetTop,
-      left: 0,
-      behavior: 'smooth',
-    })
+  const handleScroll = (target = 140) => {
+    if (typeof target == undefined || !target) return
+    if (
+      typeof target === 'string'
+        ? window.scrollY >= document.getElementById(target)?.offsetHeight
+        : typeof target === 'number' && window.scrollY >= target
+    ) {
+      return setState({ ...state, scrolledDown: true })
+    }
+    return setState({ ...state, scrolledDown: false })
   }
 
   const toggleMenu = () => {
-    setState({ ...state, toggle: !state.toggle })
+    setState({ ...state, displayMenu: !state.displayMenu })
   }
 
   return (
     <Fragment>
-      <nav className={cn(style.nav_bar)}>
-        <div
-          className={cn({ container: container }, style.nav_container, {
-            [style.expand_container]: state.expandContainer,
-          })}
-        >
-          <div className="row center-items split-md split-lg">
-            <div className="col-sm-4 col-md-2 col-lg-2">
-              <div
-                className={style.logo_wrap}
-                onClick={() => state.activeToggler && toggleMenu()}
-              >
+      <nav className={cn(style.nav_bar, { [style.pinch]: state.scrolledDown })}>
+        <div className={cn({ container }, style.container)}>
+          <div className={cn(style.nav_row)}>
+            <div className={cn(style.logo_wrap)}>
+              <span className={cn(style.logo)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="74"
-                  height="74"
-                  viewBox="0 0 74 74"
-                  className={style.logo}
+                  width="44"
+                  height="44"
+                  viewBox="0 0 44 44"
                 >
                   <path
-                    className={style.path}
-                    data-name="Path 312"
-                    d="M-3759.533,896.179a3.75,3.75,0,0,1-3.749,3.751,3.751,3.751,0,0,1-3.751-3.751,3.749,3.749,0,0,1,3.751-3.749A3.749,3.749,0,0,1-3759.533,896.179Zm48.971-13.845a37,37,0,0,1-37,37,37,37,0,0,1-37-37,37,37,0,0,1,37-37A37,37,0,0,1-3710.562,882.334Zm-66.235,13.007,18.432-18.431h4.619v14.774a3.246,3.246,0,0,0,3.24,3.245,3.244,3.244,0,0,0,3.241-3.245v-25.87h27.113a31.979,31.979,0,0,0-27.41-15.479,32,32,0,0,0-32,32A31.855,31.855,0,0,0-3776.8,895.341Zm61.235-13.007a31.9,31.9,0,0,0-2.146-11.519h-24.558v3.594h20.83l-5,5h-15.83V883h12.24l-5,5h-7.239v3.685a8.252,8.252,0,0,1-8.24,8.244,8.251,8.251,0,0,1-8.239-8.244v-7.326l-15.553,15.553a31.965,31.965,0,0,0,26.736,14.423A32,32,0,0,0-3715.562,882.334Z"
-                    transform="translate(3784.562 -845.334)"
-                    fill="#161717"
+                    id="Path_324"
+                    data-name="Path 324"
+                    d="M-3769.68,875.566a2.23,2.23,0,0,1-2.23,2.23,2.23,2.23,0,0,1-2.23-2.23,2.23,2.23,0,0,1,2.23-2.229A2.229,2.229,0,0,1-3769.68,875.566Zm29.119-8.232a22,22,0,0,1-22,22,22,22,0,0,1-22-22,22,22,0,0,1,22-22A22,22,0,0,1-3740.561,867.334Zm-39.384,7.733,10.96-10.959h2.746v8.784a1.931,1.931,0,0,0,1.927,1.929,1.929,1.929,0,0,0,1.927-1.929V857.511h16.121a19.014,19.014,0,0,0-16.3-9.2,19.025,19.025,0,0,0-19.026,19.027A18.93,18.93,0,0,0-3779.945,875.068Zm36.41-7.733a18.993,18.993,0,0,0-1.275-6.849h-14.6v2.137h12.386L-3750,865.6h-9.413v2.134h7.278l-2.973,2.973h-4.3v2.191a4.906,4.906,0,0,1-4.9,4.9,4.906,4.906,0,0,1-4.9-4.9v-4.356l-9.248,9.248a19.006,19.006,0,0,0,15.9,8.576A19.028,19.028,0,0,0-3743.535,867.334Z"
+                    transform="translate(3784.561 -845.334)"
+                    fill="currentColor"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
-            <div className="col-sm-4 col-md-4 col-lg-6">
-              <div className={style.nav_menu_container}>
-                <ul
-                  className={cn(style.nav_menu, {
-                    [`${style.hide}`]: !state.toggle,
+            {state.isOnPhone && (
+              <button
+                className={cn(style.nav_btn, style.nav_menu_toggle_btn)}
+                onClick={() => toggleMenu()}
+              >
+                <span className={cn(style.toggle_icon)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="17"
+                    viewBox="0 0 24 17"
+                  >
+                    <g
+                      id="Component_2_2"
+                      data-name="Component 2 – 2"
+                      transform="translate(0 1.5)"
+                    >
+                      <line
+                        id="Line_40"
+                        className="line"
+                        data-name="Line 40"
+                        x1="24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                      />
+                      <line
+                        id="Line_41"
+                        className="line"
+                        data-name="Line 41"
+                        x1="24"
+                        transform="translate(0 7)"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                      />
+                      <line
+                        id="Line_43"
+                        className="line"
+                        data-name="Line 43"
+                        x1="16"
+                        transform="translate(0 14)"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                      />
+                    </g>
+                  </svg>
+                </span>
+              </button>
+            )}
+            <button
+              className={cn(style.nav_btn, style.theme_toggle_btn)}
+              onClick={() => switchTheme()}
+            >
+              <svg width="25" height="25" viewBox="0 0 25 25">
+                <g
+                  id="Group_123"
+                  data-name="Group 123"
+                  transform="translate(-51.5 -22.5)"
+                >
+                  <g
+                    id="Ellipse_32"
+                    className="ball"
+                    data-name="Ellipse 32"
+                    transform="translate(57 28)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <circle cx="7" cy="7" r="7" stroke="none" />
+                    <circle cx="7" cy="7" r="5.5" fill="none" />
+                  </g>
+                  <line
+                    id="Line_53"
+                    data-name="Line 53"
+                    className="ray"
+                    y1="4"
+                    transform="translate(64 22.5)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_54"
+                    data-name="Line 54"
+                    className="ray"
+                    y1="4"
+                    transform="translate(64 43.5)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_55"
+                    data-name="Line 55"
+                    className="ray"
+                    y1="4"
+                    transform="translate(51.5 35) rotate(-90)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_56"
+                    data-name="Line 56"
+                    className="ray"
+                    y1="4"
+                    transform="translate(72.5 35) rotate(-90)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_57"
+                    data-name="Line 57"
+                    className="ray"
+                    y1="4"
+                    transform="translate(55.161 26.161) rotate(-45)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_58"
+                    data-name="Line 58"
+                    className="ray"
+                    y1="4"
+                    transform="translate(70.01 41.01) rotate(-45)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_59"
+                    data-name="Line 59"
+                    className="ray"
+                    y1="4"
+                    transform="translate(55.161 43.839) rotate(-135)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                  <line
+                    id="Line_60"
+                    data-name="Line 60"
+                    className="ray"
+                    y1="4"
+                    transform="translate(70.01 28.99) rotate(-135)"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  />
+                </g>
+              </svg>
+            </button>
+            {
+              // ((state.isOnPhone && state.displayMenu) || state.displayMenu) &&
+              ((state.isOnPhone && state.displayMenu) || state.displayMenu) && (
+                <div
+                  className={cn(style.nav_menu_wrap, {
+                    [style.toggle]: state.isOnPhone && state.displayMenu,
                   })}
                 >
-                  <li className={style.menu_item}>
-                    <a onClick={() => scrollTo('about')}>About</a>
-                  </li>
-                  <li className={style.menu_item}>
-                    <a onClick={() => scrollTo('dev')}>Dev</a>
-                  </li>
-                  <li className={style.menu_item}>
-                    <a onClick={() => scrollTo('design')}>Design</a>
-                  </li>
-                  <li className={style.menu_item}>
-                    <a onClick={() => scrollTo('resume')}>Resume</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            {/* <div className="col-md-3 col-lg-3">
-              <div className={style.info}>
-                <span className="block tiny medium">09295855661</span>
-                <span className="block tiny medium">ajedral1994@gmail.com</span>
-              </div>
-            </div> */}
+                  <ul className={cn(style.nav_menu)}>
+                    <li className={cn(style.menu_item)}>
+                      <a onClick={() => navigateTo('about')}>About</a>
+                    </li>
+                    <li className={cn(style.menu_item)}>
+                      <a onClick={() => navigateTo('dev')}>Dev</a>
+                    </li>
+                    <li className={cn(style.menu_item)}>
+                      <a onClick={() => navigateTo('design')}>Design</a>
+                    </li>
+                    <li className={cn(style.menu_item)}>
+                      <a onClick={() => navigateTo('resume')}>Resume</a>
+                    </li>
+                    {state.isOnPhone && (
+                      <li className={cn(style.menu_item, style.footer)}>
+                        <Link href="/">
+                          <a className={cn('medium', 'tiny')}>
+                            GoGoGoPowerAJ &copy;
+                          </a>
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )
+            }
           </div>
         </div>
-        {/* <button className={cn('btn', 'square', style.scroll_to_top)}>^</button> */}
       </nav>
     </Fragment>
   )

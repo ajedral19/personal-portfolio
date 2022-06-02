@@ -1,3 +1,5 @@
+@use '../../styles/variables.sass' as var
+
 // carousel
 .carouselContainer
     position: relative
@@ -25,10 +27,12 @@
                 display: block
             &.next
                 &::before
-                    content: url('/assets/icons/icon-next.svg')
+                    // content: url('/assets/icons/icon-next.svg')
+                    // color: var.$default
             &.prev
                 &::before
-                    content: url('/assets/icons/icon-prev.svg')
+                    // content: url('/assets/icons/icon-prev.svg')
+                    // color: var.$default
 
     .carousel
         position: relative

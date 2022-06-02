@@ -48,13 +48,20 @@
 @include setFontFace(Rubik , '/assets/Fonts/' , SemiBold , 600 )
 @include setSpaces
 
+// .dark-mode
+//     var.$default: var.$dm-default
+//     var.$shadedMid: var.$dm-shadedMid
+//     var.$shadedLow: var.$dm-shadedLow
+//     var.$background: var.$dm-background
+//     var.$muted: var.$dm-muted
+
 *, ::before, ::after
     margin: 0
     padding: 0
 
 html
     scroll-behavior: smooth
-    scroll-padding: 80px
+    // scroll-padding: 100px
 
 body
     background: var.$background
