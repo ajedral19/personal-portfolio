@@ -142,7 +142,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(57 28)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   >
                     <circle cx="7" cy="7" r="7" stroke="none" />
                     <circle cx="7" cy="7" r="5.5" fill="none" />
@@ -155,7 +155,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(64 22.5)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_54"
@@ -165,7 +165,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(64 43.5)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_55"
@@ -175,7 +175,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(51.5 35) rotate(-90)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_56"
@@ -185,7 +185,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(72.5 35) rotate(-90)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_57"
@@ -195,7 +195,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(55.161 26.161) rotate(-45)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_58"
@@ -205,7 +205,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(70.01 41.01) rotate(-45)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_59"
@@ -215,7 +215,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(55.161 43.839) rotate(-135)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Line_60"
@@ -225,7 +225,7 @@ const NavBar = ({ container = false }) => {
                     transform="translate(70.01 28.99) rotate(-135)"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
               </svg>
