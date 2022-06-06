@@ -57,6 +57,11 @@ export const switchTheme = () => {
   // window.matchMedia('(prefers-color-scheme: dark)')
 }
 
+export const localStore = () => {
+  const t = window.caches.open
+  console.log(CacheStorage)
+}
+
 // export const collapse = (
 //   accordion = undefined,
 //   classCollapse = '',

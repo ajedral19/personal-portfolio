@@ -11,8 +11,8 @@ export default function Footer({ container = false }) {
         <div className={cn({ container }, style.borderTop)}>
           <div className={cn('row', 'pt-1', 'pb-1', 'clear')}>
             <div className="col-lg-6 col-md-3 col-sm-2">
-              <Link href="/#">
-                <a className="medium tiny">GoGoGoPowerAJ &copy;</a>
+              <Link href="/">
+                <a className="medium tiny">GoGoPowerAJ &copy;</a>
               </Link>
               {/* <a href="/#" className="medium">
               </a> */}

@@ -34,33 +34,46 @@
                 outline: none
                 border: none
                 cursor: pointer
+                span svg
+                    // background: red
+                    max-width: 28px
+                    width: 100%
                 &.nav_menu_toggle_btn
                     left: 0
                     top: 0
-                    z-index: 1
+                    z-index: 2
+                &.toggled
+                    span svg
+
                 &.theme_toggle_btn
-                    // background: red
                     right: 0
                     top: 0
                     z-index: 1
+                    // &.toggled
+                    //     span svg
+                    //         background: red
+
             .nav_menu_wrap
-                background: var.$shadedLow
                 // box-shadow: 4px 0px 14px 0 rgb(0 0 0 / 10%)
                 position: fixed
-                min-width: 50%
-                max-width: 50%
+                // z-index: 1
+                width: 100%
                 height: 100%
                 text-align: left
                 left: 0
-                transform: translateX(-100%)
                 top: 0
-                transition: transform .5s ease-in-out
-                &.toggle
-                    pointer-events: unset
+                background: none
+                transform: translateX(-100%)
+                transition: transform .25s ease-in-out
+                &.show
                     transform: translateX(0%)
                 .nav_menu
                     height: 100%
+                    max-width: 50%
                     padding-top: 6em
+                    // transform: translateX(-100%)
+                    transition: transform .5s ease-in-out
+                    background: var.$shadedLow
                     .menu_item
                         cursor: pointer
                         &.footer
@@ -77,6 +90,8 @@
                             padding-top: .75em
                             padding-bottom: .75em
                             text-transform: uppercase
+                            &.active
+                                color: var.$default
 
 @media screen and (min-width: 760px)
     .nav_bar
@@ -94,11 +109,13 @@
                     &.theme_toggle_btn
                         height: auto
                         top: 50%
+                        z-index: 2
                         transform: translateY(-50%)
                         padding-bottom: 0
                         padding-bottom: 0
                 .nav_menu_wrap
                     position: relative
+                    width: unset
                     min-width: unset
                     max-width: unset
                     height: unset
@@ -106,6 +123,9 @@
                     pointer-events: unset
                     transform: unset
                     .nav_menu
+                        background: none
+                        transform: unset
+                        max-width: unset
                         position: relative
                         padding-top: 0
                         margin-right: 2.5em

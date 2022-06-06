@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState, useEffect, Fragment } from 'react'
 import { collapse } from '../utils/utils'
 import style from '../styles/Home.module.sass'
@@ -27,17 +28,17 @@ export async function getStaticProps() {
 }
 
 export default function Home({ projects, experiences }) {
-  const [state, setState] = useState({ desc: '', promptModal: true })
+  const [state, setState] = useState({
+    desc:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, impedit vel molestias incidunt dolore laboriosam dolores soluta quas fugit harum temporibus ipsa magnam iste. Illo, ducimus temporibus.',
+    promptModal: true,
+  })
 
   const handleModalOnClick = () => setState({ ...state, promptModal: false })
 
   useEffect(() => {
-    setState({
-      ...state,
-      desc:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, impedit vel molestias incidunt dolore laboriosam dolores soluta quas fugit harum temporibus ipsa magnam iste. Illo, ducimus temporibus.',
-    })
-  }, [setState])
+    document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
+  }, [state.promptModal])
 
   return (
     <Fragment>
@@ -126,7 +127,15 @@ export default function Home({ projects, experiences }) {
                 (proj, key) =>
                   proj.category === 'design' && (
                     <div key={proj.id} className="col-lg-4 col-md-3 col-sm-2">
-                      <ImageThumbnail />
+                      <Link
+                        href="/project/[id]/[title]"
+                        as={`/project/${proj.id}/${proj.title}`}
+                        scroll={false}
+                      >
+                        <a>
+                          <ImageThumbnail />
+                        </a>
+                      </Link>
                     </div>
                   ),
               )}
