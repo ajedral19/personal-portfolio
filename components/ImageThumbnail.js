@@ -1,24 +1,21 @@
 import { Fragment } from 'react'
 import cn from 'classnames'
 
-export default function ImageThumbnail({
+const ImageThumbnail = ({
   color,
-  title,
-  subject = 'just a subject',
-  description = '',
-  category = '',
-  image,
+  data,
   square = false,
-}) {
+}) => {
+  const { title, description } = data || {}
   return (
     <Fragment>
       <div className={cn('image-thumbnail', color, { square })}>
         <div className="meta-data t-left">
           {title && (
-            <>
+            <span className='block meta-data-content'>
               <h4 className="title size-normal medium t-cap">{title}</h4>
               {/* <span className="block subject t-upper">{subject}</span> */}
-            </>
+            </span>
           )}
         </div>
         <div className="background"></div>
@@ -26,3 +23,6 @@ export default function ImageThumbnail({
     </Fragment>
   )
 }
+
+
+export default ImageThumbnail

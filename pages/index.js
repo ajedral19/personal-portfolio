@@ -37,12 +37,12 @@ export default function Home({ projects, experiences }) {
   const handleModalOnClick = () => setState({ ...state, promptModal: false })
 
   useEffect(() => {
-    document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
+    // document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
   }, [state.promptModal])
 
   return (
     <Fragment>
-      {state.promptModal && <Modal onClick={handleModalOnClick} />}
+      {/* {state.promptModal && <Modal onClick={handleModalOnClick} />} */}
       <NavBar container />
       <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
@@ -141,7 +141,7 @@ export default function Home({ projects, experiences }) {
                         scroll={false}
                       >
                         <a>
-                          <ImageThumbnail />
+                          <ImageThumbnail data={proj} />
                         </a>
                       </Link>
                     </div>

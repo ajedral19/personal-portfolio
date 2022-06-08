@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
+import Head from 'next/head'
 import cn from 'classnames'
 import style from '../../project.module.sass'
 import { fetch_parsed_data } from '../../../../lib/data'
@@ -41,9 +42,9 @@ const Project = ({ projects }) => {
   const { category, id, title } = router.query
   const [state, setState] = useState({ project: null, other_projects: null })
 
-  useEffect(() => {
-    document.title = title
-  })
+  // useEffect(() => {
+  //   document.title = title
+  // })
 
   useEffect(() => {
     grabContents()
@@ -69,7 +70,28 @@ const Project = ({ projects }) => {
 
   return (
     <>
-      {/* <Header /> */}
+      {/* Header better to create a Head component */}
+      <Head>
+        {/* <!-- Primary Meta Tags --> */}
+        <title>{state.project?.title}</title>
+        <meta name="title" content={state.project?.title} />
+        <meta name="description" content={state.project?.meta_description} />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={'https://ajedesign.vercel.app' + router.asPath} />
+        <meta property="og:title" content={state.project?.title} />
+        <meta property="og:description" content={state.project?.meta_description} />
+        <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={'https://ajedesign.vercel.app' + router.asPath} />
+        <meta property="twitter:title" content={state.project?.title} />
+        <meta property="twitter:description" content={state.project?.meta_description} />
+        <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+      </Head>
+      {/* end Header */}
       <NavBar container />
       <section className={cn('section', 'mt-6')}>
         <div className={cn('container')}>
