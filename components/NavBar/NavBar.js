@@ -1,10 +1,11 @@
 import { Fragment, useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import cn from 'classnames'
 import style from './NavBar.module.sass'
-import { navigateTo, switchTheme } from '../../utils/utils'
 
-const NavBar = ({ container = false }) => {
+const NavBar = ({ container = false, unstick = false }) => {
+  const router = useRouter()
   const [state, setState] = useState({
     theme_dark: false,
     pinch_nav: false,
@@ -12,13 +13,15 @@ const NavBar = ({ container = false }) => {
     show_menu: false,
   })
 
-  const toggleMenu = () => {
-    setState({ ...state, show_menu: !state.show_menu })
+  const setSrollPadding = () => {
+    const navHeight = document.getElementById('nav_bar').clientHeight
+    document.documentElement.style.setProperty('--scroll-padding', navHeight + 'px')
   }
 
   const handleScroll = () => {
     const scrollHeight = window.scrollY
     setState({ ...state, pinch_nav: scrollHeight > 100 ? true : false })
+    setSrollPadding()
   }
 
   const handleOnLoad = () => {
@@ -32,23 +35,24 @@ const NavBar = ({ container = false }) => {
       transform_menu: screenWidth < 760 ? true : false,
     }))
     handleScroll()
+    setSrollPadding()
+
   }
 
   useEffect(() => {
-    document.body.style.overflow = !state.show_menu ? 'unset' : 'hidden'
+    // document.body.style.overflow = !state.show_menu ? 'unset' : 'hidden'
   }, [state.show_menu])
 
   useEffect(() => {
     window.document.documentElement.classList.toggle('dark-mode')
-    return () => {
-      // toggleTheme()
-    }
+    return () => { }
   }, [state.theme_dark])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, false)
     window.addEventListener('load', handleOnLoad, false)
     window.addEventListener('resize', handleResize, false)
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('load', handleOnLoad)
@@ -58,31 +62,42 @@ const NavBar = ({ container = false }) => {
 
   return (
     <Fragment>
-      <nav className={cn(style.nav_bar, { [style.pinch]: state.pinch_nav })}>
+      <nav id="nav_bar"
+        className={cn(style.nav_bar, {
+          [style.pinch]: state.pinch_nav,
+          [style.unstick]: unstick,
+        })}
+      >
         <div className={cn({ container }, style.container)}>
           <div className={cn(style.nav_row)}>
             <div className={cn(style.logo_wrap)}>
-              <span className={cn(style.logo)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  viewBox="0 0 44 44"
-                >
-                  <path
-                    id="Path_324"
-                    data-name="Path 324"
-                    d="M-3769.68,875.566a2.23,2.23,0,0,1-2.23,2.23,2.23,2.23,0,0,1-2.23-2.23,2.23,2.23,0,0,1,2.23-2.229A2.229,2.229,0,0,1-3769.68,875.566Zm29.119-8.232a22,22,0,0,1-22,22,22,22,0,0,1-22-22,22,22,0,0,1,22-22A22,22,0,0,1-3740.561,867.334Zm-39.384,7.733,10.96-10.959h2.746v8.784a1.931,1.931,0,0,0,1.927,1.929,1.929,1.929,0,0,0,1.927-1.929V857.511h16.121a19.014,19.014,0,0,0-16.3-9.2,19.025,19.025,0,0,0-19.026,19.027A18.93,18.93,0,0,0-3779.945,875.068Zm36.41-7.733a18.993,18.993,0,0,0-1.275-6.849h-14.6v2.137h12.386L-3750,865.6h-9.413v2.134h7.278l-2.973,2.973h-4.3v2.191a4.906,4.906,0,0,1-4.9,4.9,4.906,4.906,0,0,1-4.9-4.9v-4.356l-9.248,9.248a19.006,19.006,0,0,0,15.9,8.576A19.028,19.028,0,0,0-3743.535,867.334Z"
-                    transform="translate(3784.561 -845.334)"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+              <Link href="/">
+                <a>
+                  <span className={cn(style.logo)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="44"
+                      height="44"
+                      viewBox="0 0 44 44"
+                    >
+                      <path
+                        id="Path_324"
+                        data-name="Path 324"
+                        d="M-3769.68,875.566a2.23,2.23,0,0,1-2.23,2.23,2.23,2.23,0,0,1-2.23-2.23,2.23,2.23,0,0,1,2.23-2.229A2.229,2.229,0,0,1-3769.68,875.566Zm29.119-8.232a22,22,0,0,1-22,22,22,22,0,0,1-22-22,22,22,0,0,1,22-22A22,22,0,0,1-3740.561,867.334Zm-39.384,7.733,10.96-10.959h2.746v8.784a1.931,1.931,0,0,0,1.927,1.929,1.929,1.929,0,0,0,1.927-1.929V857.511h16.121a19.014,19.014,0,0,0-16.3-9.2,19.025,19.025,0,0,0-19.026,19.027A18.93,18.93,0,0,0-3779.945,875.068Zm36.41-7.733a18.993,18.993,0,0,0-1.275-6.849h-14.6v2.137h12.386L-3750,865.6h-9.413v2.134h7.278l-2.973,2.973h-4.3v2.191a4.906,4.906,0,0,1-4.9,4.9,4.906,4.906,0,0,1-4.9-4.9v-4.356l-9.248,9.248a19.006,19.006,0,0,0,15.9,8.576A19.028,19.028,0,0,0-3743.535,867.334Z"
+                        transform="translate(3784.561 -845.334)"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </a>
+              </Link>
             </div>
 
             <button
               className={cn(style.nav_btn, style.nav_menu_toggle_btn)}
-              onClick={() => toggleMenu()}
+              onClick={() =>
+                setState({ ...state, show_menu: !state.show_menu })
+              }
             >
               <span>
                 <svg width="24" height="17" viewBox="0 0 24 17">
@@ -147,24 +162,40 @@ const NavBar = ({ container = false }) => {
                 })}
               >
                 <li className={cn(style.menu_item)}>
-                  <Link href="/#about">
-                    <a onClick={(e) => navigateTo('about')}>About</a>
-                  </Link>
+                  <a
+                    onClick={() =>
+                      router.push('/#about', undefined, { shallow: true })
+                    }
+                  >
+                    About
+                  </a>
                 </li>
                 <li className={cn(style.menu_item)}>
-                  <Link href="/#dev">
-                    <a onClick={(e) => navigateTo('dev')}>Dev</a>
-                  </Link>
+                  <a
+                    onClick={() =>
+                      router.push('/#dev', undefined, { shallow: true })
+                    }
+                  >
+                    Dev
+                  </a>
                 </li>
                 <li className={cn(style.menu_item)}>
-                  <Link href="/#design">
-                    <a onClick={(e) => navigateTo('design')}>Design</a>
-                  </Link>
+                  <a
+                    onClick={() =>
+                      router.push('/#design', undefined, { shallow: true })
+                    }
+                  >
+                    Design
+                  </a>
                 </li>
                 <li className={cn(style.menu_item)}>
-                  <Link href="/#resume">
-                    <a onClick={(e) => navigateTo('resume')}>Resume</a>
-                  </Link>
+                  <a
+                    onClick={() =>
+                      router.push('/#resume', undefined, { shallow: true })
+                    }
+                  >
+                    Resume
+                  </a>
                 </li>
 
                 {state.transform_menu && (

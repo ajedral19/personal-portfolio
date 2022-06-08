@@ -1,0 +1,31 @@
+@use '../../styles/variables.sass' as var
+
+.image_wrap
+    position: relative
+    min-width: 200px
+    // min-height: 358px
+    // max-width: 415px
+    width: 100%
+    // max-height: 744px
+    // height: 100%
+    // width: 100%
+    padding-top: 155%
+    background: var.$shadedMid
+
+.content
+    // margin-bottom: 4em
+    .buttons
+        display: flex
+        gap: calc(var(--gutter, .5em) * 2)
+
+.projects
+    display: flex
+    flex-flow: row wrap
+    // background: teal
+    margin: var(-(--gutter), -.5em)
+    .project_wrapper
+        flex: 0 1 var(--thumbnail-width, calc(100% / 4))
+        height: auto
+        .project
+            padding: var(--gutter, .5em)
+            display: block

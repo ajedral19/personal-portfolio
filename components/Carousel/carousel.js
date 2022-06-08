@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import ImageThumbnail from '../ImageThumbnail'
+import Link from 'next/link'
 import style from './carousel.module.sass'
 import cn from 'classnames'
 import { slide } from '../../utils/utils'
@@ -94,7 +95,15 @@ const Carousel = ({ items = [] }) => {
                   key={index}
                   className={cn(style.item, 'col-lg-3', 'col-md-2', 'col-sm-2')}
                 >
-                  <ImageThumbnail square />
+                  <Link
+                    href="/project/[category]/[id]/[title]"
+                    as={`/project/${item.category}/${item.id}/${item.title}`}
+                    scroll={false}
+                  >
+                    <a>
+                      <ImageThumbnail square />
+                    </a>
+                  </Link>
                 </div>
               ))}
             </div>

@@ -88,10 +88,18 @@ export default function Home({ projects, experiences }) {
             <div className="col-lg-6 col-md-3 col-sm-4">
               <div className="row">
                 <div className="col-lg-6 col-md-3 col-sm-2">
-                  <ImageThumbnail />
+                  <Link href="https://github.com/ajedral1994">
+                    <a target='_blank'>
+                      <ImageThumbnail />
+                    </a>
+                  </Link>
                 </div>
                 <div className="col-lg-6 col-md-3 col-sm-2">
-                  <ImageThumbnail />
+                  <Link href="https://www.behance.net/ajedral">
+                    <a target='_blank'>
+                      <ImageThumbnail />
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -128,8 +136,8 @@ export default function Home({ projects, experiences }) {
                   proj.category === 'design' && (
                     <div key={proj.id} className="col-lg-4 col-md-3 col-sm-2">
                       <Link
-                        href="/project/[id]/[title]"
-                        as={`/project/${proj.id}/${proj.title}`}
+                        href="/project/[category]/[id]/[title]"
+                        as={`/project/${proj.category}/${proj.id}/${proj.title}`}
                         scroll={false}
                       >
                         <a>
@@ -169,60 +177,61 @@ export default function Home({ projects, experiences }) {
                   <ol className="mt-2 accordion">
                     {experiences.length
                       ? experiences.map((experience, key) => (
-                          <li key={key} className="mb-1 item">
-                            <button
-                              role="button"
-                              className="btn clear full-width trigger t-cap"
-                              onClick={(e) => collapse(e)}
-                            >
-                              <span className="collapse-icon mr-1">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="12"
-                                  height="12"
-                                  viewBox="0 0 12 12"
-                                  className="icon"
+                        <li key={key} className="mb-1 item">
+                          <button
+                            role="button"
+                            className="btn clear full-width trigger t-cap"
+                            onClick={(e) => collapse(e)}
+                          >
+                            <span className="collapse-icon mr-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 12 12"
+                                className="icon"
+                              >
+                                <g
+                                  id="Group_114"
+                                  data-name="Group 114"
+                                  transform="translate(-799 -3136)"
                                 >
-                                  <g
-                                    id="Group_114"
-                                    data-name="Group 114"
-                                    transform="translate(-799 -3136)"
-                                  >
-                                    <rect
-                                      className="rectA"
-                                      data-name="Rectangle 220"
-                                      width="12"
-                                      height="2"
-                                      transform="translate(799 3141)"
-                                      fill="#eaeaea"
-                                    />
-                                    <rect
-                                      className="rectB"
-                                      data-name="Rectangle 221"
-                                      width="12"
-                                      height="2"
-                                      transform="translate(806 3136) rotate(90)"
-                                      fill="#eaeaea"
-                                    />
-                                  </g>
-                                </svg>
-                              </span>
-                              {experience.data.title}
-                            </button>
-                            <article className="collapse content">
-                              <h4 className="block t-cap title size-normal medium pt-1">
+                                  <rect
+                                    className="rectA"
+                                    data-name="Rectangle 220"
+                                    width="12"
+                                    height="2"
+                                    transform="translate(799 3141)"
+                                    fill="#eaeaea"
+                                  />
+                                  <rect
+                                    className="rectB"
+                                    data-name="Rectangle 221"
+                                    width="12"
+                                    height="2"
+                                    transform="translate(806 3136) rotate(90)"
+                                    fill="#eaeaea"
+                                  />
+                                </g>
+                              </svg>
+                            </span>
+                            {experience.data.title}
+                          </button>
+                          <article className="collapse content">
+                            {experience.data.company &&
+                              <h4 className="block t-cap title size-normal medium">
                                 {experience.data.company}
-                                binary ideas, st. diego inc.
                               </h4>
-                              <p className="mb-1 tiny">
-                                {experience.data['year-started'] +
-                                  ' - ' +
-                                  experience.data['year-ended']}
-                              </p>
-                              <p className="pb-1">{experience.content}</p>
-                            </article>
-                          </li>
-                        ))
+                            }
+                            <p className="mb-1 tiny t-cap">
+                              {experience.data['year-started'] +
+                                ' - ' +
+                                experience.data['year-ended']}
+                            </p>
+                            <p className="pb-1">{experience.content}</p>
+                          </article>
+                        </li>
+                      ))
                       : 'sad, no experience yet'}
                     {/* <li className="mb-1 item">
                       <span
