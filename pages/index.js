@@ -42,7 +42,7 @@ export default function Home({ projects, experiences }) {
 
   return (
     <Fragment>
-      {/* {state.promptModal && <Modal onClick={handleModalOnClick} />} */}
+      {state.promptModal && <Modal onClick={handleModalOnClick} />}
       <NavBar container />
       <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
