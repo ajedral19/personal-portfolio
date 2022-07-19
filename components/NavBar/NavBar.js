@@ -19,8 +19,8 @@ const NavBar = ({ container = false, unstick = false }) => {
   }
 
   const handleScroll = () => {
-    const scrollHeight = window.scrollY
-    setState({ ...state, pinch_nav: scrollHeight > 100 ? true : false })
+    // const scrollHeight = window.scrollY
+    // setState({ ...state, pinch_nav: scrollHeight > 100 ? true : false })
     setSrollPadding()
   }
 

@@ -32,7 +32,11 @@ const Modal = ({ onClick }) => {
               <div className={cn('col-sm-4', 'col-md-6', 'col-lg-12')}>
                 <h4 className={cn(style.prompt_title)}>{'Opps! Sorry :)'}</h4>
                 <p className={cn(style.prompt_msg, 'mt-1')}>
-                  i'm still working on it. if you want you can continue
+                  i'm still working on it.
+                  <br />I've been busy in the pass few months now and not having enough time to finish all of my contents.
+                </p>
+                <p className={cn(style.prompt_msg, 'mt-1')}>
+                  if you want you can continue
                 </p>
               </div>
               <div className={cn('col-sm-4', 'col-md-6', 'col-lg-12')}>
