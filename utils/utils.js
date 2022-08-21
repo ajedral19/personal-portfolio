@@ -43,8 +43,9 @@ export const collapse = (e, className = null, accordion = true) => {
   }
 }
 
-export const navigateTo = (target, padding = 40) => {
+export const navigateTo = (router, target, padding = 20) => {
   if (typeof target == undefined || !target) return
+  if (window.location != '/') return router.push(`/#${target}`, '', { shallow: true })
   window.scrollTo({
     top: document.getElementById(target)?.offsetTop - padding,
     left: 0,
@@ -52,8 +53,9 @@ export const navigateTo = (target, padding = 40) => {
   })
 }
 
-export const switchTheme = () => {
-  document.documentElement.classList.toggle('dark-mode')
+export const switchTheme = (state, setState) => {
+  setState({ ...state, theme_dark: !state.theme_dark })
+  // document.documentElement.classList.toggle('dark-mode')
   // window.matchMedia('(prefers-color-scheme: dark)')
 }
 
@@ -95,8 +97,21 @@ export const toggleElement = (e, el, className) => {
   e.target.classList.toggle(className)
 }
 
-export const onLoadEffect = (effect_type, duration, interval) => {}
+export const typewritter = (setWord, words, arr_index = 0, word = "", word_index = 0, timeout = undefined) => {
+  setWord(words[arr_index])
+  // clearTimeout(timeout)
+  // let curIndex = arr_index >= words.length ? 0 : arr_index
+  // const currentWord = words[arr_index]
+  // let w_i = word_index
+  // let typing = currentWord[w_i]
+  // setWord(typing)
+  // timeout = setTimeout(() => {
+  //   typewritter(setWord, words, curIndex, typing, w_i, timeout)
+  // }, 2000)
+}
 
-export const swipe = () => {}
+export const onLoadEffect = (effect_type, duration, interval) => { }
 
-export const parallax = () => {}
+export const swipe = () => { }
+
+export const parallax = () => { }

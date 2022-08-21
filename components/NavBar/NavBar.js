@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 import style from './NavBar.module.sass'
+import { navigateTo, switchTheme } from '../../utils/utils'
 
 const NavBar = ({ container = false, unstick = false }) => {
   const router = useRouter()
@@ -94,7 +95,7 @@ const NavBar = ({ container = false, unstick = false }) => {
             </div>
 
             <button
-              className={cn(style.nav_btn, style.nav_menu_toggle_btn)}
+              className={cn(style.nav_btn, style.nav_menu_toggle_btn, { [style.show]: state.show_menu })}
               onClick={() =>
                 setState({ ...state, show_menu: !state.show_menu })
               }
@@ -138,7 +139,8 @@ const NavBar = ({ container = false, unstick = false }) => {
                 [style.toggled]: state.theme_dark,
               })}
               onClick={() =>
-                setState(() => ({ ...state, theme_dark: !state.theme_dark }))
+                switchTheme(state, setState)
+                // setState(() => ({ ...state, theme_dark: !state.theme_dark }))
               }
             >
               <span>
@@ -163,36 +165,31 @@ const NavBar = ({ container = false, unstick = false }) => {
               >
                 <li className={cn(style.menu_item)}>
                   <a
-                    onClick={() =>
-                      router.push('/#about', undefined, { shallow: true })
-                    }
+                    onClick={() => navigateTo(router, "about")}
+                  // onClick={() =>,
+                  //   router.push('/#about', "/#about", { shallow: true })
+                  // }
                   >
                     About
                   </a>
                 </li>
                 <li className={cn(style.menu_item)}>
                   <a
-                    onClick={() =>
-                      router.push('/#dev', undefined, { shallow: true })
-                    }
+                    onClick={() => navigateTo(router, 'dev')}
                   >
                     Dev
                   </a>
                 </li>
                 <li className={cn(style.menu_item)}>
                   <a
-                    onClick={() =>
-                      router.push('/#design', undefined, { shallow: true })
-                    }
+                    onClick={() => navigateTo(router, 'design')}
                   >
                     Design
                   </a>
                 </li>
                 <li className={cn(style.menu_item)}>
                   <a
-                    onClick={() =>
-                      router.push('/#resume', undefined, { shallow: true })
-                    }
+                    onClick={() => navigateTo(router, 'resume')}
                   >
                     Resume
                   </a>

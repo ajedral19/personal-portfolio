@@ -1,5 +1,7 @@
 import { Fragment } from 'react'
+import Image from 'next/image'
 import cn from 'classnames'
+import test_img from '../assets/images/content/test_img.jpg'
 
 const ImageThumbnail = ({
   color,
@@ -18,7 +20,14 @@ const ImageThumbnail = ({
             </span>
           )}
         </div>
-        <div className="background"></div>
+        <div className="background">
+          <Image
+            layout='intrinsic'
+            objectFit='contain'
+            src={test_img}
+            alt="this is a test"
+          />
+        </div>
       </div>
     </Fragment>
   )

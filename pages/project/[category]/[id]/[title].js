@@ -13,6 +13,7 @@ import ImageThumbnail from '../../../../components/ImageThumbnail'
 import Carousel from '../../../../components/Carousel/carousel'
 // import style from '../../../styles/Home.module.sass'
 // import Header from '../../../components/header'
+import prj_img from '../../../../assets/images/content/test_img.jpg'
 
 const fetchRows = async () => {
   const res = await fetch_parsed_data('json')
@@ -101,6 +102,12 @@ const Project = ({ projects }) => {
                 <div>
                   <div className={cn(style.image_wrap)}>
                     {/* <Image src="" /> */}
+                    <Image
+                      layout='fill'
+                      objectFit='cover'
+                      src={prj_img}
+                      alt="this is test image"
+                    />
                   </div>
                 </div>
               </div>

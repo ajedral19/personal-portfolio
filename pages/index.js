@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect, Fragment } from 'react'
-import { collapse } from '../utils/utils'
+import { useState, useEffect, Fragment, useInsertionEffect } from 'react'
+import { collapse, typewritter } from '../utils/utils'
 import style from '../styles/Home.module.sass'
 import cn from 'classnames'
 
@@ -28,13 +28,26 @@ export async function getStaticProps() {
 }
 
 export default function Home({ projects, experiences }) {
+  const [skills, setSkills] = useState(["code", "design", "any"])
   const [state, setState] = useState({
     desc:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, impedit vel molestias incidunt dolore laboriosam dolores soluta quas fugit harum temporibus ipsa magnam iste. Illo, ducimus temporibus.',
     promptModal: true,
   })
 
+  const [word, setWord] = useState("")
+
   const handleModalOnClick = () => setState({ ...state, promptModal: false })
+
+
+  // to do next
+
+
+
+  useEffect(() => {
+    typewritter(setWord, skills, Math.floor(Math.random() * skills.length))
+    // changeWord(Math.floor(Math.random() * skillset.length))
+  }, [word])
 
   useEffect(() => {
     // document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
@@ -42,7 +55,7 @@ export default function Home({ projects, experiences }) {
 
   return (
     <Fragment>
-      {state.promptModal && <Modal onClick={handleModalOnClick} />}
+      {/* {state.promptModal && <Modal onClick={handleModalOnClick} />} */}
       <NavBar container />
       <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
@@ -54,7 +67,7 @@ export default function Home({ projects, experiences }) {
             <div className={cn('container', style.topPageContainer)}>
               <h1>
                 <div className={style.title}>
-                  knows how to <span className={style.typing}>code</span>
+                  knows how to <span className={style.typing}>{word}</span>
                 </div>
                 <div className={style.name}>AJ Power</div>
               </h1>
