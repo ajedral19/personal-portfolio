@@ -50,12 +50,12 @@ export default function Home({ projects, experiences }) {
   }, [word])
 
   useEffect(() => {
-    // document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
+    document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
   }, [state.promptModal])
 
   return (
     <Fragment>
-      {/* {state.promptModal && <Modal onClick={handleModalOnClick} />} */}
+      {state.promptModal && <Modal onClick={handleModalOnClick} />}
       <NavBar container />
       <header id="header" className={cn('top-page', style.topPage)}>
         <div className={style.banner}>
