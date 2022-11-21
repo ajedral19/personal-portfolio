@@ -93,7 +93,7 @@ const Carousel = ({ items = [] }) => {
               {items.map((item, index) => (
                 <div
                   key={index}
-                  className={cn(style.item, 'col-lg-3', 'col-md-2', 'col-sm-2')}
+                  className={cn(style.item, 'col-lg-3', 'col-md-2', 'col-sm-4')}
                 >
                   <Link
                     href="/project/[category]/[id]/[title]"

@@ -1,0 +1,52 @@
+@use '../../styles/variables' as var
+
+.container
+    background: pink
+
+.banner_main
+    position: relative
+    min-height: 640px
+    max-height: 844px
+    height: 100vh
+    &__banner
+        .heading
+            &__header
+                position: absolute
+                width: 100%
+                top: 28%
+                .title, .name
+                    display: block
+                .title
+                    font-weight: 500
+                .name
+                    font-size: var(--text-title-main)
+                    text-transform: uppercase
+            .stripe
+                position: absolute
+                width: 100%
+                inset: 0
+                z-index: -1
+                &__line
+                    position: absolute
+                    left: 0
+                    bottom: 0
+                    width: inherit
+                    height: 8.5%
+                    background: var.$default
+                &__line_large
+                    height: 14.5%
+                    bottom: 11%
+            .hero
+                position: absolute
+                inset: 0
+                z-index: -1
+                &__image
+                    position: absolute
+                    bottom: 0
+                    line-height: 0
+                    left: 50%
+                    transform: translateX(-50%)
+                    height: auto
+                    // max-height: 290px
+                    width: 82%
+                    // display: block

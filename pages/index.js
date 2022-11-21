@@ -14,12 +14,13 @@ import Footer from '../components/Footer/footer'
 import Description from '../components/Description'
 import ImageThumbnail from '../components/ImageThumbnail'
 import Carousel from '../components/Carousel/carousel'
+import Banner from '../components/Banner/Banner'
+import NavBar from '../components/NavBar/NavBar'
+import Modal from '../components/Modal/Modal'
+import ScrollToTop from '../components/ScrollToTop'
 
 // utils
 import { fetch_parsed_data } from '../lib/data'
-import NavBar from '../components/NavBar/NavBar'
-import ScrollToTop from '../components/ScrollToTop'
-import Modal from '../components/Modal/Modal'
 
 export async function getStaticProps() {
   const projectsData = await fetch_parsed_data('json')
@@ -35,7 +36,7 @@ export default function Home({ projects, experiences }) {
     promptModal: true,
   })
 
-  const [word, setWord] = useState("")
+  const [word, setWord] = useState("Code")
 
   const handleModalOnClick = () => setState({ ...state, promptModal: false })
 
@@ -44,50 +45,21 @@ export default function Home({ projects, experiences }) {
 
 
 
-  useEffect(() => {
-    typewritter(setWord, skills, Math.floor(Math.random() * skills.length))
-    // changeWord(Math.floor(Math.random() * skillset.length))
-  }, [word])
+  // useEffect(() => {
+  //   typewritter(setWord, skills, Math.floor(Math.random() * skills.length))
+  //   // changeWord(Math.floor(Math.random() * skillset.length))
+  // }, [word])
 
   useEffect(() => {
-    document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
+    // document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
   }, [state.promptModal])
 
   return (
     <Fragment>
-      {state.promptModal && <Modal onClick={handleModalOnClick} />}
+      {/* {state.promptModal && <Modal onClick={handleModalOnClick} />} */}
+      {/* <NavBar container={false} /> */}
       <NavBar container />
-      <header id="header" className={cn('top-page', style.topPage)}>
-        <div className={style.banner}>
-          <div className={style.heading}>
-            <div className={style.strips}>
-              <span className={style.strip}></span>
-              <span className={cn(style.strip, style.large)}></span>
-            </div>
-            <div className={cn('container', style.topPageContainer)}>
-              <h1>
-                <div className={style.title}>
-                  knows how to <span className={style.typing}>{word}</span>
-                </div>
-                <div className={style.name}>AJ Power</div>
-              </h1>
-            </div>
-            <div className={cn(style.heroWrapper)}>
-              <div className={cn(style.hero, 'container', style.container)}>
-                <span className={cn(style.img, 'block')}>
-                  <Image
-                    layout="intrinsic"
-                    objectFit="contain"
-                    src={hero}
-                    alt="hero image"
-                  />
-                </span>
-                {/* <img src="/assets/images/hero.png" alt="hero image" /> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Banner />
       <section className="section" id="about">
         <div className="container">
           <div className="row">
@@ -100,14 +72,14 @@ export default function Home({ projects, experiences }) {
             </div>
             <div className="col-lg-6 col-md-3 col-sm-4">
               <div className="row">
-                <div className="col-lg-6 col-md-3 col-sm-2">
+                <div className="col-lg-6 col-md-3 col-sm-4">
                   <Link href="https://github.com/ajedral1994">
                     <a target='_blank'>
                       <ImageThumbnail />
                     </a>
                   </Link>
                 </div>
-                <div className="col-lg-6 col-md-3 col-sm-2">
+                <div className="col-lg-6 col-md-3 col-sm-4">
                   <Link href="https://www.behance.net/ajedral">
                     <a target='_blank'>
                       <ImageThumbnail />
@@ -147,7 +119,7 @@ export default function Home({ projects, experiences }) {
               {projects.rows.map(
                 (proj, key) =>
                   proj.category === 'design' && (
-                    <div key={proj.id} className="col-lg-4 col-md-3 col-sm-2">
+                    <div key={proj.id} className="col-lg-4 col-md-3 col-sm-4">
                       <Link
                         href="/project/[category]/[id]/[title]"
                         as={`/project/${proj.category}/${proj.id}/${proj.title}`}
