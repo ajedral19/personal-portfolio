@@ -72,14 +72,14 @@ export default function Home({ projects, experiences }) {
             </div>
             <div className="col-lg-6 col-md-3 col-sm-4">
               <div className="row">
-                <div className="col-lg-6 col-md-3 col-sm-4">
+                <div className="col-lg-6 col-md-3 col-sm-2">
                   <Link href="https://github.com/ajedral1994">
                     <a target='_blank'>
                       <ImageThumbnail />
                     </a>
                   </Link>
                 </div>
-                <div className="col-lg-6 col-md-3 col-sm-4">
+                <div className="col-lg-6 col-md-3 col-sm-2">
                   <Link href="https://www.behance.net/ajedral">
                     <a target='_blank'>
                       <ImageThumbnail />
@@ -91,10 +91,9 @@ export default function Home({ projects, experiences }) {
           </div>
         </div>
       </section>
-      <section className="section t-left" id="dev">
+      {/* <section className="section t-left" id="dev">
         <div className="container">
           <h2 className="t-upper title medium mb-1">Check out my dev stuffs</h2>
-          {/* carousel */}
           <Carousel
             items={
               projects.rows.length
@@ -102,10 +101,8 @@ export default function Home({ projects, experiences }) {
                 : null
             }
           />
-          {/* <Carousel items={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} /> */}
-          {/* carousel */}
         </div>
-      </section>
+      </section> */}
 
       <section className="section t-left" id="design">
         <div className="container">

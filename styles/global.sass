@@ -15,6 +15,21 @@
         font-weight: $weight
         font-style: normal
 
+@mixin makeFlex($n_columns, $gap, $screen: null)
+    @for $i from 1 through $n_columns
+        $cname: col
+        @if $screen != null
+            $cname: #{$cname}-#{$screen}
+        .#{$cname}-#{$i}
+            flex-grow: 0
+            flex-shrink: 1
+            flex-basis: #{($i / $n_columns) * 100%}
+            // padding: 1em
+            padding: 1em
+
+            &.#{$cname}-grow
+                flex-grow: 1
+
 // Flex
 @mixin setColumns($name, $columns, $gap: var.$flexboxGutter)
     $gutter: math.div($gap, 2)
@@ -56,6 +71,7 @@
 //     var.$muted: var.$dm-muted
 
 *, ::before, ::after
+    box-sizing: border-box
     margin: 0
     padding: 0
 
@@ -129,30 +145,39 @@ ul, ol
     margin: auto
     max-width: 1056px
     // min-width: 200px
-    padding: 0 1em
+    padding: 0 1.75em
 
-.row
-    display: flex
-    flex-flow: row wrap
-    justify-content: flex-start
-    align-items: flex-start
-    margin: -#{math.div(var.$flexboxGutter, 2)}
-    &.clear
-        margin: 0
-    &.clear-vertical
-        margin-top: 0
-        margin-bottom: 0
-    &.no-wrap
-        flex-wrap: nowrap
-    &.center-items
-        align-items: center
-    &.split
-        justify-content: space-between
+// .row
+//     display: flex
+//     flex-flow: row wrap
+//     justify-content: flex-start
+//     align-items: flex-start
+//     margin: -#{math.div(var.$flexboxGutter, 2)}
+//     &.clear
+//         margin: 0
+//     &.clear-vertical
+//         margin-top: 0
+//         margin-bottom: 0
+//     &.no-wrap
+//         flex-wrap: nowrap
+//     &.center-items
+//         align-items: center
+//     &.split
+//         justify-content: space-between
     // &.last-item-clear-right
     //     [class*=col-]:last-child
     //         padding-right: 0
     //         background: red
-    @include setColumns('sm', 4)
+    // @include setColumns('sm', 4)
+
+.row
+    display: flex
+    flex-flow: row wrap
+    margin: -1em
+    align-content: flex-start
+    justify-content: flex-start
+    width: auto
+    @include makeFlex(4, 1, sm)
 
 .scroll-to-btn
     position: fixed
@@ -213,7 +238,7 @@ ul, ol
 // Media queries
 @media screen and (min-width: 768px)
     .row
-        @include setColumns('md', 6)
+        // @include setColumns('md', 6)
         &.split
             justify-content: unset
         &.split-md
@@ -221,7 +246,7 @@ ul, ol
 
 @media screen and (min-width: 1024px)
     .row
-        @include setColumns('lg', 12)
+        // @include setColumns('lg', 12)
         &.split
             justify-content: unset
         &.split-md
