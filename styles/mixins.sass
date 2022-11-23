@@ -1,6 +1,36 @@
 @use 'sass:math'
 @use './variables' as v
 
+// new
+@mixin makeFlex($n_columns, $gap, $screen: null)
+    @for $i from 1 through $n_columns
+        $cname: col
+        @if $screen != null
+            $cname: #{$cname}-#{$screen}
+        .#{$cname}-#{$i}
+            flex-grow: 0
+            flex-shrink: 1
+            flex-basis: math.percentage(math.div($i, $n_columns))
+
+            // padding: 1em
+            padding: $gap
+
+            &.#{$cname}-grow
+                flex-grow: 1
+
+@mixin spacer($limit: 12)
+    $space_type: (m: margin, p: padding)
+    $sides: (l: left, r: right, t: top, b: bottom)
+
+    @each $t_key, $type in $space_type
+        @each $s_key, $side in $sides
+            @for $i from 0 through $limit
+                .#{$t_key}-#{$i}
+                    #{$type}: #{$i}em
+                .#{$t_key}#{$s-key}-#{$i}
+                    #{$type}-#{$side}: #{$i}em
+// end new
+
 // media query for screen sizes
 @mixin screen($device: null, $orientation: null)
     $width: map-get(v.$viewports, $device)

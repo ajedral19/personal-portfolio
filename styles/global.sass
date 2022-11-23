@@ -1,6 +1,7 @@
 @use "sass:map"
 @use "sass:math"
 @use "./variables" as var
+@use './mixins' as mxn
 
 // @media query screen size
 @mixin setScreen($size)
@@ -15,45 +16,7 @@
         font-weight: $weight
         font-style: normal
 
-@mixin makeFlex($n_columns, $gap, $screen: null)
-    @for $i from 1 through $n_columns
-        $cname: col
-        @if $screen != null
-            $cname: #{$cname}-#{$screen}
-        .#{$cname}-#{$i}
-            flex-grow: 0
-            flex-shrink: 1
-            flex-basis: #{($i / $n_columns) * 100%}
-            // padding: 1em
-            padding: 1em
 
-            &.#{$cname}-grow
-                flex-grow: 1
-
-// Flex
-@mixin setColumns($name, $columns, $gap: var.$flexboxGutter)
-    $gutter: math.div($gap, 2)
-    @for $i from 1 through $columns
-        $l: #{$gutter * $i}
-        $width: calc(#{math.percentage(math.div($i, $columns))} - #{$gap})
-        .col-#{$name}-#{$i}
-            flex: 0 0 $width
-            width: $width
-            padding: $gutter
-
-// Whitespace
-@mixin setSpaces($baseWidth: 1rem, $proportions: 6)
-    $position: (t: 'top', l: 'left', b: 'bottom', r: 'right')
-    $type: (m: 'margin', p: 'padding')
-    @for $i from 1 through $proportions
-        @each $typeKey, $typeVal in $type
-            $width: $baseWidth * $i
-            .#{$typeKey}-#{$i}
-                #{$typeVal}: $width
-            @each $posKey, $posVal in $position
-                $className: #{$typeKey}#{$posKey}-#{$i}
-                .#{$className}
-                    #{$typeVal}-#{$posVal}: $width
 
 @include setFontFace(Rubik , '/assets/Fonts/' , Regular , normal )
 @include setFontFace(Rubik , '/assets/Fonts/' , Bold , bold )
@@ -61,7 +24,7 @@
 @include setFontFace(Rubik , '/assets/Fonts/' , Light , 300 )
 @include setFontFace(Rubik , '/assets/Fonts/' , Medium , 500 )
 @include setFontFace(Rubik , '/assets/Fonts/' , SemiBold , 600 )
-@include setSpaces
+// @include setSpaces
 
 // .dark-mode
 //     var.$default: var.$dm-default
@@ -85,6 +48,8 @@ body
     font-size: 62.5%
     color: var.$default
     font-family: Rubik
+
+@include mxn.spacer
 
 a, p, h1, h2, h3, h4, h5, h6, li, input, button
     font-family: inherit
@@ -177,7 +142,7 @@ ul, ol
     align-content: flex-start
     justify-content: flex-start
     width: auto
-    @include makeFlex(4, 1, sm)
+    @include mxn.makeFlex(4, var(--gap-global), sm)
 
 .scroll-to-btn
     position: fixed

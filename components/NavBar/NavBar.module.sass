@@ -29,8 +29,8 @@
                     display: inherit
             .nav_btn
                 position: absolute
-                padding: .25em
-                margin: -.25em
+                padding: .5em
+                margin: -.5em
                 line-height: 0
                 background: none
                 outline: none
@@ -45,7 +45,7 @@
                     top: 0
                     z-index: 2
                 &.toggled
-                    span svg
+                    // span svg
 
                 &.theme_toggle_btn
                     right: 0
@@ -56,10 +56,13 @@
                     //         background: red
                 &.show
                     background: red
-                    svg
+                    span svg
+                        display: block
                         .line1
-                            transform: rotate(45deg)
+                            // position: absolute
+                            transform: rotateZ(180deg)
                             transition: transform .5s ease-in-out
+                            display: block
 
             .nav_menu_wrap
                 // box-shadow: 4px 0px 14px 0 rgb(0 0 0 / 10%)
