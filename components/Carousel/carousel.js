@@ -101,7 +101,7 @@ const Carousel = ({ items = [] }) => {
                     scroll={false}
                   >
                     <a>
-                      <ImageThumbnail square data={item} />
+                      {/* <ImageThumbnail square data={item} /> */}
                     </a>
                   </Link>
                 </div>

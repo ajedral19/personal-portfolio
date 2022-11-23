@@ -75,14 +75,14 @@ export default function Home({ projects, experiences }) {
                 <div className="col-lg-6 col-md-3 col-sm-2">
                   <Link href="https://github.com/ajedral1994">
                     <a target='_blank'>
-                      <ImageThumbnail />
+
                     </a>
                   </Link>
                 </div>
                 <div className="col-lg-6 col-md-3 col-sm-2">
                   <Link href="https://www.behance.net/ajedral">
                     <a target='_blank'>
-                      <ImageThumbnail />
+
                     </a>
                   </Link>
                 </div>
@@ -111,29 +111,6 @@ export default function Home({ projects, experiences }) {
             description={state.desc}
             classes={['mb-2']}
           />
-          {projects.rows.length ? (
-            <div className="row">
-              {projects.rows.map(
-                (proj, key) =>
-                  proj.category === 'design' && (
-                    <div key={proj.id} className="col-lg-4 col-md-3 col-sm-4">
-                      <Link
-                        href="/project/[category]/[id]/[title]"
-                        as={`/project/${proj.category}/${proj.id}/${proj.title}`}
-                        scroll={false}
-                      >
-                        <a>
-                          <ImageThumbnail data={proj} />
-                        </a>
-                      </Link>
-                    </div>
-                  ),
-              )}
-            </div>
-          ) : (
-            // need a layout for this
-            <h1>'no projects yet'</h1>
-          )}
         </div>
       </section>
       <section className="section" id="resume">
