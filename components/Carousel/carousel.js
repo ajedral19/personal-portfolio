@@ -1,117 +1,83 @@
 import { Fragment, useEffect, useState } from 'react'
-import ImageThumbnail from '../ImageThumbnail'
 import Link from 'next/link'
 import style from './carousel.module.sass'
 import cn from 'classnames'
-import { slide } from '../../utils/utils'
+import Card from '../Card/Card'
+import { isAssetError } from 'next/dist/client/route-loader'
+// import { slide } from '../../utils/utils'
 
 const Carousel = ({ items = [] }) => {
-  const [carousel, setCarousel] = useState()
+
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  // function getThreeValues(n) {
+  //   if (!(n in arr)) return
+  //   let _arr = [];
+  //   if (n == 0)
+  //     _arr = [arr.length - 1, n, n + 1]
+  //   else if (n >= arr.length - 1)
+  //     _arr = [n - 1, n, 0]
+  //   else
+  //     _arr = [n - 1, n, n + 1]
+  //   console.log(_arr)
+  // }
+  const [count, setCount] = useState(0)
+  const [els, setEls] = useState([])
   useEffect(() => {
-    setCarousel(document.querySelector(`.${style.carousel}`))
-  }, [setCarousel])
+    let count = 0
+    window.setInterval(() => {
+      getThreeValues(count)
+      count += 1
+      if (count > arr.length - 1)
+        count = 0
+    }, 2000)
+  }, [])
+
+  function getThreeValues(n) {
+    if (!(n in arr)) return
+    let _arr = [];
+    if (n == 0)
+      _arr = [arr.length - 1, n, n + 1]
+    else if (n >= arr.length - 1)
+      _arr = [n - 1, n, 0]
+    else
+      _arr = [n - 1, n, n + 1]
+
+    const els = _arr.map(i =>
+      <div key={i} className={cn(style.carousel__platform__item, `${i}`)} data-r="b" datafocus={i == n ? "1" : i == _arr - 1 ? "0" : "2"}>
+        <Card type="image" />
+      </div >
+    );
+
+    setEls(els)
+  }
 
   return (
     <Fragment>
-      {items.length ? (
-        <div className={style.carouselContainer}>
-          <div className={style.carouselControl}>
-            <button
-              className={cn('btn', style.btn, style.prev)}
-              // onClick={() => slide(true, false)}
-              onClick={() => slide(true, false, carousel)}
-            >
-              <svg
-                id="Group_122"
-                data-name="Group 122"
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-              >
-                <path
-                  id="Path_325"
-                  data-name="Path 325"
-                  d="M126.834,313.88l-4.618,4.618,4.618,4.618"
-                  transform="translate(-111.334 -304.38)"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1"
-                />
-                <g
-                  id="Ellipse_17"
-                  data-name="Ellipse 17"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                >
-                  <circle cx="14" cy="14" r="14" stroke="none" />
-                  <circle cx="14" cy="14" r="13.5" fill="none" />
-                </g>
-              </svg>
-            </button>
-            <button
-              className={cn('btn', style.btn, style.next)}
-              // onClick={() => slide(false, true)}
-              onClick={() => slide(false, true, carousel)}
-            >
-              <svg width="28" height="28" viewBox="0 0 28 28">
-                <g
-                  id="Group_120"
-                  data-name="Group 120"
-                  transform="translate(-1444 -1236)"
-                >
-                  <path
-                    id="Path_325"
-                    data-name="Path 325"
-                    d="M122.217,313.88l4.618,4.618-4.618,4.618"
-                    transform="translate(1334.283 931.62)"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1"
-                  />
-                  <g
-                    id="Ellipse_17"
-                    data-name="Ellipse 17"
-                    transform="translate(1444 1236)"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                  >
-                    <circle cx="14" cy="14" r="14" stroke="none" />
-                    <circle cx="14" cy="14" r="13.5" fill="none" />
-                  </g>
-                </g>
-              </svg>
-            </button>
+      <div className={cn(style.carousel)}>
+        <div className={cn(style.carousel__control)}></div>
+        <div className={cn(style.carousel__platform)}>
+          {els}
+          {/* <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
           </div>
-          <div className={style.carousel}>
-            <div className="row no-wrap">
-              {items.map((item, index) => (
-                <div
-                  key={index}
-                  className={cn(style.item, 'col-lg-3', 'col-md-2', 'col-sm-4')}
-                >
-                  <Link
-                    href="/project/[category]/[id]/[title]"
-                    as={`/project/${item.category}/${item.id}/${item.title}`}
-                    scroll={false}
-                  >
-                    <a>
-                      {/* <ImageThumbnail square data={item} /> */}
-                    </a>
-                  </Link>
-                </div>
-              ))}
-            </div>
+          <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
           </div>
+          <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
+          </div>
+          <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
+          </div>
+          <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
+          </div>
+          <div className={cn(style.carousel__platform__item)}>
+            <Card type="image" />
+          </div> */}
         </div>
-      ) : (
-        <h1>'no projects yet'</h1>
-      )}
+      </div>
     </Fragment>
   )
 }

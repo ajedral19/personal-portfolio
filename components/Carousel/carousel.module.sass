@@ -1,60 +1,26 @@
-@use '../../styles/variables.sass' as var
 
-// carousel
-.carouselContainer
+.carousel
     position: relative
-    width: 100%
-    height: 100%
-    .carouselControl
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        z-index: 2
+    display: block
+    height: min-content
+    *
+        outline: 1px solid red
+    &__platform
         display: flex
-        width: 102%
-        justify-content: space-between
-        .btn
-            padding: 0
-            border: 0
-            outline: 0
-            cursor: pointer
-            &::before
-                position: relative
-                width: 100%
-                height: 100%
-                line-height: 0
-                display: block
-            &.next
-                &::before
-                    // content: url('/assets/icons/icon-next.svg')
-                    // color: var.$default
-            &.prev
-                &::before
-                    // content: url('/assets/icons/icon-prev.svg')
-                    // color: var.$default
-
-    .carousel
+        flex-flow: row nowrap
         position: relative
-        height: auto
-        width: 100%
         overflow: hidden
-        scroll-snap-type: x mandatory
-        scroll-behavior: smooth
-        .item
-            scroll-margin: 0 -.5em
-            scroll-snap-align: start end
-            transition: transform .5s ease-in-out
+        flex-flow: row nowrap
 
-@media screen and (min-width: 768px)
+        &__item
+            flex: 1 0 100%
+            transform: translateX(0)
+            transition: transform .2s ease
 
-    .carouselContainer
-        .carouselControl
-            top: -3em
-            right: 0
-            left: unset
-            transform: unset
-            width: unset
-            display: flex
-            justify-content: center
-            gap: 1em
+            &[datafocus = "0"]
+                transform: translateX(-100%)
+            &[datafocus = "1"]
+                transform: translateX(0%)
+            &[datafocus = "2"]
+                transform: translateX(100%)
+                // background: red
