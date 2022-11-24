@@ -1,9 +1,35 @@
-import { Fragment } from "react"
-import cn from 'classnames'
-import style from './Card.module.sass'
+import { Fragment } from "react";
+import Image from "next/image";
+import cn from "classnames";
+import style from "./Card.module.sass";
 
-const Card = () => {
-    return <Fragment></Fragment>
-}
+import placeholder_img from "/assets/images/content/placeholder_image.png";
 
-export default Card
+const Card = ({ type = null, ratio = null }) => {
+	return (
+		<Fragment>
+			<div className={cn(style.card)}>
+				<div className={cn(style.card__thumbnail)}>
+					<span className={cn(style.img_wrap)}>
+						<Image src={placeholder_img} layout="fill" objectFit="contain" alt="" />
+					</span>
+				</div>
+				{type == "image" && (
+					<div className={cn(style.card__socmed)}>
+						<button aria-label="like">Like</button>
+						<button aria-label="Pin">Pin</button>
+						<span className={cn(style.idk)}>
+							<button aria-label="Pin">idk</button>
+						</span>
+					</div>
+				)}
+				<div className={cn(style.card__body, { [style["card__body--hidden"]]: type == "image" })}>
+					<h4 className={cn(style.title)}>Sample Title</h4>
+					<p className={cn(style.p)}>Non dolore do voluptate eu amet.</p>
+				</div>
+			</div>
+		</Fragment>
+	);
+};
+
+export default Card;

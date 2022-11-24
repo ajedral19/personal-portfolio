@@ -16,8 +16,6 @@
         font-weight: $weight
         font-style: normal
 
-
-
 @include setFontFace(Rubik , '/assets/Fonts/' , Regular , normal )
 @include setFontFace(Rubik , '/assets/Fonts/' , Bold , bold )
 @include setFontFace(Rubik , '/assets/Fonts/' , Black , 900 )
@@ -37,6 +35,10 @@
     box-sizing: border-box
     margin: 0
     padding: 0
+
+*::selection
+    background: var(--default)
+    color: var(--background)
 
 html
     scroll-behavior: smooth
