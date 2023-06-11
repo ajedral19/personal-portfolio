@@ -1,27 +1,12 @@
 .carousel
     position: relative
-    display: block
+    display: flex
+    flex-flow: row nowrap
     height: min-content
-    *
-        outline: 1px solid red
-    &__platform
-        display: flex
-        flex-flow: row nowrap
-        position: relative
-        // overflow: hidden
-        flex-flow: row nowrap
-        margin: -1em
-
-        &__item
-            flex: 1 0 50%
-            padding: 1em
-            animation: moveX .3s
-            // transform: translateX(0%)
-            transition: transform .2s ease
-
-            &--active
-                // transform: translateX(100%)
-                color: inherit
+    overflow: hidden
+    &__wagon
+        display: block
+        flex: 0 0 100%
 
 @keyframes moveX
     from

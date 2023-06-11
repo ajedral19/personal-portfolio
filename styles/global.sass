@@ -1,3 +1,5 @@
+@charset 'UTF-8'
+
 @use "sass:map"
 @use "sass:math"
 @use "./variables" as var
@@ -62,7 +64,7 @@ a, p, h1, h2, h3, h4, h5, h6, li, input, button
     text-align: inherit
 
 p, li
-    line-height: 26px
+    line-height: 28px
 
 a
     text-decoration: none
@@ -178,6 +180,7 @@ ul, ol
         overflow: hidden
         .trigger
             cursor: pointer
+            padding: 5px 0
             .collapse-icon
                 pointer-events: none
                 .icon

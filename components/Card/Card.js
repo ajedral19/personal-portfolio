@@ -5,7 +5,7 @@ import style from "./Card.module.sass";
 
 import placeholder_img from "/assets/images/content/placeholder_image.png";
 
-const Card = ({ type = null, ratio = null }) => {
+const Card = ({ title, description, type = null, ratio = null }) => {
 	return (
 		<Fragment>
 			<div className={cn(style.card)}>
@@ -24,8 +24,8 @@ const Card = ({ type = null, ratio = null }) => {
 					</div>
 				)}
 				<div className={cn(style.card__body, { [style["card__body--hidden"]]: type == "image" })}>
-					<h4 className={cn(style.title)}>Sample Title</h4>
-					<p className={cn(style.p)}>Non dolore do voluptate eu amet.</p>
+					{title && <h4 className={cn(style.title)}>{title}</h4>}
+					{description && <p className={cn(style.p)}>{description}</p>}
 				</div>
 			</div>
 		</Fragment>
