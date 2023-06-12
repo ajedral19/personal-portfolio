@@ -40,10 +40,6 @@ const NavBar = ({ container = false, unstick = false }) => {
 	};
 
 	useEffect(() => {
-		// document.body.style.overflow = !state.show_menu ? 'unset' : 'hidden'
-	}, [state.show_menu]);
-
-	useEffect(() => {
 		window.document.documentElement.classList.toggle("dark-mode");
 		return () => {};
 	}, [state.theme_dark]);

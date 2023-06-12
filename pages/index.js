@@ -1,9 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect, Fragment, useInsertionEffect } from "react";
+import { Fragment } from "react";
 import { collapse, typewritter } from "../utils/utils";
-import style from "../styles/Home.module.sass";
-import cn from "classnames";
 
 // images
 import profileImg from "../assets/images/profile-image.png";
