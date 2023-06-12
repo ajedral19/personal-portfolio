@@ -6,22 +6,15 @@ import style from "../styles/Home.module.sass";
 import cn from "classnames";
 
 // images
-import hero from "../assets/images/hero.png";
 import profileImg from "../assets/images/profile-image.png";
 
 // components
 import Footer from "../components/Footer/footer";
 import Description from "../components/Description";
-import ImageThumbnail from "../components/ImageThumbnail";
-import Carousel from "../components/Carousel/carousel";
-import Banner from "../components/Banner/Banner";
 import NavBar from "../components/NavBar/NavBar";
-import Modal from "../components/Modal/Modal";
-import ScrollToTop from "../components/ScrollToTop";
 
 // utils
 import { fetch_parsed_data } from "../lib/data";
-import Card from "../components/Card/Card";
 
 export async function getStaticProps() {
 	const projectsData = await fetch_parsed_data("json");
@@ -30,27 +23,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ projects, experiences }) {
-	const [skills, setSkills] = useState(["code", "design", "any"]);
-	const [state, setState] = useState({
-		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, impedit vel molestias incidunt dolore laboriosam dolores soluta quas fugit harum temporibus ipsa magnam iste. Illo, ducimus temporibus.",
-		promptModal: true,
-	});
-
-	const [word, setWord] = useState("Code");
-
-	const handleModalOnClick = () => setState({ ...state, promptModal: false });
-
-	// to do next
-
-	// useEffect(() => {
-	//   typewritter(setWord, skills, Math.floor(Math.random() * skills.length))
-	//   // changeWord(Math.floor(Math.random() * skillset.length))
-	// }, [word])
-
-	useEffect(() => {
-		// document.body.style.overflow = state.promptModal ? 'hidden' : 'unset'
-	}, [state.promptModal]);
-
 	return (
 		<Fragment>
 			<NavBar container />
