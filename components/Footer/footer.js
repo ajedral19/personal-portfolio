@@ -21,7 +21,7 @@ export default function Footer({ container = false }) {
               <ul className={style.profileLinks}>
                 <li>
                   <span className={cn(style.icon, 'block')}>
-                    <Link href="https://github.com/ajedral1994">
+                    <Link href="https://github.com/ajedral19">
                       <a className="medium" target='_blank'>
                         <svg width="21.254" height="18" viewBox="0 0 21.254 18">
                           <path
@@ -53,7 +53,7 @@ export default function Footer({ container = false }) {
                 </li>
                 <li>
                   <span className={cn(style.icon, 'block')}>
-                    <Link href="https://dev.to/ajedral1994">
+                    <Link href="https://dev.to/ajedral19">
                       <a className="medium" target='_blank'>
                         <svg width="18" height="17.999" viewBox="0 0 18 17.999">
                           <path
