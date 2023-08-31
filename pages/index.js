@@ -101,7 +101,7 @@ export default function Home({ projects, experiences }) {
             <div className="col-lg-6 col-md-3 col-sm-4">
               <div className="row">
                 <div className="col-lg-6 col-md-3 col-sm-2">
-                  <Link href="https://github.com/ajedral1994">
+                  <Link href="https://github.com/ajedral19">
                     <a target='_blank'>
                       <ImageThumbnail />
                     </a>
