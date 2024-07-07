@@ -8,8 +8,11 @@
         "meta_description": "Donec feugiat dolor nulla, nec ullamcorper eros pulvinar vitae. Aliquam augue risus, pretium eget nisi a, placerat venenatis elit.",
         "description": "Vivamus sit amet elementum ligula. Proin laoreet nulla nec nisi congue, at lacinia lacus efficitur. Donec feugiat dolor nulla, nec ullamcorper eros pulvinar vitae. Aliquam augue risus, pretium eget nisi a, placerat venenatis elit.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p2",
@@ -18,8 +21,11 @@
         "meta_description": "Ut sit amet ipsum et mauris placerat maximus vitae sed elit. Aliquam non augue suscipit, tempor nisl nec, accumsan arcu. Curabitur et lectus vel nibh consequat condimentum et vitae sapien.",
         "description": "Ut sit amet ipsum et mauris placerat maximus vitae sed elit. Aliquam non augue suscipit, tempor nisl nec, accumsan arcu. Curabitur et lectus vel nibh consequat condimentum et vitae sapien.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p3",
@@ -28,8 +34,11 @@
         "meta_description": "Praesent iaculis massa non mattis auctor. Duis ac enim et elit varius tempus. Ut tortor urna, consequat in ultrices ac, feugiat nec sem. Suspendisse at sapien elementum, pulvinar ipsum dictum, dignissim metus.",
         "description": "Praesent iaculis massa non mattis auctor. Duis ac enim et elit varius tempus. Ut tortor urna, consequat in ultrices ac, feugiat nec sem. Suspendisse at sapien elementum, pulvinar ipsum dictum, dignissim metus.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p4",
@@ -38,8 +47,11 @@
         "meta_description": "Phasellus in egestas odio. Quisque hendrerit, sem quis mollis porttitor, metus est dignissim justo, blandit semper purus dolor et odio. Fusce sit amet nibh eget quam imperdiet feugiat. Aliquam vel blandit justo. Sed eget libero volutpat, consectetur velit vitae, tristique dolor.",
         "description": "Phasellus in egestas odio. Quisque hendrerit, sem quis mollis porttitor, metus est dignissim justo, blandit semper purus dolor et odio. Fusce sit amet nibh eget quam imperdiet feugiat. Aliquam vel blandit justo. Sed eget libero volutpat, consectetur velit vitae, tristique dolor.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p5",
@@ -48,8 +60,11 @@
         "meta_description": "Duis non libero laoreet, volutpat libero vitae, elementum augue. Proin vitae ligula magna.",
         "description": "Duis non libero laoreet, volutpat libero vitae, elementum augue. Proin vitae ligula magna.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p6",
@@ -58,8 +73,11 @@
         "meta_description": "Duis orci lorem, tincidunt vel accumsan sit amet, porta cursus tellus. Cras vulputate, leo vitae venenatis vehicula, ipsum odio fringilla purus, eget pulvinar mauris ligula nec orci.",
         "description": "Duis orci lorem, tincidunt vel accumsan sit amet, porta cursus tellus. Cras vulputate, leo vitae venenatis vehicula, ipsum odio fringilla purus, eget pulvinar mauris ligula nec orci.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p7",
@@ -68,8 +86,11 @@
         "meta_description": "Aliquam eget tincidunt nibh. Praesent suscipit mollis lacus, eget iaculis urna dignissim at. Donec dapibus felis quis ex porttitor, at tempus erat condimentum.",
         "description": "Aliquam eget tincidunt nibh. Praesent suscipit mollis lacus, eget iaculis urna dignissim at. Donec dapibus felis quis ex porttitor, at tempus erat condimentum.",
         "category": "design",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p8",
@@ -78,8 +99,11 @@
         "meta_description": "Vestibulum lobortis turpis mi, non vulputate erat imperdiet non. Etiam ac enim at tellus iaculis sodales. Maecenas iaculis rhoncus augue.",
         "description": "Vestibulum lobortis turpis mi, non vulputate erat imperdiet non. Etiam ac enim at tellus iaculis sodales. Maecenas iaculis rhoncus augue.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p9",
@@ -88,8 +112,11 @@
         "meta_description": "Quisque porta convallis cursus. Aenean ligula tellus, varius in nisl in, fringilla facilisis enim. Vivamus euismod dolor lectus, sed efficitur nulla faucibus non.",
         "description": "Quisque porta convallis cursus. Aenean ligula tellus, varius in nisl in, fringilla facilisis enim. Vivamus euismod dolor lectus, sed efficitur nulla faucibus non.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p10",
@@ -98,8 +125,11 @@
         "meta_description": "Vivamus ac lectus eros. Duis porttitor luctus massa, vitae auctor turpis eleifend non. Aliquam sem libero, vestibulum quis massa a, egestas finibus quam. Nulla convallis enim nec lectus aliquam lacinia.",
         "description": "Vivamus ac lectus eros. Duis porttitor luctus massa, vitae auctor turpis eleifend non. Aliquam sem libero, vestibulum quis massa a, egestas finibus quam. Nulla convallis enim nec lectus aliquam lacinia.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p11",
@@ -108,8 +138,11 @@
         "meta_description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ac orci a arcu semper gravida eget in ligula. Phasellus molestie, turpis sit amet rhoncus eleifend, ante erat lacinia enim, eget maximus lorem velit a tellus.",
         "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ac orci a arcu semper gravida eget in ligula. Phasellus molestie, turpis sit amet rhoncus eleifend, ante erat lacinia enim, eget maximus lorem velit a tellus.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p12",
@@ -118,8 +151,11 @@
         "meta_description": "Quisque ac enim fringilla velit convallis tincidunt. Quisque eget nibh rhoncus, cursus ligula ut, rutrum tortor. In mattis consequat justo nec ornare. Praesent accumsan eros sed nunc consectetur volutpat. Vivamus placerat justo vel nisi blandit, ut vulputate mi rhoncus.",
         "description": "Quisque ac enim fringilla velit convallis tincidunt. Quisque eget nibh rhoncus, cursus ligula ut, rutrum tortor. In mattis consequat justo nec ornare. Praesent accumsan eros sed nunc consectetur volutpat. Vivamus placerat justo vel nisi blandit, ut vulputate mi rhoncus.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p13",
@@ -128,8 +164,11 @@
         "meta_description": "Curabitur at lobortis lacus. In sit amet lorem sem. Aenean tristique lobortis risus, id mattis mi rhoncus ac. Ut id turpis ipsum.",
         "description": "Curabitur at lobortis lacus. In sit amet lorem sem. Aenean tristique lobortis risus, id mattis mi rhoncus ac. Ut id turpis ipsum.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       },
       {
         "id": "p14",
@@ -138,8 +177,11 @@
         "meta_description": "Fusce lobortis ante vel sem congue, ut commodo eros facilisis. Nullam faucibus dui ut feugiat euismod. Curabitur posuere ligula sit amet lectus convallis lobortis. Ut id tristique libero, ut molestie risus. Sed nibh orci, auctor nec dapibus eget, auctor eu ligula. Praesent vitae ex felis. Nulla rhoncus orci vel diam rhoncus interdum.",
         "description": "Fusce lobortis ante vel sem congue, ut commodo eros facilisis. Nullam faucibus dui ut feugiat euismod. Curabitur posuere ligula sit amet lectus convallis lobortis. Ut id tristique libero, ut molestie risus. Sed nibh orci, auctor nec dapibus eget, auctor eu ligula. Praesent vitae ex felis. Nulla rhoncus orci vel diam rhoncus interdum.",
         "category": "dev",
-        "display_image": "url",
-        "images": ["url", "url"]
+        "display_image": "https://picsum.photos/600/400",
+        "images": [
+          "https://picsum.photos/600/400",
+          "https://picsum.photos/600/400"
+        ]
       }
     ]
   }

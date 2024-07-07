@@ -40,12 +40,6 @@
                 .#{$className}
                     #{$typeVal}-#{$posVal}: $width
 
-@include setFontFace(Rubik , '/assets/Fonts/' , Regular , normal )
-@include setFontFace(Rubik , '/assets/Fonts/' , Bold , bold )
-@include setFontFace(Rubik , '/assets/Fonts/' , Black , 900 )
-@include setFontFace(Rubik , '/assets/Fonts/' , Light , 300 )
-@include setFontFace(Rubik , '/assets/Fonts/' , Medium , 500 )
-@include setFontFace(Rubik , '/assets/Fonts/' , SemiBold , 600 )
 @include setSpaces
 
 // .dark-mode
@@ -62,18 +56,27 @@
 html
     scroll-behavior: smooth
     scroll-padding: var(--scroll-padding, 80)
+    font-size: 62.5%
+
+@include setFontFace(Rubik , '/assets/Fonts/' , Regular , normal )
+@include setFontFace(Rubik , '/assets/Fonts/' , Bold , bold )
+@include setFontFace(Rubik , '/assets/Fonts/' , Black , 900 )
+@include setFontFace(Rubik , '/assets/Fonts/' , Light , 300 )
+@include setFontFace(Rubik , '/assets/Fonts/' , Medium , 500 )
+@include setFontFace(Rubik , '/assets/Fonts/' , SemiBold , 600 )
 
 body
     background: var.$background
     text-align: center
-    font-size: 98%
+    // font-size: 98%
+    font-size: var.$fs
     color: var.$default
     font-family: Rubik
 
 a, p, h1, h2, h3, h4, h5, h6, li, input, button
     font-family: inherit
     color: inherit
-    font-size: 1rem
+    font-size: var.$fs
     line-height: normal
     margin: 0
     text-align: inherit
@@ -91,39 +94,35 @@ ul, ol
     display: block
 
 .btn
-    position: relative
-    min-width: 28px
-    // min-height: 28px
-    border: 1px solid var.$shadedMid
-    padding: 1em 1.5em
-    background: none
-    font-weight: 500
-    cursor: pointer
-    &.square
-        padding: unset
-        max-width: 24px
-        border: none
-        .icon-wrap
-            display: block
-            position: relative
-            width: 100%
-            padding-top: 100%
-            .icon
-                position: absolute
-                width: 100%
-                height: auto
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
+    --__btn-bg: none
+    --__btn-color: var(--default)
+    $__btn-fs: var.$fs
+    margin: 0
+    padding: 0
+    border: none
+    background: var(--__btn-bg)
+    color: var(--__btn-color)
+    font-size: $__btn-fs
+    padding: var.$pad calc( var.$pad * 2)
+    border: 1px solid var(--__btn-color)
+
+    // &.square
+
+    //     .icon-wrap
+
+    //         .icon
+
+    &:hover
+        --__btn-bg: var(--default)
+        --__btn-color: white
+
     &.clear
-        padding: unset
-        min-width: unset
-        min-height: unset
-        background: none
+        --__btn-bg: transparent
+        --__btn-color: var(--default)
         border: none
-        font-weight: unset
-    &.full-width
-        width: 100%
+        padding: unset
+
+    // &.full-width
 
 .container
     margin: auto
@@ -164,7 +163,7 @@ ul, ol
 .profile
     position: relative
     pointer-events: none
-    &.profile-wrap
+    &.profile-wraptrigger
         position: relative
         overflow: hidden
         margin: auto

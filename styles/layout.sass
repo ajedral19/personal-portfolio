@@ -2,10 +2,11 @@
 
 // Font sizes
 .title
-    font-size: 1.5rem
+    font-size: 1.6rem
     font-weight: 400
     &.size-normal
-        font-size: 1rem
+        font-size: 1.4rem
+        line-height: normal
     &.bold
         font-weight: bold
     &.black
@@ -70,65 +71,41 @@
     padding: 3.125em 0
     position: relative
 
-.image-thumbnail
+.thumbnail-card
     position: relative
+    isolation: isolate
     overflow: hidden
-    display: block
-    width: 100%
-    padding-top: 70%
-    background: var.$shadedMid
-    .meta-data
-        position: absolute
-        width: calc(100% - 2em)
-        height: calc(100% - 2em)
-        display: flex
-        flex-direction: column
-        justify-content: flex-end
-        padding: 1em
-        top: 0
-        left: 0
-        &::before
-            content: ''
-            position: absolute
-            z-index: 1
-            width: 100%
-            height: 100%
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, var(--root-default) 180%)
-            mix-blend-mode: multiply
-            top: 0
-            left: 0
-            opacity: 0
-            transition: opacity 1s ease-in-out
-        .meta-data-content
-            width: 100%
-            height: auto
-            position: relative
-            color: var(--root-background)
-            z-index: 1
-            transform: translateY(200%)
-            transform-origin: bottom
-            opacity: 0
-            transition: transform 1s ease-in-out,opacity 1s ease-in-out
-    &:hover
-        .meta-data
-            &::before
-                opacity: 1
-                transition: opacity .25s ease-in-out
-            .meta-data-content
-                opacity: 1
-                transform: translateY(0)
-                transition: transform .25s ease-in-out, opacity .5s ease-in-out
+    border-radius: calc(var.$pad / 2)
+    $__color: #fff
+
+    &__content-wrap
+        padding: var.$pad
+        min-width: 140px
+        padding-top: 100%
+        color: $__color
+
+        .content
+            display: flex
+            flex-flow: column
+            gap: calc(var.$pad / 3)
+
+    // &:hover
+    //     .meta-data
+    //         &::before
+
+    //         .meta-data-content
+
     .background
         position: absolute
-        z-index: 0
-        display: block
+        top: 0
         height: 100%
         width: 100%
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-    &.square
-        padding-top: 100%
+        background: #252627
+        color: var(--__text-color)
+        z-index: -1
+        line-height: 0
+
+    // &.square
 
 .shadow-lower-dark
     box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%)
