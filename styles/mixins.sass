@@ -18,7 +18,7 @@
     $classname: row
     $colClassname: col
     $cols: 12
-    $padding: math.div($gutterWidth, 2)
+    // $padding: math.div($gutterWidth, 2)
     $unit: $gutterWidthUnit
     @if $columns != null
         $cols: $columns
@@ -28,7 +28,7 @@
     .#{$classname}
         display: flex
         flex-flow: row wrap
-        margin: -#{$padding}#{$unit}
+        // margin: -#{$padding}#{$unit}
         align-items: center
         justify-content: flex-start
 
@@ -60,7 +60,7 @@
                     .#{$colClassname}-#{$fcKey}-#{$i}
                         flex: 0 0 #{$width}
                         width: #{$width}
-                        padding: #{$padding}#{$unit}
+                        // padding: #{$padding}#{$unit}
 
 @mixin setFontFace($_dir, $font, $type, $weight, $style: null, $display: fallback)
     $ext: $type

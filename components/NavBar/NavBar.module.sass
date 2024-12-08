@@ -1,142 +1,28 @@
-@use '../../styles/variables' as var
-
-.nav_bar
-    background: var.$background
-    position: sticky
-    z-index: 99
-    top: 0
-    left: 0
+.nav
     width: 100%
-    padding: 2em 0
-    transition: padding .2s ease-in-out
-    &.unstick
-        position: relative
-    &.pinch
-        padding: 1em 0
-    .container
-        // background: teal
-        .nav_row
-            position: relative
+    flex: 1 0 100%
+    padding-block: 3em 1em
+    position: fixed
+    top: 0
+    z-index: 999
+    background: var(--background)
+
+    .logo
+        display: block
+        margin-inline: auto
+        
+        svg
+            vertical-align: middle
+            width: 48px
+            height: 48px
             display: block
-            line-height: 0
-            .logo_wrap
-                // background: orange
-                display: inline-block
-                line-height: 0
-                position: relative
-                margin: auto
-                .logo
-                    display: inherit
-            .nav_btn
-                position: absolute
-                padding: .25em
-                margin: -.25em
-                line-height: 0
-                background: none
-                outline: none
-                border: none
-                cursor: pointer
-                span svg
-                    // background: red
-                    max-width: 28px
-                    width: 100%
-                &.nav_menu_toggle_btn
-                    left: 0
-                    top: 0
-                    z-index: 2
-                // &.toggled
-                //     span svg
-                &.theme_toggle_btn
-                    right: 0
-                    top: 0
-                    z-index: 1
-                    // &.toggled
-                    //     span svg
-                    //         background: red
-                &.show
-                    background: red
-                    svg
-                        .line1
-                            transform: rotate(45deg)
-                            transition: transform .5s ease-in-out
 
-            .nav_menu_wrap
-                // box-shadow: 4px 0px 14px 0 rgb(0 0 0 / 10%)
-                position: fixed
-                // z-index: 1
-                width: 100%
-                height: 100%
-                text-align: left
-                left: 0
-                top: 0
-                background: none
-                transform: translateX(-100%)
-                transition: transform .25s ease-in-out
-                &.show
-                    transform: translateX(0%)
-                .nav_menu
-                    height: 100%
-                    max-width: 50%
-                    padding-top: 6em
-                    // transform: translateX(-100%)
-                    transition: transform .5s ease-in-out
-                    background: var.$shadedLow
-                    .menu_item
-                        cursor: pointer
-                        &.footer
-                            position: absolute
-                            bottom: 1em
-                            left: 0
-                            z-index: 1
-                        a
-                            display: block
-                            color: var.$muted
-                            font-weight: 500
-                            padding-left: 1em
-                            padding-right: 1.5em
-                            padding-top: .75em
-                            padding-bottom: .75em
-                            text-transform: uppercase
-                            &.active
-                                color: var.$default
+    @media screen and (min-width: 960px)
+        padding-block: 1em
 
-@media screen and (min-width: 760px)
-    .nav_bar
-        .container
-            .nav_row
-                // position: relative
-                display: flex
-                flex-flow: row nowrap
-                justify-content: space-between
-                .logo_wrap
-                    margin: unset
-                .nav_btn
-                    &.nav_menu_toggle_btn
-                        display: none
-                    &.theme_toggle_btn
-                        height: auto
-                        top: 50%
-                        z-index: 2
-                        transform: translateY(-50%)
-                        padding-bottom: 0
-                        padding-bottom: 0
-                .nav_menu_wrap
-                    position: relative
-                    width: unset
-                    min-width: unset
-                    max-width: unset
-                    height: unset
-                    background: none
-                    pointer-events: unset
-                    transform: unset
-                    .nav_menu
-                        background: none
-                        transform: unset
-                        max-width: unset
-                        position: relative
-                        padding-top: 0
-                        margin-right: 2.5em
-                        display: flex
-                        .menu_item
-                            &.footer
-                                display: none
+        .logo
+            svg
+                width: 32px
+                height: 32px
+        
+    

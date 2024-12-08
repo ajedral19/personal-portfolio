@@ -4,6 +4,8 @@
 .title
     font-size: 1.6rem
     font-weight: 400
+    &.size-large
+        font-size: 3.42rem
     &.size-normal
         font-size: 1.4rem
         line-height: normal
@@ -18,7 +20,7 @@
     &.light
         font-weight: 300
 .subject
-    font-size: 1rem
+    font-size: 1.6rem
     font-weight: 400
     &.bold
         font-weight: bold
@@ -60,10 +62,13 @@
 .t-upper
     text-transform: uppercase
 
-.top-page
-    // background: pink
-    height: 100vh
-    position: relative
+// .top-page
+//     // background: pink
+//     height: 100vh
+//     position: relative
+
+.place-center
+    place-items: center
 
 .section
     // background: pink
@@ -76,18 +81,22 @@
     isolation: isolate
     overflow: hidden
     border-radius: calc(var.$pad / 2)
+    aspect-ratio: 1/1.2
     $__color: #fff
 
     &__content-wrap
         padding: var.$pad
-        min-width: 140px
-        padding-top: 100%
+        width: inherit
+        // padding-top: 100%
         color: $__color
+        position: absolute
+        bottom: 0
 
         .content
             display: flex
             flex-flow: column
             gap: calc(var.$pad / 3)
+            word-break: break-all
 
     // &:hover
     //     .meta-data

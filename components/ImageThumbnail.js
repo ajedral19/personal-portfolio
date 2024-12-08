@@ -3,7 +3,7 @@ import Image from "next/image";
 import cn from "classnames";
 import test_img from "../assets/images/content/test_img.jpg";
 
-const ImageThumbnail = ({ color, data, square = false }) => {
+const ImageThumbnail = ({ color, data, square = false, aspect_ratio }) => {
 	const [image, setImage] = useState([]);
 	const { title, description } = data || {};
 
@@ -25,13 +25,7 @@ const ImageThumbnail = ({ color, data, square = false }) => {
 					)}
 				</div>
 				<div className="background">
-					{/* <Image
-						layout="responsive"
-						objectFit="contain"
-						className="testimg"
-						src={image}
-						alt="this is a test"
-					/> */}
+					{/* <Image layout="responsive" objectFit="contain" className="testimg" src={image} alt="this is a test" /> */}
 				</div>
 			</div>
 		</Fragment>

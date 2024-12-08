@@ -27,7 +27,7 @@
             padding: $gutter
 
 // Whitespace
-@mixin setSpaces($baseWidth: 1rem, $proportions: 6)
+@mixin setSpaces($baseWidth: 1.2rem, $proportions: 6)
     $position: (t: 'top', l: 'left', b: 'bottom', r: 'right')
     $type: (m: 'margin', p: 'padding')
     @for $i from 1 through $proportions
@@ -67,7 +67,7 @@ html
 
 body
     background: var.$background
-    text-align: center
+    text-align: left
     // font-size: 98%
     font-size: var.$fs
     color: var.$default
@@ -90,31 +90,59 @@ a
 ul, ol
     list-style: none
 
+main
+    min-height: 100dvh
+    display: flex
+    flex-flow: column
+    outline: 1px dashed
+
+header
+    flex: 1 0 100dvh
+    height: 100%
+    display: flex
+    align-items: center
+    flex-flow: row nowrap
+    width: 100%
+    position: relative
+    overflow: hidden
+
+footer
+    margin-top: auto
+
+// section
+//     overflow: hidden
+
+.relative
+    position: relative
+
+.sticky
+    position: sticky
+    top: 160px
+
 .block
     display: block
 
+.greyscale
+    filter: grayscale(1) brightness(3.5) contrast(1.25)
+
 .btn
-    --__btn-bg: none
+    --__btn-bg: var(--background)
     --__btn-color: var(--default)
     $__btn-fs: var.$fs
     margin: 0
     padding: 0
     border: none
-    background: var(--__btn-bg)
     color: var(--__btn-color)
+    background: var(--__btn-bg)
     font-size: $__btn-fs
     padding: var.$pad calc( var.$pad * 2)
     border: 1px solid var(--__btn-color)
-
-    // &.square
-
-    //     .icon-wrap
-
-    //         .icon
+    display: inline-block
+    width: fit-content
 
     &:hover
         --__btn-bg: var(--default)
-        --__btn-color: white
+        --__btn-color: var(--background)
 
     &.clear
         --__btn-bg: transparent
@@ -125,17 +153,22 @@ ul, ol
     // &.full-width
 
 .container
-    margin: auto
-    max-width: 1056px
+    margin-inline: auto
+    max-width: 960px
     // min-width: 200px
-    padding: 0 1em
+    // width: 100%
+    padding-inline: 1em
 
 .row
     display: flex
-    flex-flow: row wrap
+    flex-direction: row
+    flex-wrap: wrap
     justify-content: flex-start
     align-items: flex-start
+    // gap: 2em
     margin: -#{math.div(var.$flexboxGutter, 2)}
+    &.reverse
+        flex-direction: row-reverse
     &.clear
         margin: 0
     &.clear-vertical
@@ -147,6 +180,10 @@ ul, ol
         align-items: center
     &.split
         justify-content: space-between
+    &.center
+        justify-content: center
+    &.grow [class *= "col-"]
+        flex-grow: 1
     // &.last-item-clear-right
     //     [class*=col-]:last-child
     //         padding-right: 0
@@ -205,11 +242,63 @@ ul, ol
             transition-duration: .3s
             transition-timing-function: ease-in-out
             // transform-origin: top
-            padding-left: 1.85em
+            padding-left: 1.5em
             &.collapse
                 height: 0
 
 // Media queries
+// @media screen and (max-width: 767px)
+//     .row
+//         &.reverse-sm
+//             flex-direction: row-reverse
+
+// test
+.toggle-view
+    display: grid
+    grid-template-areas: "display" "items"
+    gap: 2em
+    &__display-wrap
+        display: flex
+        align-items: center
+        grid-area: display
+        position: relative
+        isolation: isolate
+        color: var(--background)
+
+        &::before
+            content: ''
+            position: absolute
+            width: 100dvw
+            height: 100%
+            background: var(--default)
+            top: 0
+            left: 50%
+            transform: translateX(-50%)
+            z-index: -1
+    &__display
+        display: flex
+        flex-flow: row wrap
+        gap: 1em 3em
+        padding-block: 3em
+        height: fit-content
+
+        &__thumbnail
+            flex: 1 100%
+
+        &__details
+            display: flex
+            flex-flow: column nowrap
+            gap: 1em
+
+    &__items
+        grid-area: items
+        display: flex
+        flex-flow: row nowrap
+        gap: 1em
+        overflow: hidden
+        .item
+            flex: 1 0 calc(math.div(100%, 3) - .6em)
+
 @media screen and (min-width: 768px)
     .row
         @include setColumns('md', 6)
@@ -217,20 +306,55 @@ ul, ol
             justify-content: unset
         &.split-md
             justify-content: space-between
+        &.reverse-md
+            flex-direction: row-reverse
 
-@media screen and (min-width: 1024px)
+    .toggle-view
+        grid-template-areas: "display items"
+        grid-template-rows: 28em
+        &__display-wrap
+            height: 100%
+            &::before
+                left: unset
+                right: 0
+                transform: unset
+
+        &__display
+            // padding-block: 6em
+            padding-block: unset
+            flex-flow: row nowrap
+
+            &__thumbnail
+                flex: 1 1 28em
+
+        &__items
+            flex-flow: column nowrap
+            overflow: hidden
+            .item
+                flex: 0 1 10em
+
+@media screen and (min-width: 960px)
+    header
+        flex: 1 0 36em
+        max-height: 1080px
+
+    .container
+        width: 100%
     .row
         @include setColumns('lg', 12)
         &.split
             justify-content: unset
-        &.split-md
-            justify-content: unset
         &.split-lg
             justify-content: space-between
+        &.reverse-lg
+            flex-direction: row-reverse
 
     .scroll-to-btn
         bottom: 4.5em
         left: unset
         right: 1.5em
         transform: unset
-//     @include setRow('lg', 12)
+
+    .lg-sticky
+        position: sticky
+        top: 160px
