@@ -115,7 +115,7 @@ export default function Home({ projects, experiences }) {
 														className="btn clear full-width trigger t-cap"
 														onClick={(e) => collapse(e)}
 													>
-														<span className="collapse-icon mr-1">
+														<span className="collapse-icon mr-1 collapse">
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
 																width="12"
@@ -145,7 +145,7 @@ export default function Home({ projects, experiences }) {
 														</span>
 														{experience.data.title}
 													</button>
-													<article className="collapse content">
+													<article className="content">
 														{experience.data.company && (
 															<h4 className="block t-cap title size-normal medium" style={{ lineHeight: 1.6 }}>
 																{experience.data.company}

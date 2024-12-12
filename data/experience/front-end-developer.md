@@ -6,4 +6,4 @@ year-started: 2019
 year-ended: 2020
 ---
 
-Duis sed sodales justo. Aliquam semper sagittis purus, sit amet molestie metus dictum id. Etiam fringilla velit lectus, vel aliquet lacus rutrum at. Maecenas rhoncus mauris turpis, a consectetur ex blandit sit amet. Donec laoreet enim vitae quam placerat pellentesque. Nullam volutpat elit vel eros mattis, id feugiat sem fringilla. Praesent vel augue sem.
+In my previous role, I collaborated closely with [mention team/client] as a Web Designer/Frontend Developer. I was responsible for creating compelling visuals, including logos and social media campaigns, as well as developing responsive websites by converting designs from PSD to HTML. It was a great experience working on [mention a project or type of project].

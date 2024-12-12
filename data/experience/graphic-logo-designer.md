@@ -6,4 +6,4 @@ year-started: 2016
 year-ended: current
 ---
 
-Cras malesuada, arcu id commodo consectetur, nisi nisi pharetra turpis, in laoreet dolor nibh vitae purus. Maecenas suscipit leo eu ante pretium, at accumsan leo accumsan. Mauris vitae ante nec dui commodo hendrerit nec non ex.
+As a freelance graphic designer, I specialized in creating logos and social media assets for clients, primarily using Adobe Photoshop and Illustrator. It was a fun and creative role!

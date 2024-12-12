@@ -6,4 +6,4 @@ year-started: 2022
 year-ended: Current
 ---
 
-Duis sed sodales justo. Aliquam semper sagittis purus, sit amet molestie metus dictum id. Etiam fringilla velit lectus, vel aliquet lacus rutrum at. Maecenas rhoncus mauris turpis, a consectetur ex blandit sit amet. Donec laoreet enim vitae quam placerat pellentesque. Nullam volutpat elit vel eros mattis, id feugiat sem fringilla. Praesent vel augue sem.
+I recently worked as a Frontend Developer, using HTML, CSS, JavaScript, and PHP to build and improve websites. I really enjoyed the problem-solving aspects of the work, and I'm particularly proud of [mention a project or accomplishment].
