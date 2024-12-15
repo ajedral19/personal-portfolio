@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect, Fragment } from "react";
 import { collapse } from "../utils/utils";
 import style from "../styles/Home.module.sass";
@@ -12,6 +11,12 @@ import Footer from "../components/Footer/footer.jsx";
 import { fetch_parsed_data } from "../lib/data";
 import NavBar from "../components/NavBar/NavBar";
 import Modal from "../components/Modal/Modal";
+import Carousel from "../components/Carousel/carousel.jsx";
+import { BiLogoFigma } from "react-icons/bi";
+import { SiAdobeillustrator, SiAdobephotoshop, SiAdobexd, SiTypescript } from "react-icons/si";
+import { FaGitAlt, FaPython, FaReact, FaSass } from "react-icons/fa";
+import { RiNextjsFill } from "react-icons/ri";
+import { DiNodejs, DiPhp } from "react-icons/di";
 
 export async function getStaticProps() {
 	const projectsData = await fetch_parsed_data("json");
@@ -24,12 +29,71 @@ const template = {
 	desc: "",
 };
 
+const carouselItems = [
+	{
+		name: "PHP",
+		icon: <DiPhp size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "NodeJS",
+		icon: <DiNodejs size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Typescript",
+		icon: <SiTypescript size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "React",
+		icon: <FaReact size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "NextJS",
+		icon: <RiNextjsFill size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Python",
+		icon: <FaPython size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Sass",
+		icon: <FaSass size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "git",
+		icon: <FaGitAlt size={32} title="lipsum" color="currentColor" />,
+	},
+	// {
+	// 	name: "Docker",
+	// 	icon: <FaDocker size={32} title="EC2, ECS, Lambda, S3, CloudWatch" color="currentColor" />,
+	// },
+	// {
+	// 	name: "AWS",
+	// 	icon: <FaAws size={32} title="EC2, ECS, Lambda, S3, CloudWatch" color="currentColor" />,
+	// },
+	{
+		name: "Adobe Photoshop",
+		icon: <SiAdobephotoshop size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Adobe Illustrator",
+		icon: <SiAdobeillustrator size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Adobe XD",
+		icon: <SiAdobexd size={32} title="lipsum" color="currentColor" />,
+	},
+	{
+		name: "Figma",
+		icon: <BiLogoFigma size={32} title="lipsum" color="currentColor" />,
+	},
+];
+
 export default function Home({ projects, experiences }) {
 	// const [skills, setSkills] = useState(["code", "design", "any"]);
 	// const [devWorks, setDevWorks] = useState(template);
-	const [designWorks] = useState(template); //setDesignWorks
+	// const [designWorks] = useState(template); //setDesignWorks
 	const [state, setState] = useState({
-		promptModal: false,
+		promptModal: true,
 	});
 
 	const [word, setWord] = useState("");
@@ -80,6 +144,9 @@ export default function Home({ projects, experiences }) {
 								assets. I then worked as front-end developer and now I am as a somehow a Web Developer.
 							</p>
 						</div>
+					</div>
+					<div className="pt-6">
+						<Carousel items={carouselItems} />
 					</div>
 				</section>
 
