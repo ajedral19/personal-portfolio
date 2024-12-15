@@ -76,9 +76,8 @@ export default function Home({ projects, experiences }) {
 						<div className="col-lg-5 col-md-3 col-sm-4">
 							<h3 className="mb-2 title semibold">Hey Neighboor</h3>
 							<p>
-								Just a quict brief. I was a graphic designer, I specialized on creating logos and digital marketing
-								assets. I then worked as front-end developer and now I am as a somehow front-end somewhat back-end
-								developer.
+								Just a quick brief. I was a graphic designer, I specialized on creating logos and digital marketing
+								assets. I then worked as front-end developer and now I am as a somehow a Web Developer.
 							</p>
 						</div>
 					</div>
