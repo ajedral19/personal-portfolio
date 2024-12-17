@@ -3,21 +3,24 @@ import cn from "classnames";
 import style from "./carousel.module.sass";
 
 const Carousel = ({ items = [] }) => {
-    const [load, setLoad] = useState(false);
 
-    useEffect(() => {
-        if (load) {
-            const scroller = document.querySelector(`.${style.infinite_scroll__scroller}`);
-            const items = Array.from(scroller.children);
-            items.forEach((item) => {
-                const clone = item.cloneNode(true);
-                clone.setAttribute("area-hidden", "true");
-                scroller.appendChild(clone);
-            });
-        }
+	const [load, setLoad] = useState(false)
 
-        return () => setLoad(true);
-    }, [load]);
+	useEffect(() => {
+		if(!load){
+			const scroller = document.querySelector(`.${style.infinite_scroll__scroller}`)
+			const items = Array.from(scroller.children)
+			items.forEach(item => {
+				const clone = item.cloneNode(true)
+				clone.setAttribute('area-hidden', "true")
+				scroller.appendChild(clone)
+			})
+			
+		}
+
+		return () => setLoad(true)
+
+	}, [load])
 
     return (
         <Fragment>

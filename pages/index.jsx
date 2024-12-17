@@ -95,7 +95,7 @@ export default function Home({ projects, experiences }) {
     // const [devWorks, setDevWorks] = useState(template);
     // const [designWorks] = useState(template); //setDesignWorks
     const [state, setState] = useState({
-        promptModal: false,
+        promptModal: true,
     });
 
     const [word, setWord] = useState("");
