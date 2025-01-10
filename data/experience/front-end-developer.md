@@ -1,5 +1,5 @@
 ---
-title: Junior front-end developer
+title: Front-end Developer
 company: Customer Benefits Srvcs (CBS)
 logo: /images/profile.jpg
 year-started: 2019
