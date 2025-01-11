@@ -6,4 +6,4 @@ year-started: 2016
 year-ended: 2018
 ---
 
-I previously worked as a Junior Graphic Designer/Web Designer, specializing in logo design, social media marketing assets, and web design. My primary tools were Adobe Photoshop and Illustrator.
+I previously worked as a Graphic Designer/Web Designer, specializing in logo design, social media marketing assets, and web design. My primary tools were Adobe Photoshop and Illustrator.
