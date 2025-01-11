@@ -122,7 +122,7 @@ export default function Home({ projects, experiences }) {
                     <div className="container">
                         <h1 className={cn("title size-normal medium", style.intro)}>
                             <span className="block title bold size-large">AJ Edral</span>
-                            Your regular normal neighboor
+                            Your regular normal neighbor
                         </h1>
                     </div>
                 </header>
@@ -134,8 +134,8 @@ export default function Home({ projects, experiences }) {
                         <div className="col-lg-5 col-md-3 col-sm-4">
                             <h3 className="mb-2 title semibold">Hey Neighboor</h3>
                             <p>
-                                Just a quick brief. I was a graphic designer, I specialized on creating logos and digital marketing assets. I then worked as
-                                front-end developer and now I am as a somehow a Web Developer.
+                                Just a quick brief. I was a graphic designer, I specialized in creating logos and digital marketing assets. I then worked as
+                                front-end developer and now I am somehow a Web Developer.
                             </p>
                         </div>
                     </div>
@@ -156,13 +156,13 @@ export default function Home({ projects, experiences }) {
                                     I am a Graphic Designer and Front-end (Web somehow) Developer. In 2017 I decided to do some coding and set aside designing.
                                 </p>
                                 <p className="mb-2">
-                                    Besides, I love watching creepy YouTube videos/Horror Movies every night or dawn with lights turned off, and that makes me
+                                    Besides, I love watching creepy YouTube videos/Horror Movies every night or at dawn with lights turned off, and that makes me
                                     feel better every time I felt tired of creating something.
                                 </p>
                                 <p>
-                                    Sounds nonsence, right?
+                                    Sounds nonsense, right?
                                     <br />
-                                    But nevermind.
+                                    But never mind.
                                 </p>
 
                                 {/* <button className="btn">Download CV</button> */}
